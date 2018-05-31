@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CAB6CE4FBD205A9D2FCBD24 /* Pods_SpotKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */; };
 		CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7020C065EC00347FE9 /* AppDelegate.swift */; };
 		CA696A7320C065EC00347FE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7220C065EC00347FE9 /* ViewController.swift */; };
 		CA696A7620C065EC00347FE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA696A7420C065EC00347FE9 /* Main.storyboard */; };
 		CA696A7820C065ED00347FE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA696A7720C065ED00347FE9 /* Assets.xcassets */; };
 		CA696A7B20C065ED00347FE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA696A7920C065ED00347FE9 /* LaunchScreen.storyboard */; };
+		CA696A8320C067A400347FE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA696A8220C067A300347FE9 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26EC2CCD1248D137C4FD44E5 /* Pods-SpotKing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotKing.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing.release.xcconfig"; sourceTree = "<group>"; };
+		5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotKing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		816B31C89DD49C83F4F387A5 /* Pods-SpotKing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotKing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing.debug.xcconfig"; sourceTree = "<group>"; };
 		CA696A6D20C065EC00347FE9 /* SpotKing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotKing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA696A7020C065EC00347FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA696A7220C065EC00347FE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		CA696A7720C065ED00347FE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA696A7A20C065ED00347FE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA696A7C20C065ED00347FE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA696A8220C067A300347FE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CAB6CE4FBD205A9D2FCBD24 /* Pods_SpotKing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5A412A3932EFF0FD24A4A0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CA696A6420C065EB00347FE9 = {
 			isa = PBXGroup;
 			children = (
 				CA696A6F20C065EC00347FE9 /* SpotKing */,
 				CA696A6E20C065EC00347FE9 /* Products */,
+				D99433C91A898DAF619856FC /* Pods */,
+				A5A412A3932EFF0FD24A4A0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +73,22 @@
 			children = (
 				CA696A7020C065EC00347FE9 /* AppDelegate.swift */,
 				CA696A7220C065EC00347FE9 /* ViewController.swift */,
+				CA696A8220C067A300347FE9 /* GoogleService-Info.plist */,
 				CA696A7420C065EC00347FE9 /* Main.storyboard */,
 				CA696A7720C065ED00347FE9 /* Assets.xcassets */,
 				CA696A7920C065ED00347FE9 /* LaunchScreen.storyboard */,
 				CA696A7C20C065ED00347FE9 /* Info.plist */,
 			);
 			path = SpotKing;
+			sourceTree = "<group>";
+		};
+		D99433C91A898DAF619856FC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				816B31C89DD49C83F4F387A5 /* Pods-SpotKing.debug.xcconfig */,
+				26EC2CCD1248D137C4FD44E5 /* Pods-SpotKing.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA696A7F20C065ED00347FE9 /* Build configuration list for PBXNativeTarget "SpotKing" */;
 			buildPhases = (
+				6FA0A8482FE1671DECFC02B3 /* [CP] Check Pods Manifest.lock */,
 				CA696A6920C065EC00347FE9 /* Sources */,
 				CA696A6A20C065EC00347FE9 /* Frameworks */,
 				CA696A6B20C065EC00347FE9 /* Resources */,
+				ECEF91FFF1F7F6CB33B20033 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +152,60 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA696A7B20C065ED00347FE9 /* LaunchScreen.storyboard in Resources */,
+				CA696A8320C067A400347FE9 /* GoogleService-Info.plist in Resources */,
 				CA696A7820C065ED00347FE9 /* Assets.xcassets in Resources */,
 				CA696A7620C065EC00347FE9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FA0A8482FE1671DECFC02B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpotKing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECEF91FFF1F7F6CB33B20033 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA696A6920C065EC00347FE9 /* Sources */ = {
@@ -278,6 +355,7 @@
 		};
 		CA696A8020C065ED00347FE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 816B31C89DD49C83F4F387A5 /* Pods-SpotKing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +374,7 @@
 		};
 		CA696A8120C065ED00347FE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26EC2CCD1248D137C4FD44E5 /* Pods-SpotKing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
