@@ -21,6 +21,10 @@ class DatabaseManager
         
         generatedRef.observe(.value, with: { (snapshot) in
 
+            print(snapshot.childrenCount)
+            for t in snapshot.children {
+                t.key
+            }
             let newSpot = [ // 2
                 "userID": spot.userID,
                 "rating": spot.spotRating,
