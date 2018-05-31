@@ -7,12 +7,20 @@
 //
 
 import UIKit
-
+import CoreLocation
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let spot = SkateSpot();
+        spot.title = "testTitle"
+        spot.subtitle = "testSubTitle"
+        spot.spotType =  SkateSpot.SpotType.SkatePark
+        spot.spotRating = 3.5;
+        spot.userID = 1
+        spot.coordinate = CLLocationCoordinate2D(latitude: -69, longitude: 70)
+        DatabaseManager.saveSkateSpot(spot: spot)
     }
 
     override func didReceiveMemoryWarning() {

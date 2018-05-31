@@ -14,6 +14,8 @@
 		CA696A7820C065ED00347FE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA696A7720C065ED00347FE9 /* Assets.xcassets */; };
 		CA696A7B20C065ED00347FE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA696A7920C065ED00347FE9 /* LaunchScreen.storyboard */; };
 		CA696A8320C067A400347FE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA696A8220C067A300347FE9 /* GoogleService-Info.plist */; };
+		CA696A8520C06AAD00347FE9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8420C06AAD00347FE9 /* DatabaseManager.swift */; };
+		CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8620C06B7200347FE9 /* SkateSpot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		CA696A7A20C065ED00347FE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA696A7C20C065ED00347FE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA696A8220C067A300347FE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA696A8420C06AAD00347FE9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		CA696A8620C06B7200347FE9 /* SkateSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkateSpot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 				CA696A7720C065ED00347FE9 /* Assets.xcassets */,
 				CA696A7920C065ED00347FE9 /* LaunchScreen.storyboard */,
 				CA696A7C20C065ED00347FE9 /* Info.plist */,
+				CA696A8420C06AAD00347FE9 /* DatabaseManager.swift */,
+				CA696A8620C06B7200347FE9 /* SkateSpot.swift */,
 			);
 			path = SpotKing;
 			sourceTree = "<group>";
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */,
 				CA696A7320C065EC00347FE9 /* ViewController.swift in Sources */,
 				CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */,
+				CA696A8520C06AAD00347FE9 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
