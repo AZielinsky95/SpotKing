@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         spot.spotRating = 3.5;
         spot.userID = 1
         spot.coordinate = CLLocationCoordinate2D(latitude: -69, longitude: 70)
-        DatabaseManager.saveSkateSpot(spot: spot)
+        let db = DatabaseManager()
+        db.saveSkateSpot(spot: spot)
     }
 
     override func didReceiveMemoryWarning() {

@@ -7,23 +7,32 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseDatabase
 
 class DatabaseManager
 {
-    static var ref : DatabaseReference = {
+    lazy var ref : DatabaseReference = {
         return Database.database().reference()
     }()
     
-    static func saveSkateSpot(spot:SkateSpot)
+    func saveSkateSpot(spot:SkateSpot)
     {
-        let generatedRef = ref.child("skatespots").childByAutoId()
+        let generatedRef = ref.child("skatespots")
         
         generatedRef.observe(.value, with: { (snapshot) in
 
+          //  print(snapshot.value)
             print(snapshot.childrenCount)
+          //  guard let results = snapshot.value as? [String:Any] else { return }
+            
+     //       print(results.count)
             for t in snapshot.children {
-                t.key
+                guard let taskSnapshot = t as? DataSnapshot else {
+                    continue
+                }
+
+                let id = taskSnapshot.key
             }
             let newSpot = [ // 2
                 "userID": spot.userID,
