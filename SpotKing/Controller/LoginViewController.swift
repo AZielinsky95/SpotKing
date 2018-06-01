@@ -67,6 +67,10 @@ class LoginViewController: UIViewController {
         inputContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true;
         
         inputContainerView.addSubview(usernameTextField)
+        usernameTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true;
+        usernameTextField.topAnchor.constraint(equalTo: inputContainerView.topAnchor).isActive = true;
+        usernameTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
+        usernameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3).isActive = true;
     }
     
 }
