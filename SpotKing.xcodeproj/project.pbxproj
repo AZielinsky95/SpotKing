@@ -17,6 +17,7 @@
 		CA696A8520C06AAD00347FE9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8420C06AAD00347FE9 /* DatabaseManager.swift */; };
 		CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8620C06B7200347FE9 /* SkateSpot.swift */; };
 		CA696A8A20C0848A00347FE9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8920C0848A00347FE9 /* NetworkManager.swift */; };
+		CA696A8E20C1C43B00347FE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CA696A8420C06AAD00347FE9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		CA696A8620C06B7200347FE9 /* SkateSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkateSpot.swift; sourceTree = "<group>"; };
 		CA696A8920C0848A00347FE9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				CA696A7220C065EC00347FE9 /* MapViewController.swift */,
+				CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA696A8E20C1C43B00347FE9 /* LoginViewController.swift in Sources */,
 				CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */,
 				CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */,
 				CA696A8A20C0848A00347FE9 /* NetworkManager.swift in Sources */,
