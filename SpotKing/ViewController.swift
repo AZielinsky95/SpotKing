@@ -13,15 +13,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let spot = SkateSpot();
-        spot.title = "testTitle"
-        spot.subtitle = "testSubTitle"
-        spot.spotType =  SkateSpot.SpotType.SkatePark
-        spot.spotRating = 3.5;
-        spot.userID = 1
-        spot.coordinate = CLLocationCoordinate2D(latitude: -69, longitude: 70)
+//        let spot = SkateSpot();
+//        spot.title = "testTitle"
+//        spot.subtitle = "testSubTitle"
+//        spot.spotType =  SkateSpot.SpotType.SkatePark
+//        spot.spotRating = 3.5;
+//        spot.userID = 1
+//        spot.coordinate = CLLocationCoordinate2D(latitude: -69, longitude: 70)
+//        let db = DatabaseManager()
+//        db.saveSkateSpot(spot: spot)
+        
         let db = DatabaseManager()
-        db.saveSkateSpot(spot: spot)
+        db.getSkateSpots { (skateSpots) in
+            let spots = skateSpots
+            var a = 4
+        }
     }
 
     override func didReceiveMemoryWarning() {

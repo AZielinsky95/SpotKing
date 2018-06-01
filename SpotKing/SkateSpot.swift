@@ -25,4 +25,5 @@ class SkateSpot
     var image:UIImage?
     var coordinate = CLLocationCoordinate2D()
     var spotRating:Double!
+    
 }
