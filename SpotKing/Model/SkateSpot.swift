@@ -22,18 +22,18 @@ class SkateSpot : NSObject, MKAnnotation
     var spotType:SpotType!
     var title:String?
     var subtitle:String?
-    var image:UIImage?
+    var pinImage:UIImage?
     var coordinate = CLLocationCoordinate2D()
-    var spotRating:Double!
+    var spotRating:Double?
     
-    init(userId:Int,type:SpotType,title:String,subtitle:String,rating:Double?,image:UIImage?,coordinates:CLLocationCoordinate2D)
+    init(userId:Int,type:SpotType,title:String,subtitle:String,rating:Double?,pinImage:UIImage?,coordinates:CLLocationCoordinate2D)
     {
         self.userID = userId;
         self.spotType = type;
         self.title = title;
         self.subtitle = subtitle;
         self.spotRating = rating;
-        self.image = image;
+        self.pinImage = pinImage;
         self.coordinate = coordinates;
         super.init()
     }
@@ -44,9 +44,18 @@ class SkateSpot : NSObject, MKAnnotation
         guard let geometry = json["geometry"] as? [String:Any] else { return }
         guard let location = geometry["location"] as? [String:Double] else { return }
         
+        if(type == SpotType.SkatePark)
+        {
+            self.pinImage = UIImage(named: "crown");
+        }
+        else if (type == SpotType.SkateShop)
+        {
+            self.pinImage = UIImage(named: "bag")
+        }
+        
         spotType = type;
         title = json["name"] as? String;
-        // spotRating = json["rating"] as! Double;
+        spotRating = json["rating"] as? Double;
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
         
     }

@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 2000
     
     
     override func viewDidLoad()
@@ -57,11 +57,21 @@ class MapViewController: UIViewController {
             locationManager.startUpdatingLocation()
         }
     }
-    
-    
+
     func getSkateShopAndParkData()
     {
         NetworkManager.getSkateSpot(location:(currentLocation?.coordinate)!,type:SkateSpot.SpotType.SkateShop) { (spots) in
+            DispatchQueue.main.async()
+                {
+                    for spot in spots
+                    {
+                        self.skateSpots.append(spot as! SkateSpot);
+                        self.mapView.addAnnotation(spot)
+                    }
+            }
+        }
+        
+        NetworkManager.getSkateSpot(location:(currentLocation?.coordinate)!,type:SkateSpot.SpotType.SkatePark) { (spots) in
             DispatchQueue.main.async()
                 {
                     for spot in spots
@@ -99,18 +109,34 @@ extension MapViewController : MKMapViewDelegate
         
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
         {
-            dequeuedView.annotation = annotation
+            dequeuedView.annotation = annotation    
             view = dequeuedView
         }
         else
         {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.glyphImage = annotation.pinImage
+            view.markerTintColor = getPinAnnotationColor(type: annotation.spotType)
+            view.animatesWhenAdded = true;
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5,y:5)
-            view.leftCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            view.leftCalloutAccessoryView = UIButton(type: .infoLight)
         }
         
         return view;
+    }
+    
+    private func getPinAnnotationColor(type:SkateSpot.SpotType) -> UIColor
+    {
+        switch type
+        {
+            case .SkateSpot:
+                return UIColor.green
+            case .SkateShop:
+                return UIColor.red
+            case .SkatePark:
+                return UIColor.magenta
+        }
     }
 }
 
