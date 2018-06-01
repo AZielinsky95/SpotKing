@@ -39,7 +39,7 @@ class DatabaseManager
         let newSpot = [ // 2
             "userID": snapshot.childrenCount,
             "rating": spot.spotRating,
-            "spotType": spot.spotType.hashValue,
+            "spotType": spot.spotType?.toString(),
             "lat": spot.coordinate.latitude,
             "lng": spot.coordinate.longitude,
             "title": spot.title!,
@@ -70,7 +70,8 @@ class DatabaseManager
                 let skateSpot = SkateSpot()
                 skateSpot.title = value["title"] as? String ?? ""
                 skateSpot.subtitle = value["subTitle"] as? String ?? ""
-                skateSpot.spotType = value["spotType"] as? SkateSpot.SpotType
+                let spotTypeStr = value["spotType"] as? String ?? ""
+                skateSpot.spotType = SkateSpot.SpotType.toSpotType(strSpotType: spotTypeStr)
                 skateSpot.coordinate = CLLocationCoordinate2DMake((value["lat"] as? Double)!, (value["lng"] as? Double)!)
                 skateSpot.spotRating = value["rating"] as? Double
                 skateSpot.userID = value["userID"] as? Int

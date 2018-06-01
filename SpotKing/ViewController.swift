@@ -14,12 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        let spot = SkateSpot();
-//        spot.title = "testTitle"
-//        spot.subtitle = "testSubTitle"
+//        spot.title = "testTi2tle"
+//        spot.subtitle = "testSubTitle2"
 //        spot.spotType =  SkateSpot.SpotType.SkatePark
 //        spot.spotRating = 3.5;
 //        spot.userID = 1
-//        spot.coordinate = CLLocationCoordinate2D(latitude: -69, longitude: 70)
+//        spot.coordinate = CLLocationCoordinate2D(latitude: -29, longitude: 40)
 //        let db = DatabaseManager()
 //        db.saveSkateSpot(spot: spot)
         
