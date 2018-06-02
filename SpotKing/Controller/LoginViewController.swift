@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         return view
@@ -27,15 +27,40 @@ class LoginViewController: UIViewController {
         button.setTitle("Register", for: .normal)
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
         
-        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         return button
     }()
     
-    @objc func handleRegister()
+    @objc func handleLoginRegister()
+    {
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0
+        {
+            handleLogin()
+        }
+        else
+        {
+            handleRegister()
+        }
+    }
+    
+    func handleLogin()
+    {
+        guard let email = emailTextField.text,let password = passwordTextField.text else
+        {
+            return
+        }
+        
+        DatabaseManager.handleLogin(email: email, password: password)
+        {
+           self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func handleRegister()
     {
         guard let email = emailTextField.text, let password = passwordTextField.text, let name = usernameTextField.text else
         {
@@ -43,8 +68,22 @@ class LoginViewController: UIViewController {
             return
         }
         
-        DatabaseManager.handleRegister(username: name,email: email, password: password)
+        DatabaseManager.handleRegister(username: name, email: email, password: password) {
+            
+            //Success!
+            self.dismiss(animated: true, completion: nil)
+        }
     }
+    
+    let loginRegisterSegmentedControl:UISegmentedControl =
+    {
+        let sc = UISegmentedControl(items: ["Login","Register"])
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.tintColor  = UIColor.SpotKingColors.lightGreen
+        sc.selectedSegmentIndex = 1
+        sc.addTarget(self, action: #selector(handleLoginRegisterChanged), for: .valueChanged)
+        return sc
+    }()
     
     let logoImageView : UIImageView =
     {
@@ -60,8 +99,8 @@ class LoginViewController: UIViewController {
         label.text = "Spot King"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 36);
-        label.textColor = UIColor.black;
+        label.font = UIFont.boldSystemFont(ofSize: 44);
+        label.textColor = UIColor.SpotKingColors.lightGreen;
         return label
     }()
     
@@ -78,7 +117,7 @@ class LoginViewController: UIViewController {
     {
         let view = UIView();
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.darkGray
+        view.backgroundColor = UIColor.SpotKingColors.lightGreen
         return view
     }()
     
@@ -95,7 +134,7 @@ class LoginViewController: UIViewController {
     {
         let view = UIView();
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.darkGray
+        view.backgroundColor = UIColor.SpotKingColors.lightGreen
         return view
     }()
     
@@ -112,12 +151,22 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        //view.backgroundColor = UIColor.SpotKingColors.darkGreen
+        view.backgroundColor = UIColor.white
         view.addSubview(inputContainerView)
         view.addSubview(loginRegisterButton)
+        view.addSubview(loginRegisterSegmentedControl)
         setUpInputContainerView()
         setUpLoginButton()
         setUpTitle()
+        setUpLoginRegisterSegmentedControl()
+    }
+    
+    func setUpLoginRegisterSegmentedControl()
+    {
+        loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginRegisterSegmentedControl.bottomAnchor.constraint(equalTo: inputContainerView.topAnchor,constant: -12).isActive = true
+        loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
+        loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
     
     func setUpTitle()
@@ -126,7 +175,7 @@ class LoginViewController: UIViewController {
         view.addSubview(logoImageView)
         
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.bottomAnchor.constraint(equalTo: inputContainerView.topAnchor, constant: -25).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
         logoImageView.widthAnchor.constraint(equalToConstant: 75).isActive = true;
         logoImageView.heightAnchor.constraint(equalToConstant: 75).isActive = true;
         
@@ -138,48 +187,92 @@ class LoginViewController: UIViewController {
     
     func setUpLoginButton()
     {
-        loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true;
-        loginRegisterButton.topAnchor.constraint(equalTo: inputContainerView.bottomAnchor, constant: 12).isActive = true;
-        loginRegisterButton.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
-        loginRegisterButton.heightAnchor.constraint(equalToConstant: 80);
+        loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginRegisterButton.topAnchor.constraint(equalTo: inputContainerView.bottomAnchor, constant: 12).isActive = true
+        loginRegisterButton.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true
+        loginRegisterButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
+    var inputContainerViewHeightAnchor: NSLayoutConstraint?
+    var usernameTextFieldHeightAnchor:NSLayoutConstraint?
+    var emailTextFieldHeightAnchor:NSLayoutConstraint?
+    var passwordTextFieldHeightAnchor:NSLayoutConstraint?
+
     func setUpInputContainerView()
     {
         inputContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true;
         inputContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true;
         inputContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true;
-        inputContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true;
+        //inputContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true;
+        inputContainerViewHeightAnchor = inputContainerView.heightAnchor.constraint(equalToConstant: 150);
+        inputContainerViewHeightAnchor?.isActive = true;
         
         inputContainerView.addSubview(usernameTextField)
         usernameTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true;
         usernameTextField.topAnchor.constraint(equalTo: inputContainerView.topAnchor).isActive = true;
         usernameTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
-        usernameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3).isActive = true;
+        usernameTextFieldHeightAnchor = usernameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3)
+        usernameTextFieldHeightAnchor?.isActive = true;
         
         inputContainerView.addSubview(usernameSeperatorView)
         usernameSeperatorView.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor).isActive = true;
         usernameSeperatorView.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor).isActive = true;
         usernameSeperatorView.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
-        usernameSeperatorView.heightAnchor.constraint(equalToConstant: 1.25).isActive = true;
+        usernameSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true;
         
         inputContainerView.addSubview(emailTextField)
         emailTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true;
         emailTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor).isActive = true;
         emailTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
-        emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3).isActive = true;
+        emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3)
+        emailTextFieldHeightAnchor?.isActive = true
         
         inputContainerView.addSubview(emailSeperatorView)
         emailSeperatorView.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor).isActive = true;
         emailSeperatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true;
         emailSeperatorView.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
-        emailSeperatorView.heightAnchor.constraint(equalToConstant: 1.25).isActive = true;
+        emailSeperatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true;
         
         inputContainerView.addSubview(passwordTextField)
         passwordTextField.leftAnchor.constraint(equalTo: inputContainerView.leftAnchor, constant: 12).isActive = true;
         passwordTextField.topAnchor.constraint(equalTo: emailSeperatorView.bottomAnchor).isActive = true;
         passwordTextField.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
-        passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3).isActive = true;
+        passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier: 1/3)
+        passwordTextFieldHeightAnchor?.isActive = true
+    }
+    
+    @objc func handleLoginRegisterChanged()
+    {
+        let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
+        loginRegisterButton.setTitle(title, for: .normal)
+        
+
+        usernameTextFieldHeightAnchor?.isActive = false
+        passwordTextFieldHeightAnchor?.isActive = false
+        emailTextFieldHeightAnchor?.isActive = false
+        
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0
+        {
+            //configure login view
+            inputContainerViewHeightAnchor?.constant = 100
+            usernameTextFieldHeightAnchor = usernameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:0)
+            passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:0.5)
+            emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:0.5)
+            usernameSeperatorView.isHidden = true
+        }
+        else
+        {
+            inputContainerViewHeightAnchor?.constant = 150
+            passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:1/3)
+            usernameTextFieldHeightAnchor = usernameTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:1/3)
+            emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor, multiplier:1/3)
+            usernameSeperatorView.isHidden = false
+            //configure register view
+        }
+        
+        usernameTextFieldHeightAnchor?.isActive = true
+        emailTextFieldHeightAnchor?.isActive = true
+        passwordTextFieldHeightAnchor?.isActive = true
     }
     
 }

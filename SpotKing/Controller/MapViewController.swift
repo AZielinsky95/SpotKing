@@ -25,8 +25,21 @@ class MapViewController: UIViewController {
     {
         super.viewDidLoad()
         
+        if DatabaseManager.isLoggedIn() == false
+        {
+            presentLoginController()
+        }
+        
+       // DatabaseManager.signOut()
         setUpNavigationBar()
         setUpLocationManager()
+        
+    }
+    
+    func presentLoginController()
+    {
+        let loginController = LoginViewController()
+        present(loginController,animated: true, completion: nil)
     }
     
     func setUpNavigationBar()

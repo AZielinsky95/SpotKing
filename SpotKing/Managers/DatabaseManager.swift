@@ -16,7 +16,40 @@ class DatabaseManager
         return Database.database().reference()
     }()
     
-    static func handleRegister(username:String, email:String,password:String)
+    static func isLoggedIn() -> Bool
+    {
+        return Auth.auth().currentUser?.uid == nil ? false : true
+    }
+    
+    static func signOut()
+    {
+        do
+        {
+            try Auth.auth().signOut()
+        }
+        catch let error
+        {
+            print(error.localizedDescription)
+        }
+        
+        //Make sure to present login VC when calling this method
+    }
+    
+    static func handleLogin(email:String,password:String, completion: @escaping () -> Void)
+    {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            
+            if error != nil
+            {
+                print(error!.localizedDescription);
+                return
+            }
+            
+            completion()
+        }
+    }
+    
+    static func handleRegister(username:String, email:String,password:String, completion: @escaping () -> Void )
     {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             
@@ -27,8 +60,15 @@ class DatabaseManager
             
             //successfully created a user!
             //TODO save user
+            
+            guard let uid = result?.user.uid else
+            {
+                return
+            }
+            
             let values = ["name":username,"email":email]
-            let userRef = ref.child("users")
+            let userRef = ref.child("users").child(uid)
+            
             userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
                 if err != nil
@@ -38,6 +78,7 @@ class DatabaseManager
                 }
                 
                 print("Saved user into Firebase DB");
+                completion()
             })
         }
     }
@@ -62,9 +103,6 @@ class DatabaseManager
             generatedRef.setValue(newSpot);
             
         })
-        
-        
-        
     }
     
     static func getSkateSpots(completion: @escaping ([SkateSpot])->()) {
@@ -97,7 +135,5 @@ class DatabaseManager
             completion(skateSpots)
             
         })
-        
-        
     }
 }
