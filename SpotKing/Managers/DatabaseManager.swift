@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import CoreLocation
+import FirebaseAuth
 
 class DatabaseManager
 {
