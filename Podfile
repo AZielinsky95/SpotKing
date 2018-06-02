@@ -9,6 +9,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Messaging'
 pod 'Firebase/Functions'
+pod 'Firebase/Auth'
   # Pods for SpotKing
 
 end

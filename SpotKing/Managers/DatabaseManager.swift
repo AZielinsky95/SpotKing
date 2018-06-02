@@ -7,17 +7,42 @@
 //
 
 import Foundation
-import FirebaseDatabase
-import FirebaseDatabase
+import Firebase
 import CoreLocation
 
 class DatabaseManager
 {
-    lazy var ref : DatabaseReference = {
+    static var ref : DatabaseReference = {
         return Database.database().reference()
     }()
     
-    func saveSkateSpot(spot:SkateSpot)
+    static func handleRegister(username:String, email:String,password:String)
+    {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            
+            if error != nil
+            {
+                print(error!.localizedDescription);
+            }
+            
+            //successfully created a user!
+            //TODO save user
+            let values = ["name":username,"email":email]
+            let userRef = ref.child("users")
+            userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                
+                if err != nil
+                {
+                    print(err!.localizedDescription)
+                    return
+                }
+                
+                print("Saved user into Firebase DB");
+            })
+        }
+    }
+    
+   static func saveSkateSpot(spot:SkateSpot)
     {
         let generatedRef = ref.child("skatespots").childByAutoId()
         
@@ -42,7 +67,7 @@ class DatabaseManager
         
     }
     
-    func getSkateSpots(completion: @escaping ([SkateSpot])->()) {
+    static func getSkateSpots(completion: @escaping ([SkateSpot])->()) {
         var skateSpots = [SkateSpot]()
         
         let spotRef = ref.child("skatespots")
