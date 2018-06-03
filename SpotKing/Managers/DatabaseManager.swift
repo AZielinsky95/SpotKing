@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import CoreLocation
 import FirebaseAuth
+import FirebaseStorage
 
 class DatabaseManager
 {
@@ -84,25 +85,39 @@ class DatabaseManager
         }
     }
     
-   static func saveSkateSpot(spot:SkateSpot)
+    static func saveSkateSpot(spot:SkateSpot)
     {
         let generatedRef = ref.child("skatespots").childByAutoId()
+        let spotID = generatedRef.key
+        let randomFileName = "\(UUID().uuidString).png"
         
-        generatedRef.observe(.value, with: { (snapshot) in
+        let imageRef = Storage.storage().reference().child("images").child("\(spotID)/\(randomFileName)")
+        guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
+        
+        
+        imageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+            if let error = error  {
+                print(error.localizedDescription)
+                return
+            }
             
-            let newSpot = [ // 2
-                "userID": snapshot.childrenCount,
-                "rating": spot.spotRating ?? 0,
-                "spotType": spot.spotType.toString(),
-                "lat": spot.coordinate.latitude,
-                "lng": spot.coordinate.longitude,
-                "title": spot.title!,
-                "subTitle": spot.subtitle!,
+            imageRef.downloadURL(completion: { (url, error) in
+                guard let url = url else { return }
                 
-                ] as [String : Any]
-            
-            generatedRef.setValue(newSpot);
-            
+                let newSpot = [
+                    "userID": generatedRef.key,
+                    "rating": spot.spotRating ?? 0,
+                    "spotType": spot.spotType.toString(),
+                    "lat": spot.coordinate.latitude,
+                    "lng": spot.coordinate.longitude,
+                    "title": spot.title!,
+                    "subTitle": spot.subtitle!,
+                    "imageURL": url.absoluteString
+                    
+                    ] as [String : Any]
+                
+                generatedRef.setValue(newSpot);
+            })
         })
     }
     

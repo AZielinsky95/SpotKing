@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var spotTitle: UITextField!
     @IBOutlet weak var spotDescription: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    
+    var locationManager: CLLocationManager!
+    var currentLocation : CLLocation?
+    
     
     var imagePickedBlock: ((UIImage) -> Void)?
     
@@ -22,8 +27,21 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(AddSpotViewController.imageSelectorTapped(recognizer:)))
         tapGesture.delegate = self
         imageView.addGestureRecognizer(tapGesture)
+        setUpLocationManager()
     }
 
+    
+    func setUpLocationManager()
+    {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+    }
     
     @objc func imageSelectorTapped(recognizer:UITapGestureRecognizer) {
         showActionSheet(vc: self)
@@ -31,7 +49,11 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
     
 
     @IBAction func postSpot() {
+        guard let spotTitle = self.spotTitle.text, let spotDescription = self.spotDescription.text,
+        let currentLocation = self.currentLocation else { return }
         
+        let spot = SkateSpot(userId: -1, type: .SkateSpot, title: spotTitle, subtitle: spotDescription, rating: nil, pinImage: self.imageView.image, coordinates: currentLocation.coordinate)
+       DatabaseManager.saveSkateSpot(spot: spot)
     }
     
     func camera()
@@ -81,8 +103,7 @@ extension AddSpotViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-         //   self.imagePickedBlock?(image)
-            DispatchQueue.main.async {
+             DispatchQueue.main.async {
                 self.imageView.image = image
             }
         }else{
@@ -91,6 +112,17 @@ extension AddSpotViewController: UIImagePickerControllerDelegate, UINavigationCo
         self.dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension AddSpotViewController : CLLocationManagerDelegate
+{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        if currentLocation == nil
+        {
+            currentLocation = locations.first!
+        }
+    }
 }
 
 

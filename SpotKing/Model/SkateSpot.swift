@@ -49,6 +49,7 @@ class SkateSpot : NSObject, MKAnnotation
     var pinImage:UIImage?
     var coordinate = CLLocationCoordinate2D()
     var spotRating:Double?
+    var imageURL:String?
     
  init(userId:Int,type:SpotType,title:String,subtitle:String,rating:Double?,pinImage:UIImage?,coordinates:CLLocationCoordinate2D)
     {
