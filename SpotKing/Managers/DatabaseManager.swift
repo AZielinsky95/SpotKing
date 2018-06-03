@@ -91,7 +91,7 @@ class DatabaseManager
         let spotID = generatedRef.key
         let randomFileName = "\(UUID().uuidString).png"
         
-        let imageRef = Storage.storage().reference().child("images").child("\(spotID)/\(randomFileName)")
+        let imageRef = Storage.storage().reference().child("spotImages").child("\(spotID)/\(randomFileName)")
         guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
         
         
