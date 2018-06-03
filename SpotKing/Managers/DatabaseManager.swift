@@ -92,10 +92,11 @@ class DatabaseManager
         let randomFileName = "\(UUID().uuidString).png"
         
         let imageRef = Storage.storage().reference().child("spotImages").child("\(spotID)/\(randomFileName)")
-        guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
+       // guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
         
+        guard let resizedImage = spot.pinImage?.resizeWith(percentage: 0.1), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
         
-        imageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+        imageRef.putData(resizedImageData, metadata: nil, completion: { (metadata, error) in
             if let error = error  {
                 print(error.localizedDescription)
                 return
@@ -139,12 +140,11 @@ class DatabaseManager
                 let spotType = SkateSpot.SpotType.toSpotType(strSpotType: spotTypeStr)
                 let coordinate = CLLocationCoordinate2DMake((value["lat"] as? Double)!, (value["lng"] as? Double)!)
                 let spotRating = value["rating"] as? Double
-                let userID = value["userID"] as? Int
+                let userID = value["userID"] as? String
+                let imageURL = value["imageURL"] as? String
                 
-                
-                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, subtitle: subtitle, rating: spotRating, pinImage: nil, coordinates: coordinate)
+                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, subtitle: subtitle, rating: spotRating, pinImage: nil, coordinates: coordinate, imageURL: imageURL!)
 
-                
                 skateSpots.append(skateSpot)
                 
             }
@@ -152,4 +152,32 @@ class DatabaseManager
             
         })
     }
+    
+    static func downloadSkateSpotImage(url: String, completion: @escaping (UIImage) -> Void ) {
+        let configuration = URLSessionConfiguration.default
+        let session: URLSession = URLSession(configuration: configuration)
+        let imageURL = URL(string: url)
+        let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL!) { (url, response, error)  in
+            let data = NSData(contentsOf: url!)
+            let image = UIImage(data: data! as Data)!
+            completion(image)
+        }
+        
+        downloadTask.resume()
+    }
+}
+
+extension UIImage {
+    
+    func resizeWith(percentage: CGFloat) -> UIImage? {
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: size.width * percentage, height: size.height * percentage)))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.render(in: context)
+        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return result
+}
 }

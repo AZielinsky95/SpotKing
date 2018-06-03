@@ -52,7 +52,7 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let spotTitle = self.spotTitle.text, let spotDescription = self.spotDescription.text,
         let currentLocation = self.currentLocation else { return }
         
-        let spot = SkateSpot(userId: -1, type: .SkateSpot, title: spotTitle, subtitle: spotDescription, rating: nil, pinImage: self.imageView.image, coordinates: currentLocation.coordinate)
+        let spot = SkateSpot(userId: "", type: .SkateSpot, title: spotTitle, subtitle: spotDescription, rating: nil, pinImage: self.imageView.image, coordinates: currentLocation.coordinate, imageURL: "")
        DatabaseManager.saveSkateSpot(spot: spot)
     }
     
@@ -62,6 +62,7 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
             myPickerController.sourceType = .camera
+            myPickerController.allowsEditing = true
             self.present(myPickerController, animated: true, completion: nil)
         }
         

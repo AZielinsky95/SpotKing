@@ -42,7 +42,7 @@ class SkateSpot : NSObject, MKAnnotation
         }
     }
     
-    var userID: Int!
+    var userID: String!
     var spotType:SpotType!
     var title:String?
     var subtitle:String?
@@ -51,7 +51,7 @@ class SkateSpot : NSObject, MKAnnotation
     var spotRating:Double?
     var imageURL:String?
     
- init(userId:Int,type:SpotType,title:String,subtitle:String,rating:Double?,pinImage:UIImage?,coordinates:CLLocationCoordinate2D)
+    init(userId:String,type:SpotType,title:String,subtitle:String,rating:Double?,pinImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String)
     {
         self.userID = userId;
         self.spotType = type;
@@ -60,6 +60,7 @@ class SkateSpot : NSObject, MKAnnotation
         self.spotRating = rating;
         self.pinImage = pinImage;
         self.coordinate = coordinates;
+        self.imageURL = imageURL
         super.init()
     }
     
