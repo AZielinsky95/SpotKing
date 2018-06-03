@@ -34,7 +34,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fPW-jr-Gm9"/>
+                    <navigationItem key="navigationItem" id="fPW-jr-Gm9">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icon_menu" width="30" id="2zH-qc-Yxv">
+                            <inset key="imageInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LwF-uk-l8m"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="MCI-cK-OF8" id="srC-wM-1md"/>
                     </connections>
@@ -133,4 +138,8 @@
             <point key="canvasLocation" x="-196" y="132"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_menu" width="64" height="64"/>
+    </resources>
+    <color key="tintColor" red="0.033292476189748531" green="0.034151283993880482" blue="0.035057106598984755" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
