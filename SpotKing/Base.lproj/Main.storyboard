@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DjM-BE-GWn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zgy-Zy-qqD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,29 +24,74 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fFl-RK-zYE"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvk-Em-N38" userLabel="TabBar">
+                                <rect key="frame" x="0.0" y="601" width="375" height="66"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAZ-MM-gLK" userLabel="Filter">
+                                        <rect key="frame" x="24" y="12" width="42" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="VkT-af-Mnb"/>
+                                            <constraint firstAttribute="height" constant="42" id="whN-Fu-j95"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <state key="normal" title="Button" image="more"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBz-gk-y8m" userLabel="Add">
+                                        <rect key="frame" x="162" y="8" width="50" height="50"/>
+                                        <state key="normal" image="add"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxp-Yd-9OF" userLabel="Settings">
+                                        <rect key="frame" x="309" y="12" width="42" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="weV-8d-gC7"/>
+                                            <constraint firstAttribute="height" constant="42" id="x1S-3l-wtb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <state key="normal" title="Button" image="settings"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hAZ-MM-gLK" firstAttribute="leading" secondItem="uvk-Em-N38" secondAttribute="leading" constant="24" id="0mN-Ak-MHL"/>
+                                    <constraint firstItem="lBz-gk-y8m" firstAttribute="centerX" secondItem="uvk-Em-N38" secondAttribute="centerX" id="DHl-W2-pHl"/>
+                                    <constraint firstItem="Nxp-Yd-9OF" firstAttribute="top" secondItem="uvk-Em-N38" secondAttribute="top" constant="12" id="NBG-WW-cc0"/>
+                                    <constraint firstItem="hAZ-MM-gLK" firstAttribute="top" secondItem="uvk-Em-N38" secondAttribute="top" constant="12" id="Slc-bK-s7d"/>
+                                    <constraint firstItem="lBz-gk-y8m" firstAttribute="centerY" secondItem="uvk-Em-N38" secondAttribute="centerY" id="Xro-4X-FhG"/>
+                                    <constraint firstAttribute="height" constant="66" id="eK1-Ee-eW0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nxp-Yd-9OF" secondAttribute="trailing" constant="24" id="pL4-xk-euh"/>
+                                    <constraint firstAttribute="bottom" secondItem="hAZ-MM-gLK" secondAttribute="bottom" constant="12" id="qeg-B9-JWw"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nxp-Yd-9OF" secondAttribute="bottom" constant="12" id="yxY-EJ-AeG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MCI-cK-OF8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="11k-j7-gun"/>
+                            <constraint firstItem="uvk-Em-N38" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4f5-iv-bog"/>
+                            <constraint firstItem="uvk-Em-N38" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="UG7-Hi-RDO"/>
                             <constraint firstItem="MCI-cK-OF8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Uha-S1-hai"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MCI-cK-OF8" secondAttribute="bottom" constant="66" id="Yfy-sI-gol"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uvk-Em-N38" secondAttribute="trailing" id="gyY-JB-36J"/>
                             <constraint firstItem="MCI-cK-OF8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wu3-rf-NCH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fPW-jr-Gm9">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icon_menu" width="30" id="2zH-qc-Yxv">
-                            <inset key="imageInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="EZ4-Iz-GmG"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="profileNav" id="LwF-uk-l8m">
+                            <inset key="largeContentSizeImageInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LwF-uk-l8m"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="lBz-gk-y8m" id="kHL-VX-lrL"/>
+                        <outlet property="filterButton" destination="hAZ-MM-gLK" id="zzo-vG-i2I"/>
                         <outlet property="mapView" destination="MCI-cK-OF8" id="srC-wM-1md"/>
+                        <outlet property="settingsButton" destination="Nxp-Yd-9OF" id="hmT-ZD-HfG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="132"/>
+            <point key="canvasLocation" x="1116" y="131.78410794602701"/>
         </scene>
         <!--Add Spot View Controller-->
         <scene sceneID="5WW-t5-1xB">
@@ -139,7 +184,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_menu" width="64" height="64"/>
+        <image name="add" width="50" height="50"/>
+        <image name="menu" width="30" height="30"/>
+        <image name="more" width="50" height="50"/>
+        <image name="profileNav" width="32" height="32"/>
+        <image name="settings" width="50" height="50"/>
     </resources>
     <color key="tintColor" red="0.033292476189748531" green="0.034151283993880482" blue="0.035057106598984755" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

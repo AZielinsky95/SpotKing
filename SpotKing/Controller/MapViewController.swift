@@ -16,7 +16,13 @@ class MapViewController: UIViewController {
     var skateSpots = [SkateSpot]()
     var currentLocation : CLLocation?
     
+
     @IBOutlet weak var mapView: MKMapView!
+    
+    //Tab Bar Buttons
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     let regionRadius: CLLocationDistance = 2000
     
@@ -33,7 +39,25 @@ class MapViewController: UIViewController {
        // DatabaseManager.signOut()
         setUpNavigationBar()
         setUpLocationManager()
+        setUpTabButtons()
+    }
+    
+    func setUpTabButtons()
+    {
+        let addImage = UIImage(named: "add")
+        let tintedImage = addImage?.withRenderingMode(.alwaysTemplate)
+        addButton.setImage(tintedImage, for: .normal)
+        addButton.tintColor = UIColor.SpotKingColors.lightGreen
         
+        let settingsImage = UIImage(named: "settings")
+        let tintedImage2 = settingsImage?.withRenderingMode(.alwaysTemplate)
+        settingsButton.setImage(tintedImage2, for: .normal)
+        settingsButton.tintColor = UIColor.SpotKingColors.lightGreen
+        
+        let filterImage = UIImage(named: "more")
+        let tintedImage3 = filterImage?.withRenderingMode(.alwaysTemplate)
+        filterButton.setImage(tintedImage3, for: .normal)
+        filterButton.tintColor = UIColor.SpotKingColors.lightGreen
     }
     
     func presentLoginController()
@@ -44,11 +68,14 @@ class MapViewController: UIViewController {
     
     func setUpNavigationBar()
     {
-        let image = UIImage(named: "crown")
-        let titleImageView = UIImageView(image: image)
-        titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-        titleImageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = titleImageView
+        self.navigationItem.title = "Spot King"
+        self.navigationController?.navigationBar.tintColor = UIColor.SpotKingColors.lightGreen
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 26)]
+//        let image = UIImage(named: "crown")
+//        let titleImageView = UIImageView(image: image)
+//        titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+//        titleImageView.contentMode = .scaleAspectFit
+//        self.navigationItem.titleView = titleImageView
     }
     
     func centerMapOnLocation(location:CLLocationCoordinate2D)
