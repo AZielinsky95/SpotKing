@@ -40,6 +40,20 @@ class MapViewController: UIViewController {
         setUpNavigationBar()
         setUpLocationManager()
         setUpTabButtons()
+        getSpotsFromDatabase()
+        
+    }
+    
+    func getSpotsFromDatabase()
+    {
+        DatabaseManager.getSkateSpots { (spots) in
+            
+            for spot in spots
+            {
+               self.skateSpots.append(spot)
+               self.mapView.addAnnotation(spot)
+            }
+        }
     }
     
     func setUpTabButtons()
@@ -244,19 +258,6 @@ extension MapViewController : MKMapViewDelegate
         }
         
         return view;
-    }
-    
-    private func getPinAnnotationColor(type:SkateSpot.SpotType) -> UIColor
-    {
-        switch type
-        {
-            case .SkateSpot:
-                return UIColor.green
-            case .SkateShop:
-                return UIColor.red
-            case .SkatePark:
-                return UIColor.magenta
-        }
     }
 }
 
