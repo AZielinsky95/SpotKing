@@ -60,6 +60,48 @@ class MapViewController: UIViewController {
         filterButton.tintColor = UIColor.lightGray
     }
     
+    @IBAction func addSpotTapped(_ sender: UIButton)
+    {
+        showActionSheet(vc: self)    
+    }
+    
+    func camera()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self;
+            myPickerController.sourceType = .camera
+            myPickerController.allowsEditing = true
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func photoLibrary()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self;
+            myPickerController.sourceType = .photoLibrary
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func showActionSheet(vc: UIViewController) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.camera()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+            self.photoLibrary()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        vc.present(actionSheet, animated: true, completion: nil)
+    }
+    
     func presentLoginController()
     {
         let loginController = LoginViewController()
@@ -123,6 +165,31 @@ class MapViewController: UIViewController {
             }
         }
     }
+}
+
+extension MapViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            DispatchQueue.main.async
+            {
+                print("GO TO SPOT VC")
+                let addSpotController = self.storyboard?.instantiateViewController(withIdentifier: "addSpotVC") as! AddSpotViewController
+                addSpotController.spotImage = image
+                self.present(addSpotController,animated: true, completion: nil)
+            }
+        }
+        else
+        {
+            print("Something went wrong")
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension MapViewController : CLLocationManagerDelegate

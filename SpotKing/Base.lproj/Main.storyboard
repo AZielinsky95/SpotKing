@@ -44,6 +44,9 @@
                                             <constraint firstAttribute="width" constant="42" id="nd9-G2-bfc"/>
                                         </constraints>
                                         <state key="normal" image="add"/>
+                                        <connections>
+                                            <action selector="addSpotTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QcA-YD-5nH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxp-Yd-9OF" userLabel="Settings">
                                         <rect key="frame" x="319" y="9" width="32" height="32"/>
@@ -210,7 +213,7 @@
         <!--Add Spot View Controller-->
         <scene sceneID="5WW-t5-1xB">
             <objects>
-                <viewController id="DjM-BE-GWn" customClass="AddSpotViewController" customModule="SpotKing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addSpotVC" id="DjM-BE-GWn" customClass="AddSpotViewController" customModule="SpotKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L5J-Th-PFB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,13 +245,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk5-gf-Rgj">
-                                <rect key="frame" x="118" y="382" width="138" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.051159799596431244" blue="0.2681530985641597" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gCT-8M-U6v"/>
