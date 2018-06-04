@@ -46,19 +46,31 @@ class SkateSpot : NSObject, MKAnnotation
     var spotType:SpotType!
     var title:String?
     var subtitle:String?
-    var pinImage:UIImage?
+    var spotImage:UIImage?
     var coordinate = CLLocationCoordinate2D()
     var spotRating:Double?
     var imageURL:String?
     
-    init(userId:String,type:SpotType,title:String,subtitle:String,rating:Double?,pinImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String)
+    lazy var pinImageAndColor : (UIImage,UIColor) =
+        {
+            switch spotType! {
+            case SkateSpot.SpotType.SkatePark:
+                return (UIImage(named: "crown")!,UIColor.magenta);
+            case SkateSpot.SpotType.SkateSpot:
+                return (UIImage(named: "crown")!,UIColor.SpotKingColors.lightGreen);
+            case SkateSpot.SpotType.SkateShop:
+                return (UIImage(named: "bag")!,UIColor.red);
+            }
+    }()
+    
+    init(userId:String,type:SpotType,title:String,subtitle:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String)
     {
         self.userID = userId;
         self.spotType = type;
         self.title = title;
         self.subtitle = subtitle;
         self.spotRating = rating;
-        self.pinImage = pinImage;
+        self.spotImage = spotImage;
         self.coordinate = coordinates;
         self.imageURL = imageURL
         super.init()
@@ -69,15 +81,6 @@ class SkateSpot : NSObject, MKAnnotation
         super.init()
         guard let geometry = json["geometry"] as? [String:Any] else { return }
         guard let location = geometry["location"] as? [String:Double] else { return }
-        
-        if(type == SpotType.SkatePark)
-        {
-            self.pinImage = UIImage(named: "crown");
-        }
-        else if (type == SpotType.SkateShop)
-        {
-            self.pinImage = UIImage(named: "bag")
-        }
         
         spotType = type;
         title = json["name"] as? String;

@@ -94,7 +94,7 @@ class DatabaseManager
         let imageRef = Storage.storage().reference().child("spotImages").child("\(spotID)/\(randomFileName)")
        // guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
         
-        guard let resizedImage = spot.pinImage?.resizeWith(percentage: 0.1), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
+        guard let resizedImage = spot.spotImage?.resizeWith(percentage: 0.1), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
         
         imageRef.putData(resizedImageData, metadata: nil, completion: { (metadata, error) in
             if let error = error  {
@@ -143,7 +143,7 @@ class DatabaseManager
                 let userID = value["userID"] as? String
                 let imageURL = value["imageURL"] as? String
                 
-                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, subtitle: subtitle, rating: spotRating, pinImage: nil, coordinates: coordinate, imageURL: imageURL!)
+                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, subtitle: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!)
 
                 skateSpots.append(skateSpot)
                 

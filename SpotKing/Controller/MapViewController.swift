@@ -134,6 +134,7 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.stopUpdatingLocation()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
@@ -167,6 +168,15 @@ class MapViewController: UIViewController {
     }
 }
 
+extension MapViewController : AddSpotProtocol
+{
+    func addSpot(spot: SkateSpot) {
+        self.skateSpots.append(spot);
+        self.mapView.addAnnotation(spot)
+        print("New Spot Added!")
+    }
+}
+
 extension MapViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -180,6 +190,7 @@ extension MapViewController: UIImagePickerControllerDelegate, UINavigationContro
                 print("GO TO SPOT VC")
                 let addSpotController = self.storyboard?.instantiateViewController(withIdentifier: "addSpotVC") as! AddSpotViewController
                 addSpotController.spotImage = image
+                addSpotController.delegate = self;
                 self.present(addSpotController,animated: true, completion: nil)
             }
         }
@@ -222,9 +233,10 @@ extension MapViewController : MKMapViewDelegate
         }
         else
         {
+            let (pinImage,pinColor) = annotation.pinImageAndColor
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.glyphImage = annotation.pinImage
-            view.markerTintColor = getPinAnnotationColor(type: annotation.spotType)
+            view.glyphImage = pinImage
+            view.markerTintColor = pinColor
             view.animatesWhenAdded = true;
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5,y:5)

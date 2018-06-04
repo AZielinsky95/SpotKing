@@ -9,6 +9,11 @@
 import UIKit
 import CoreLocation
 
+protocol AddSpotProtocol
+{
+    func addSpot(spot:SkateSpot)
+}
+
 class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var spotTitle: UITextField!
@@ -19,6 +24,7 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
     var locationManager: CLLocationManager!
     var currentLocation : CLLocation?
     
+    var delegate : AddSpotProtocol? 
     
     var imagePickedBlock: ((UIImage) -> Void)?
     
@@ -44,8 +50,14 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let spotTitle = self.spotTitle.text, let spotDescription = self.spotDescription.text,
         let currentLocation = self.currentLocation else { return }
         
-        let spot = SkateSpot(userId: "", type: .SkateSpot, title: spotTitle, subtitle: spotDescription, rating: nil, pinImage: self.imageView.image, coordinates: currentLocation.coordinate, imageURL: "")
-       DatabaseManager.saveSkateSpot(spot: spot)
+        let spot = SkateSpot(userId: "", type: .SkateSpot, title: spotTitle, subtitle: spotDescription, rating: nil, spotImage: self.imageView.image, coordinates: currentLocation.coordinate, imageURL: "")
+        
+        //Save spot to database
+        DatabaseManager.saveSkateSpot(spot: spot)
+        
+        //Send spot to MapVC
+        delegate?.addSpot(spot: spot)
+        dismiss(animated: true, completion: nil)
     }
 }
 
