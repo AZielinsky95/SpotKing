@@ -19,6 +19,7 @@
 		CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8620C06B7200347FE9 /* SkateSpot.swift */; };
 		CA696A8A20C0848A00347FE9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8920C0848A00347FE9 /* NetworkManager.swift */; };
 		CA696A8E20C1C43B00347FE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */; };
+		CACC858220C5B00100900FAD /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC858120C5B00100900FAD /* StoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CA696A8620C06B7200347FE9 /* SkateSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkateSpot.swift; sourceTree = "<group>"; };
 		CA696A8920C0848A00347FE9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CACC858120C5B00100900FAD /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				CA696A7220C065EC00347FE9 /* MapViewController.swift */,
 				CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */,
 				1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */,
+				CACC858120C5B00100900FAD /* StoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */,
 				CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */,
 				1E89B46520C1CBBC004941CC /* AddSpotViewController.swift in Sources */,
+				CACC858220C5B00100900FAD /* StoryViewController.swift in Sources */,
 				CA696A8A20C0848A00347FE9 /* NetworkManager.swift in Sources */,
 				CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */,
 				CA696A8520C06AAD00347FE9 /* DatabaseManager.swift in Sources */,
