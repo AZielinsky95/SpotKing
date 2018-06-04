@@ -47,17 +47,17 @@ class MapViewController: UIViewController {
         let addImage = UIImage(named: "add")
         let tintedImage = addImage?.withRenderingMode(.alwaysTemplate)
         addButton.setImage(tintedImage, for: .normal)
-        addButton.tintColor = UIColor.SpotKingColors.lightGreen
+        addButton.tintColor = UIColor.lightGray
         
         let settingsImage = UIImage(named: "settings")
         let tintedImage2 = settingsImage?.withRenderingMode(.alwaysTemplate)
         settingsButton.setImage(tintedImage2, for: .normal)
-        settingsButton.tintColor = UIColor.SpotKingColors.lightGreen
+        settingsButton.tintColor = UIColor.lightGray
         
         let filterImage = UIImage(named: "more")
         let tintedImage3 = filterImage?.withRenderingMode(.alwaysTemplate)
         filterButton.setImage(tintedImage3, for: .normal)
-        filterButton.tintColor = UIColor.SpotKingColors.lightGreen
+        filterButton.tintColor = UIColor.lightGray
     }
     
     func presentLoginController()
@@ -91,6 +91,7 @@ class MapViewController: UIViewController {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.pausesLocationUpdatesAutomatically = false
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
