@@ -122,7 +122,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZeJ-TO-4mg">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoryCell" id="ZeJ-TO-4mg" customClass="StoryCell" customModule="SpotKing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -192,6 +192,12 @@
                                             <constraint firstItem="RNy-6I-IXE" firstAttribute="leading" secondItem="ZeJ-TO-4mg" secondAttribute="leading" id="nWY-hX-IF0"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="325"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="RNy-6I-IXE" id="RKH-pV-Zfg"/>
+                                            <outlet property="spotDescription" destination="IXo-E6-TJO" id="Jkt-uy-1L8"/>
+                                            <outlet property="spotTitle" destination="iPX-K6-mHG" id="gfM-8E-tsV"/>
+                                            <outlet property="username" destination="rsW-Gu-nAq" id="zXy-fH-G5j"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -205,6 +211,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="70o-4q-aMg"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="3fK-IN-30n" id="j00-xA-LXh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSS-2c-4CJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E4F6F0820C6F728001DF9A4 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */; };
 		1E89B46520C1CBBC004941CC /* AddSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */; };
 		7CAB6CE4FBD205A9D2FCBD24 /* Pods_SpotKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */; };
 		CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7020C065EC00347FE9 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpotViewController.swift; sourceTree = "<group>"; };
 		26EC2CCD1248D137C4FD44E5 /* Pods-SpotKing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotKing.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing.release.xcconfig"; sourceTree = "<group>"; };
 		5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotKing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */,
 				1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */,
 				CACC858120C5B00100900FAD /* StoryViewController.swift */,
+				1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */,
 				1E89B46520C1CBBC004941CC /* AddSpotViewController.swift in Sources */,
 				CACC858220C5B00100900FAD /* StoryViewController.swift in Sources */,
+				1E4F6F0820C6F728001DF9A4 /* StoryCell.swift in Sources */,
 				CA696A8A20C0848A00347FE9 /* NetworkManager.swift in Sources */,
 				CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */,
 				CA696A8520C06AAD00347FE9 /* DatabaseManager.swift in Sources */,

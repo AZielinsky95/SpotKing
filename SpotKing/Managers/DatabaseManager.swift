@@ -94,7 +94,7 @@ class DatabaseManager
         let imageRef = Storage.storage().reference().child("spotImages").child("\(spotID)/\(randomFileName)")
        // guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
         
-        guard let resizedImage = spot.spotImage?.resizeWith(percentage: 0.1), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
+        guard let currentUserID = Auth.auth().currentUser?.uid, let resizedImage = spot.spotImage?.resizeWith(percentage: 0.1), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
         
         imageRef.putData(resizedImageData, metadata: nil, completion: { (metadata, error) in
             if let error = error  {
@@ -105,15 +105,18 @@ class DatabaseManager
             imageRef.downloadURL(completion: { (url, error) in
                 guard let url = url else { return }
                 
+                let date = Date.init()
+                
                 let newSpot = [
-                    "userID": generatedRef.key,
+                    "userID": currentUserID,
                     "rating": spot.spotRating ?? 0,
                     "spotType": spot.spotType.toString(),
                     "lat": spot.coordinate.latitude,
                     "lng": spot.coordinate.longitude,
                     "title": spot.title!,
                     "subTitle": spot.subtitle!,
-                    "imageURL": url.absoluteString
+                    "imageURL": url.absoluteString,
+                    "timestamp":date.timeIntervalSince1970
                     
                     ] as [String : Any]
                 
@@ -125,7 +128,7 @@ class DatabaseManager
     static func getSkateSpots(completion: @escaping ([SkateSpot])->()) {
         var skateSpots = [SkateSpot]()
         
-        let spotRef = ref.child("skatespots")
+        let spotRef = ref.child("skatespots").queryOrdered(byChild: "timestamp")
         spotRef.observe(.value, with: { (snapshot) in
             
             for spot in snapshot.children {
@@ -151,6 +154,17 @@ class DatabaseManager
             completion(skateSpots)
             
         })
+    }
+    
+    static func getUserName(userID: String, completion: @escaping (String)->()) {
+        var username = ""
+        
+        let userRef = ref.child("users/\(userID)")
+        userRef.observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            username = value?["name"] as? String ?? ""
+            completion(username)
+        }
     }
     
     static func downloadSkateSpotImage(url: String, completion: @escaping (UIImage) -> Void ) {
