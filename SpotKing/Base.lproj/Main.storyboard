@@ -218,40 +218,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNm-Yq-uiR">
-                                <rect key="frame" x="172" y="545" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Post"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNm-Yq-uiR">
+                                <rect key="frame" x="16" y="615" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="u71-K2-s5o"/>
+                                </constraints>
+                                <state key="normal" title="Add Spot"/>
                                 <connections>
                                     <action selector="postSpot" destination="DjM-BE-GWn" eventType="touchUpInside" id="q6U-Su-HJm"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUT-sf-POc">
-                                <rect key="frame" x="16" y="264" width="343" height="260"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VUT-sf-POc">
+                                <rect key="frame" x="16" y="145" width="343" height="220"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="9lo-fB-kGM"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-AW-5bp">
-                                <rect key="frame" x="16" y="133" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iei-iJ-XyB">
+                                <rect key="frame" x="8" y="28" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel" destination="DjM-BE-GWn" eventType="touchUpInside" id="p6S-DF-8so"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RqU-Qr-UNh">
+                                <rect key="frame" x="16" y="390" width="343" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="txu-w5-B3c"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s0M-CH-llE">
-                                <rect key="frame" x="16" y="179" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-AW-5bp">
+                                <rect key="frame" x="16" y="90" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NNm-Yq-uiR" firstAttribute="top" secondItem="RqU-Qr-UNh" secondAttribute="bottom" constant="25" id="1lh-oJ-n0S"/>
+                            <constraint firstItem="gCT-8M-U6v" firstAttribute="trailing" secondItem="NNm-Yq-uiR" secondAttribute="trailing" constant="16" id="2c4-y1-2Rh"/>
+                            <constraint firstItem="aQc-AW-5bp" firstAttribute="top" secondItem="Iei-iJ-XyB" secondAttribute="bottom" constant="32" id="3Nj-LM-jd2"/>
+                            <constraint firstItem="Iei-iJ-XyB" firstAttribute="leading" secondItem="gCT-8M-U6v" secondAttribute="leading" constant="8" id="49N-ma-Zfi"/>
+                            <constraint firstItem="aQc-AW-5bp" firstAttribute="leading" secondItem="gCT-8M-U6v" secondAttribute="leading" constant="16" id="5FK-0k-TH6"/>
+                            <constraint firstItem="gCT-8M-U6v" firstAttribute="trailing" secondItem="aQc-AW-5bp" secondAttribute="trailing" constant="16" id="985-3V-MNf"/>
+                            <constraint firstItem="VUT-sf-POc" firstAttribute="centerX" secondItem="gCT-8M-U6v" secondAttribute="centerX" id="KpY-1u-eLs"/>
+                            <constraint firstItem="RqU-Qr-UNh" firstAttribute="top" secondItem="VUT-sf-POc" secondAttribute="bottom" constant="25" id="LhN-dg-Ed8"/>
+                            <constraint firstItem="gCT-8M-U6v" firstAttribute="trailing" secondItem="VUT-sf-POc" secondAttribute="trailing" constant="16" id="O77-kR-agx"/>
+                            <constraint firstItem="NNm-Yq-uiR" firstAttribute="centerX" secondItem="gCT-8M-U6v" secondAttribute="centerX" id="TZJ-JB-SPt"/>
+                            <constraint firstItem="VUT-sf-POc" firstAttribute="top" secondItem="aQc-AW-5bp" secondAttribute="bottom" constant="25" id="TzJ-Ob-uBJ"/>
+                            <constraint firstItem="aQc-AW-5bp" firstAttribute="centerX" secondItem="gCT-8M-U6v" secondAttribute="centerX" id="g5z-Oj-3rK"/>
+                            <constraint firstItem="VUT-sf-POc" firstAttribute="leading" secondItem="gCT-8M-U6v" secondAttribute="leading" constant="16" id="iE0-uu-lBb"/>
+                            <constraint firstItem="RqU-Qr-UNh" firstAttribute="leading" secondItem="gCT-8M-U6v" secondAttribute="leading" constant="16" id="pLD-9M-vEp"/>
+                            <constraint firstItem="Iei-iJ-XyB" firstAttribute="top" secondItem="gCT-8M-U6v" secondAttribute="top" constant="8" id="q7c-Sz-nFi"/>
+                            <constraint firstItem="NNm-Yq-uiR" firstAttribute="leading" secondItem="gCT-8M-U6v" secondAttribute="leading" constant="16" id="xjV-g2-19R"/>
+                            <constraint firstItem="RqU-Qr-UNh" firstAttribute="centerX" secondItem="gCT-8M-U6v" secondAttribute="centerX" id="xvw-Ay-8S8"/>
+                            <constraint firstItem="gCT-8M-U6v" firstAttribute="trailing" secondItem="RqU-Qr-UNh" secondAttribute="trailing" constant="16" id="y5C-R6-ZO9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gCT-8M-U6v"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="Iei-iJ-XyB" id="va0-Ig-RAt"/>
                         <outlet property="imageView" destination="VUT-sf-POc" id="dOk-ke-EES"/>
-                        <outlet property="spotDescription" destination="s0M-CH-llE" id="LPl-v3-RQN"/>
+                        <outlet property="postButton" destination="NNm-Yq-uiR" id="cfQ-II-xXa"/>
+                        <outlet property="spotDesc" destination="RqU-Qr-UNh" id="CKn-Kx-eez"/>
                         <outlet property="spotTitle" destination="aQc-AW-5bp" id="T6N-f2-ORE"/>
                     </connections>
                 </viewController>
