@@ -62,7 +62,7 @@ class MapViewController: UIViewController {
     {
         for spot in skateSpots
         {
-            if(spot.spotType == SkateSpot.SpotType.SkateSpot)
+            if(spot.spotType != SkateSpot.SpotType.SkatePark)
             {
                 DatabaseManager.downloadSkateSpotImage(url: spot.imageURL!, completion: { (image) in
                     spot.spotImage = image
