@@ -43,7 +43,7 @@ class NetworkManager: NSObject
         
         if type == .SkatePark
         {
-            keyword = "SkateboardPark"
+            keyword = "SkatePark"
         }
         else if type == .SkateShop
         {

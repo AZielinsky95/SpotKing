@@ -62,11 +62,15 @@ class MapViewController: UIViewController {
     {
         for spot in skateSpots
         {
-            if(spot.spotType != SkateSpot.SpotType.SkatePark)
+            if let url = spot.imageURL
             {
-                DatabaseManager.downloadSkateSpotImage(url: spot.imageURL!, completion: { (image) in
+                DatabaseManager.downloadSkateSpotImage(url: url, completion: { (image) in
                     spot.spotImage = image
                 })
+            }
+            else
+            {
+                print("no photo found for \(spot.title)")
             }
         }
     }
