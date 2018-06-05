@@ -37,6 +37,7 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.image = spotImage
         postButton.backgroundColor = UIColor.SpotKingColors.lightGreen
         postButton.setTitleColor(UIColor.white, for: .normal)
+        postButton.layer.cornerRadius = 5
         cancelButton.setTitleColor(UIColor.SpotKingColors.darkGreen, for: .normal)
         
         spotTitle.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
