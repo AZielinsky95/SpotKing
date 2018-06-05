@@ -52,12 +52,12 @@ class SkateSpot : NSObject, MKAnnotation
     var imageURL:String?
     
     lazy var pinImageAndColor : (UIImage,UIColor) =
-        {
+    {
             switch spotType! {
             case SkateSpot.SpotType.SkatePark:
                 return (UIImage(named: "crown")!,UIColor.magenta);
             case SkateSpot.SpotType.SkateSpot:
-                return (UIImage(named: "crown")!,UIColor.SpotKingColors.lightGreen);
+                return (UIImage(named: "spotIcon")!,UIColor.SpotKingColors.lightGreen);
             case SkateSpot.SpotType.SkateShop:
                 return (UIImage(named: "bag")!,UIColor.red);
             }
