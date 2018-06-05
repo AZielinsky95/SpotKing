@@ -86,7 +86,7 @@
                     <navigationItem key="navigationItem" id="fPW-jr-Gm9">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="EZ4-Iz-GmG">
                             <connections>
-                                <segue destination="u0Q-wu-1YV" kind="show" id="Xxg-cu-BP2"/>
+                                <segue destination="u0Q-wu-1YV" kind="show" identifier="StorySegue" id="Xxg-cu-BP2"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="profileNav" id="LwF-uk-l8m">
