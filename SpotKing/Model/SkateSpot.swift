@@ -52,12 +52,12 @@ class SkateSpot : NSObject, MKAnnotation
     var imageURL:String?
     
     lazy var pinImageAndColor : (UIImage,UIColor) =
-        {
+    {
             switch spotType! {
             case SkateSpot.SpotType.SkatePark:
                 return (UIImage(named: "crown")!,UIColor.magenta);
             case SkateSpot.SpotType.SkateSpot:
-                return (UIImage(named: "crown")!,UIColor.SpotKingColors.lightGreen);
+                return (UIImage(named: "spotIcon")!,UIColor.SpotKingColors.lightGreen);
             case SkateSpot.SpotType.SkateShop:
                 return (UIImage(named: "bag")!,UIColor.red);
             }
@@ -87,5 +87,24 @@ class SkateSpot : NSObject, MKAnnotation
         spotRating = json["rating"] as? Double;
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
         
+    }
+    
+    func ratingToStars(rating:Double) -> String
+    {
+        switch (Int(rating))
+        {
+            case 1:
+            return "⭐️";
+            case 2:
+            return "⭐️⭐️";
+            case 3:
+            return "⭐️⭐️⭐️";
+            case 4:
+            return "⭐️⭐️⭐️⭐️";
+            case 5:
+            return "⭐️⭐️⭐️⭐️⭐️";
+            default:
+            return "";
+        }
     }
 }

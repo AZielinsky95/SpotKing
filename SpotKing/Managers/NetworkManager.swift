@@ -58,10 +58,18 @@ class NetworkManager: NSObject
             
             guard let jsonDictionary = json!["results"]  as? [Dictionary<String, Any>]else { return }
             
+            
             var spots = [SkateSpot]()
             
             for location in jsonDictionary
             {
+//                let photos = location["photos"] as! [[String:Any]]
+//                let html_attribs = photos[0]["html_attributions"] as! [String]
+//                let photoReference = photos[0]["photo_reference"] as! String
+//                let height = photos[0]["height"] as! Double
+//                let width = photos[0]["width"] as! Double!
+//
+//
                 let spot = SkateSpot(json:location,type: type);
                 spots.append(spot);
             }
