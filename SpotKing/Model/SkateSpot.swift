@@ -88,4 +88,23 @@ class SkateSpot : NSObject, MKAnnotation
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
         
     }
+    
+    func ratingToStars(rating:Double) -> String
+    {
+        switch (Int(rating))
+        {
+            case 1:
+            return "⭐️";
+            case 2:
+            return "⭐️⭐️";
+            case 3:
+            return "⭐️⭐️⭐️";
+            case 4:
+            return "⭐️⭐️⭐️⭐️";
+            case 5:
+            return "⭐️⭐️⭐️⭐️⭐️";
+            default:
+            return "";
+        }
+    }
 }

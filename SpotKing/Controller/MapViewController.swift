@@ -53,6 +53,21 @@ class MapViewController: UIViewController {
                self.skateSpots.append(spot)
                self.mapView.addAnnotation(spot)
             }
+            
+            self.downloadImagesForSkateSpots()
+        }
+    }
+    
+    func downloadImagesForSkateSpots()
+    {
+        for spot in skateSpots
+        {
+            if(spot.spotType == SkateSpot.SpotType.SkateSpot)
+            {
+                DatabaseManager.downloadSkateSpotImage(url: spot.imageURL!, completion: { (image) in
+                    spot.spotImage = image
+                })
+            }
         }
     }
     
@@ -258,6 +273,16 @@ extension MapViewController : MKMapViewDelegate
         }
         
         return view;
+    }
+
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    {
+        print("tapped")
+        //segue to detail view
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
+        let spot = view.annotation as! SkateSpot
+        detailViewController.spot = spot
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
