@@ -124,8 +124,8 @@
                 CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */,
                 1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */,
                 CACC858120C5B00100900FAD /* StoryViewController.swift */,
-				CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */,
-				1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */,
+                CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */,
+                1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */,
             );
             path = Controller;
             sourceTree = "<group>";

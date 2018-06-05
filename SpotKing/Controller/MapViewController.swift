@@ -195,6 +195,14 @@ class MapViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "StorySegue" {
+            if let storyVC = segue.destination as? StoryViewController {
+                storyVC.skateSpots = self.skateSpots.reversed()
+            }
+        }
+    }
 }
 
 extension MapViewController : AddSpotProtocol
