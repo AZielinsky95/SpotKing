@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol StoryCellDelegate : class {
+    func favouriteClicked(cell: StoryCell)
+}
+
 class StoryCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!    
@@ -15,6 +19,17 @@ class StoryCell: UICollectionViewCell {
     @IBOutlet weak var spotTitle: UILabel!
     @IBOutlet weak var spotDescription: UILabel!
     
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var favouriteButton: UIButton!
+    
+    weak var delegate : StoryCellDelegate?
+    
+    var spotID: String?
+    
+    @IBAction func favouritePressed() {
+        delegate?.favouriteClicked(cell: self)
+    }
     
     
 }
