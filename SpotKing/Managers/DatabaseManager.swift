@@ -180,8 +180,9 @@ class DatabaseManager
     static func downloadSkateSpotImage(url: String, completion: @escaping (UIImage) -> Void ) {
         let configuration = URLSessionConfiguration.default
         let session: URLSession = URLSession(configuration: configuration)
-        let imageURL = URL(string: url)
-        let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL!) { (url, response, error)  in
+        guard let imageURL = URL(string: url) else { return }
+        
+        let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL) { (url, response, error)  in
             let data = NSData(contentsOf: url!)
             let image = UIImage(data: data! as Data)!
             completion(image)
