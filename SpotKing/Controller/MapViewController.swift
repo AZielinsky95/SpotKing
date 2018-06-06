@@ -278,10 +278,11 @@ extension MapViewController : MKMapViewDelegate
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.glyphImage = pinImage
             view.markerTintColor = pinColor
-            view.animatesWhenAdded = true;
+            view.animatesWhenAdded = true
             view.canShowCallout = true
+            view.isEnabled = true
             view.calloutOffset = CGPoint(x: -5,y:5)
-            view.leftCalloutAccessoryView = UIButton(type: .infoLight)
+            view.rightCalloutAccessoryView = UIButton(type: .infoLight)
         }
         
         return view;
@@ -289,11 +290,16 @@ extension MapViewController : MKMapViewDelegate
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
+        guard let annotation = view.annotation as? SkateSpot else { return }
+        
         print("tapped")
+        let temp = UIImageView(frame: CGRect(x: 5, y: 5, width: 50, height: 50))
+        temp.image = annotation.spotImage
+        temp.contentMode = .scaleAspectFit
+        view.leftCalloutAccessoryView = temp;
         //segue to detail view
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
-        let spot = view.annotation as! SkateSpot
-        detailViewController.spot = spot
+        detailViewController.spot = annotation
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
