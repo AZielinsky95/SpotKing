@@ -46,6 +46,7 @@ extension StoryViewController : UICollectionViewDataSource
 
 extension StoryViewController : StoryCellDelegate {
     func favouriteClicked(cell: StoryCell) {
+        cell.favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
         
     }
 }

@@ -170,7 +170,7 @@
                                                         <constraint firstAttribute="height" constant="32" id="Gho-H4-fLc"/>
                                                         <constraint firstAttribute="width" constant="32" id="wsl-wQ-c0a"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="heart"/>
+                                                    <state key="normal" title="Button" image="heart-empty"/>
                                                     <connections>
                                                         <action selector="favouritePressed" destination="ZeJ-TO-4mg" eventType="touchUpInside" id="owS-6g-Iob"/>
                                                     </connections>
@@ -556,6 +556,7 @@
     <resources>
         <image name="add" width="50" height="50"/>
         <image name="heart" width="50" height="50"/>
+        <image name="heart-empty" width="1600" height="1600"/>
         <image name="menu" width="30" height="30"/>
         <image name="more" width="50" height="50"/>
         <image name="profile" width="256" height="256"/>
