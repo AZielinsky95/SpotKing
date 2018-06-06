@@ -42,6 +42,49 @@ class SkateSpot : NSObject, MKAnnotation
         }
     }
     
+    enum SpotTag
+    {
+        case Rail
+        case Stairs
+        case Hubba
+        case Gap
+        case Manual
+        
+       func toString() -> String {
+            switch self {
+            case .Rail:
+                return "Rail"
+            case .Stairs:
+                return "Stairs"
+            case .Hubba:
+                return "Hubba"
+            case .Gap:
+                return "Gap"
+            case .Manual:
+                return "Manual"
+            }
+        }
+        
+        static func toSpotTag(spotTagString: String) -> SpotTag
+        {
+            switch spotTagString {
+            case "Rail":
+                return SpotTag.Rail
+            case "Stairs":
+                return SpotTag.Stairs
+            case "Hubba":
+                return SpotTag.Hubba
+            case "Gap":
+                return SpotTag.Gap
+            case "Manual":
+                return SpotTag.Manual
+            default:
+                return SpotTag.Rail
+            }
+        }
+    }
+    
+    
     var userID: String!
     var spotType:SpotType!
     var title:String?
@@ -50,6 +93,7 @@ class SkateSpot : NSObject, MKAnnotation
     var coordinate = CLLocationCoordinate2D()
     var spotRating:Double?
     var imageURL:String?
+    var spotTags:[SpotTag]?
     
     lazy var pinImageAndColor : (UIImage,UIColor) =
     {
@@ -63,16 +107,17 @@ class SkateSpot : NSObject, MKAnnotation
             }
     }()
     
-    init(userId:String,type:SpotType,title:String,subtitle:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String)
+    init(userId:String,type:SpotType,title:String,subtitle:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?)
     {
-        self.userID = userId;
-        self.spotType = type;
-        self.title = title;
-        self.subtitle = subtitle;
-        self.spotRating = rating;
-        self.spotImage = spotImage;
-        self.coordinate = coordinates;
+        self.userID = userId
+        self.spotType = type
+        self.title = title
+        self.subtitle = subtitle
+        self.spotRating = rating
+        self.spotImage = spotImage
+        self.coordinate = coordinates
         self.imageURL = imageURL
+        self.spotTags = tags
         super.init()
     }
     
@@ -87,6 +132,22 @@ class SkateSpot : NSObject, MKAnnotation
         spotRating = json["rating"] as? Double;
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
         
+    }
+    
+    func spotTagsToStringArray() -> [String]
+    {
+        var result = [String]()
+        
+        if let tags = spotTags
+        {
+            for tag in tags
+            {
+                let tagString = tag.toString()
+                result.append(tagString)
+            }
+        }
+        
+        return result
     }
     
     func ratingToStars(rating:Double) -> String

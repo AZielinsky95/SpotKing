@@ -29,7 +29,24 @@ class DetailViewController: UIViewController {
         viewContainer.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         viewContainer.layer.borderWidth = 3
         self.navigationItem.title = spot?.title
-        usernameLabel.text = spot?.userID
+        
+        if let type = spot?.spotType
+        {
+            switch type {
+            case SkateSpot.SpotType.SkateShop:
+                usernameLabel.isHidden = true;
+                break;
+            case SkateSpot.SpotType.SkatePark:
+                usernameLabel.isHidden = true;
+                break;
+            case SkateSpot.SpotType.SkateSpot:
+                DatabaseManager.getUserName(userID: (spot?.userID)!) { (username) in
+                    self.usernameLabel.text = username
+                }
+                break;
+            }
+        }
+    
         descriptionLabel.text = spot?.subtitle
         spotImageView.image = spot?.spotImage
     }
