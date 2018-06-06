@@ -39,7 +39,7 @@ class MapViewController: UIViewController {
        // DatabaseManager.signOut()
         setUpNavigationBar()
         setUpLocationManager()
-        setUpTabButtons()
+        setUpTabButtons() 
         getSpotsFromDatabase()
         
     }
