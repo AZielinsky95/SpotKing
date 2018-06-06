@@ -16,6 +16,13 @@ class MapViewController: UIViewController {
     var skateSpots = [SkateSpot]()
     var currentLocation : CLLocation?
     
+    
+    let popUpView : PopUpView =
+    {
+      let view = PopUpView(frame: CGRect(x: 0, y:-500, width: 275, height: 50), text: "New Spot Added!", image: #imageLiteral(resourceName: "crownicon"))
+        
+      return view
+    }()
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -24,8 +31,12 @@ class MapViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
-    let regionRadius: CLLocationDistance = 2000
+    let regionRadius: CLLocationDistance = 5000
     
+    func setUpPopUpView()
+    {
+      //  let popUpView = UIView
+    }
     
     override func viewDidLoad()
     {
@@ -42,6 +53,8 @@ class MapViewController: UIViewController {
         setUpTabButtons() 
         getSpotsFromDatabase()
         
+        let currentWindow = UIApplication.shared.keyWindow
+        currentWindow?.addSubview(popUpView)
     }
     
     func getSpotsFromDatabase()
@@ -70,7 +83,8 @@ class MapViewController: UIViewController {
             }
             else
             {
-                print("no photo found for \(spot.title)")
+                //Placeholder
+                spot.spotImage = #imageLiteral(resourceName: "shop")
             }
         }
     }
@@ -93,9 +107,22 @@ class MapViewController: UIViewController {
         filterButton.tintColor = UIColor.lightGray
     }
     
+    func showPopUpView()
+    {
+        popUpView.center.x = view.center.x
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.popUpView.center.y = self.popUpView.bounds.height * 2
+        }, completion: { (done) in
+        
+            UIView.animate(withDuration: 0.5, delay: 1, options: [], animations: {
+               self.popUpView.center.y = -500
+            })
+        })
+    }
+    
     @IBAction func addSpotTapped(_ sender: UIButton)
     {
-        showActionSheet(vc: self)    
+        showActionSheet(vc: self)
     }
     
     func camera()
@@ -214,7 +241,7 @@ extension MapViewController : AddSpotProtocol
     func addSpot(spot: SkateSpot) {
         self.skateSpots.append(spot);
         self.mapView.addAnnotation(spot)
-        print("New Spot Added!")
+        showPopUpView()
     }
 }
 
