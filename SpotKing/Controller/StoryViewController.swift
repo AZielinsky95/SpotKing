@@ -46,6 +46,6 @@ extension StoryViewController : UICollectionViewDataSource
 
 extension StoryViewController : StoryCellDelegate {
     func favouriteClicked(cell: StoryCell) {
-        s
+        
     }
 }
