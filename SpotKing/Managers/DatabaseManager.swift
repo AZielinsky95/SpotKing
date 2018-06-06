@@ -116,8 +116,8 @@ class DatabaseManager
                     "title": spot.title!,
                     "subTitle": spot.subtitle!,
                     "imageURL": url.absoluteString,
-                    "timestamp":date.timeIntervalSince1970
-                    
+                    "timestamp":date.timeIntervalSince1970,
+                    "tags":spot.spotTagsToStringArray()
                     ] as [String : Any]
                 
                 generatedRef.setValue(newSpot);
@@ -145,8 +145,18 @@ class DatabaseManager
                 let spotRating = value["rating"] as? Double
                 let userID = value["userID"] as? String
                 let imageURL = value["imageURL"] as? String
+                let tagStrings = value["tags"] as? [String]
+                var spotTags : [SkateSpot.SpotTag]?
                 
-                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, subtitle: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!)
+                if let tags = tagStrings
+                {
+                    for tag in tags
+                    {
+                        spotTags?.append(SkateSpot.SpotTag.toSpotTag(spotTagString: tag))
+                    }
+                }
+                
+                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, subtitle: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags)
 
                 skateSpots.append(skateSpot)
                 

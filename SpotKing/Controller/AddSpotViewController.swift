@@ -23,9 +23,16 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var spotDesc: UITextView!
     
+    @IBOutlet weak var railTagButton: UIButton!
+    @IBOutlet weak var stairsTagButton: UIButton!
+    @IBOutlet weak var manualTagButton: UIButton!
+    @IBOutlet weak var hubbaTagButton: UIButton!
+    @IBOutlet weak var gapTagButton: UIButton!
+    
     public var spotImage : UIImage?
     var locationManager: CLLocationManager!
     var currentLocation : CLLocation?
+    var spotTags = [SkateSpot.SpotTag]()
     
     var delegate : AddSpotProtocol? 
     
@@ -47,6 +54,12 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         spotDesc.placeholder = "Description"
+        
+        railTagButton.layer.cornerRadius = 5
+        stairsTagButton.layer.cornerRadius = 5
+        manualTagButton.layer.cornerRadius = 5
+        hubbaTagButton.layer.cornerRadius = 5
+        gapTagButton.layer.cornerRadius = 5
     }
 
     func setUpLocationManager()
@@ -60,7 +73,7 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
             locationManager.startUpdatingLocation()
         }
     }
-    
+
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
     }
@@ -69,7 +82,33 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let spotTitle = self.spotTitle.text, let spotDescription = self.spotDesc.text,
         let currentLocation = self.currentLocation else { return }
         
-        let spot = SkateSpot(userId: "", type: .SkateSpot, title: spotTitle, subtitle: spotDescription, rating: nil, spotImage: self.imageView.image, coordinates: currentLocation.coordinate, imageURL: "")
+        if railTagButton.isSelected
+        {
+            let type = SkateSpot.SpotTag.Rail
+            spotTags.append(type)
+        }
+        if stairsTagButton.isSelected
+        {
+            let type = SkateSpot.SpotTag.Stairs
+            spotTags.append(type)
+        }
+        if hubbaTagButton.isSelected
+        {
+            let type = SkateSpot.SpotTag.Hubba
+            spotTags.append(type)
+        }
+        if gapTagButton.isSelected
+        {
+            let type = SkateSpot.SpotTag.Gap
+            spotTags.append(type)
+        }
+        if manualTagButton.isSelected
+        {
+            let type = SkateSpot.SpotTag.Manual
+            spotTags.append(type)
+        }
+        
+        let spot = SkateSpot(userId: "", type: .SkateSpot, title: spotTitle, subtitle: spotDescription, rating: nil, spotImage: self.imageView.image, coordinates: currentLocation.coordinate, imageURL: "",tags:spotTags)
         
         //Save spot to database
         DatabaseManager.saveSkateSpot(spot: spot)
@@ -78,6 +117,80 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         //Send spot to MapVC
         delegate?.addSpot(spot: spot)
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func tagButtonTapped(_ sender: UIButton)
+    {
+        if sender.tag == 1
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.isSelected = false
+                sender.layer.borderWidth = 0
+            }
+        }
+        else if sender.tag == 2
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.isSelected = false
+                sender.layer.borderWidth = 0
+            }
+        }
+        else if sender.tag == 3
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.layer.borderWidth = 0
+                sender.isSelected = false
+            }
+        }
+        else if sender.tag == 4
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.layer.borderWidth = 0
+                sender.isSelected = false
+            }
+        }
+        else if sender.tag == 5
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.layer.borderWidth = 0
+                sender.isSelected = false
+            }
+        }
     }
 }
 
