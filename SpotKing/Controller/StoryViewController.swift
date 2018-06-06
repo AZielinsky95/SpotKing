@@ -38,6 +38,14 @@ extension StoryViewController : UICollectionViewDataSource
         cell.spotTitle.text = skateSpots![indexPath.row].title
         cell.spotDescription.text = skateSpots![indexPath.row].spotDescription
     
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+extension StoryViewController : StoryCellDelegate {
+    func favouriteClicked(cell: StoryCell) {
+        s
     }
 }

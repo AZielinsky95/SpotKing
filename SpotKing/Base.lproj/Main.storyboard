@@ -171,6 +171,9 @@
                                                         <constraint firstAttribute="width" constant="32" id="wsl-wQ-c0a"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="heart"/>
+                                                    <connections>
+                                                        <action selector="favouritePressed" destination="ZeJ-TO-4mg" eventType="touchUpInside" id="owS-6g-Iob"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -193,7 +196,9 @@
                                         </constraints>
                                         <size key="customSize" width="375" height="325"/>
                                         <connections>
+                                            <outlet property="favouriteButton" destination="LTi-Bo-V56" id="wJN-Hw-bhg"/>
                                             <outlet property="imageView" destination="RNy-6I-IXE" id="RKH-pV-Zfg"/>
+                                            <outlet property="profileImage" destination="Lie-tI-Of4" id="ARc-8R-qve"/>
                                             <outlet property="spotDescription" destination="IXo-E6-TJO" id="Jkt-uy-1L8"/>
                                             <outlet property="spotTitle" destination="iPX-K6-mHG" id="gfM-8E-tsV"/>
                                             <outlet property="username" destination="rsW-Gu-nAq" id="zXy-fH-G5j"/>
