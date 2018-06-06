@@ -141,6 +141,7 @@ class MapViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self;
+            myPickerController.allowsEditing = true
             myPickerController.sourceType = .photoLibrary
             self.present(myPickerController, animated: true, completion: nil)
         }

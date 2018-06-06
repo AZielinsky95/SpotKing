@@ -91,6 +91,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="profileNav" id="LwF-uk-l8m">
                             <inset key="largeContentSizeImageInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <connections>
+                                <segue destination="D0P-lM-Tna" kind="show" id="aBj-nc-rHQ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -223,6 +226,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSS-2c-4CJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1570" y="152"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="eRB-Wh-kE2">
+            <objects>
+                <viewController id="D0P-lM-Tna" customClass="ProfileViewController" customModule="SpotKing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m2f-tj-hy6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1VF-Kv-oHU">
+                                <rect key="frame" x="87" y="116" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.85802664974619292" green="0.85802664974619292" blue="0.85802664974619292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="864-ue-Elu"/>
+                                    <constraint firstAttribute="width" constant="200" id="QVg-Ns-yka"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuP-Bg-F4V">
+                                <rect key="frame" x="148" y="362" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1VF-Kv-oHU" firstAttribute="top" secondItem="ipr-LC-yO8" secondAttribute="top" constant="52" id="WMV-N3-96l"/>
+                            <constraint firstItem="1VF-Kv-oHU" firstAttribute="centerX" secondItem="ipr-LC-yO8" secondAttribute="centerX" id="Z04-8A-uc8"/>
+                            <constraint firstItem="vuP-Bg-F4V" firstAttribute="top" secondItem="1VF-Kv-oHU" secondAttribute="bottom" constant="46" id="jfj-7J-2Yz"/>
+                            <constraint firstItem="vuP-Bg-F4V" firstAttribute="centerX" secondItem="ipr-LC-yO8" secondAttribute="centerX" id="s4u-Cq-hBP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ipr-LC-yO8"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="1VF-Kv-oHU" id="vhg-PU-Z2p"/>
+                        <outlet property="username" destination="vuP-Bg-F4V" id="UL8-5X-bXU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dah-iD-Qfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1568.8" y="-553.67316341829087"/>
         </scene>
         <!--Add Spot View Controller-->
         <scene sceneID="5WW-t5-1xB">
@@ -555,8 +599,8 @@
     </scenes>
     <resources>
         <image name="add" width="50" height="50"/>
-        <image name="heart" width="50" height="50"/>
-        <image name="heart-empty" width="1600" height="1600"/>
+        <image name="heart" width="35" height="31"/>
+        <image name="heart-empty" width="35" height="31"/>
         <image name="menu" width="30" height="30"/>
         <image name="more" width="50" height="50"/>
         <image name="profile" width="256" height="256"/>

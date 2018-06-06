@@ -11,5 +11,6 @@ import UIKit
 class User: NSObject {
     static var username : String!
     static var favouriteSpots = [String]()
+    static var profileImage : UIImage?
     
 }

@@ -216,6 +216,32 @@ class DatabaseManager
         
         downloadTask.resume()
     }
+    
+    static func saveProfileImage(image: UIImage) {
+        let randomFileName = "\(UUID().uuidString).png"
+        
+        // guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
+        
+        guard let currentUserID = Auth.auth().currentUser?.uid, let resizedImage = image.resizeWith(percentage: 0.1), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
+        
+        let imageRef = Storage.storage().reference().child("profileImages").child("\(currentUserID)/\(randomFileName)")
+        
+        imageRef.putData(resizedImageData, metadata: nil, completion: { (metadata, error) in
+            if let error = error  {
+                print(error.localizedDescription)
+                return
+            }
+            
+            imageRef.downloadURL(completion: { (url, error) in
+                guard let url = url else { return }
+                
+                let userRef = ref.child("users/\(currentUserID)/profile")
+                
+                let profileImageUrl = ["profileImageURL": url.absoluteString] as [String : Any]
+                userRef.setValue(profileImageUrl)
+            })
+        })
+    }
 }
 
 extension UIImage {
