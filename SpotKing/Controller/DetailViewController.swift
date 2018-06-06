@@ -28,6 +28,10 @@ class DetailViewController: UIViewController {
         viewContainer.layer.cornerRadius = 5
         viewContainer.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         viewContainer.layer.borderWidth = 3
+        viewContainer.layer.shadowColor = UIColor.black.cgColor
+        viewContainer.layer.shadowOpacity = 1
+        viewContainer.layer.shadowOffset = CGSize.zero
+        viewContainer.layer.shadowRadius = 10
         self.navigationItem.title = spot?.title
         
         if let type = spot?.spotType

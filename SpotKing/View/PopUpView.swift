@@ -39,9 +39,13 @@ class PopUpView: UIView
     
     func setUpView()
     {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 1
         layer.cornerRadius = 5
-        layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 3
         
         addSubview(popUpLabel)

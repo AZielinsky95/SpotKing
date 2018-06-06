@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SummerVictory.otf">
+            <string>SummersVictoryOverSpring</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -413,8 +418,8 @@
                                 <rect key="frame" x="29" y="337" width="317" height="330"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auf-Zl-szR">
-                                        <rect key="frame" x="40" y="12" width="148" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <rect key="frame" x="40" y="12" width="148" height="30"/>
+                                        <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

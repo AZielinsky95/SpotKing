@@ -26,6 +26,11 @@
 	<string>SpotKing needs your location!</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pacific Again.ttf</string>
+		<string>SummerVictory.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

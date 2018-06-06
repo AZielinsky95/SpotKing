@@ -23,6 +23,8 @@
 		CA696A8E20C1C43B00347FE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */; };
 		CACC858220C5B00100900FAD /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC858120C5B00100900FAD /* StoryViewController.swift */; };
 		CAF3C32120C85E590003EDF5 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C32020C85E590003EDF5 /* PopUpView.swift */; };
+		CAF3C32620C879F90003EDF5 /* Pacific Again.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CAF3C32520C879F90003EDF5 /* Pacific Again.ttf */; };
+		CAF3C32820C8857B0003EDF5 /* SummerVictory.otf in Resources */ = {isa = PBXBuildFile; fileRef = CAF3C32720C8857B0003EDF5 /* SummerVictory.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		CA696A8D20C1C43B00347FE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CACC858120C5B00100900FAD /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		CAF3C32020C85E590003EDF5 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		CAF3C32520C879F90003EDF5 /* Pacific Again.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacific Again.ttf"; sourceTree = "<group>"; };
+		CAF3C32720C8857B0003EDF5 /* SummerVictory.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SummerVictory.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 		CA696A6F20C065EC00347FE9 /* SpotKing */ = {
 			isa = PBXGroup;
 			children = (
+				CAF3C32320C8761F0003EDF5 /* Fonts */,
 				CAF3C32220C85E600003EDF5 /* View */,
 				CA696A8C20C086FB00347FE9 /* Controller */,
 				CA696A8B20C086F100347FE9 /* Model */,
@@ -139,6 +144,15 @@
 				CAF3C32020C85E590003EDF5 /* PopUpView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CAF3C32320C8761F0003EDF5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CAF3C32720C8857B0003EDF5 /* SummerVictory.otf */,
+				CAF3C32520C879F90003EDF5 /* Pacific Again.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D99433C91A898DAF619856FC /* Pods */ = {
@@ -212,6 +226,8 @@
 			files = (
 				CA696A7B20C065ED00347FE9 /* LaunchScreen.storyboard in Resources */,
 				CA696A8320C067A400347FE9 /* GoogleService-Info.plist in Resources */,
+				CAF3C32620C879F90003EDF5 /* Pacific Again.ttf in Resources */,
+				CAF3C32820C8857B0003EDF5 /* SummerVictory.otf in Resources */,
 				CA696A7820C065ED00347FE9 /* Assets.xcassets in Resources */,
 				CA696A7620C065EC00347FE9 /* Main.storyboard in Resources */,
 			);

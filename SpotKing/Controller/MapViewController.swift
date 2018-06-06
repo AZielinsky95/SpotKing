@@ -170,14 +170,10 @@ class MapViewController: UIViewController {
     
     func setUpNavigationBar()
     {
+       // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Pacific Again", size: 20)!]
         self.navigationItem.title = "Spot King"
         self.navigationController?.navigationBar.tintColor = UIColor.SpotKingColors.lightGreen
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 26)]
-//        let image = UIImage(named: "crown")
-//        let titleImageView = UIImageView(image: image)
-//        titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-//        titleImageView.contentMode = .scaleAspectFit
-//        self.navigationItem.titleView = titleImageView
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Summers Victory Over Spring", size: 42)!]
     }
     
     func centerMapOnLocation(location:CLLocationCoordinate2D)
