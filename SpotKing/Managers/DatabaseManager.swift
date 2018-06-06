@@ -114,7 +114,7 @@ class DatabaseManager
                     "lat": spot.coordinate.latitude,
                     "lng": spot.coordinate.longitude,
                     "title": spot.title!,
-                    "subTitle": spot.subtitle!,
+                    "description": spot.spotDescription!,
                     "imageURL": url.absoluteString,
                     "timestamp":date.timeIntervalSince1970,
                     "tags":spot.spotTagsToStringArray()
@@ -138,7 +138,7 @@ class DatabaseManager
                 }
                 
                 let title = value["title"] as? String ?? ""
-                let subtitle = value["subTitle"] as? String ?? ""
+                let subtitle = value["description"] as? String ?? ""
                 let spotTypeStr = value["spotType"] as? String ?? ""
                 let spotType = SkateSpot.SpotType.toSpotType(strSpotType: spotTypeStr)
                 let coordinate = CLLocationCoordinate2DMake((value["lat"] as? Double)!, (value["lng"] as? Double)!)
@@ -156,7 +156,7 @@ class DatabaseManager
                     }
                 }
                 
-                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, subtitle: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags)
+                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, spotDescription: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags)
 
                 skateSpots.append(skateSpot)
                 

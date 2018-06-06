@@ -88,7 +88,7 @@ class SkateSpot : NSObject, MKAnnotation
     var userID: String!
     var spotType:SpotType!
     var title:String?
-    var subtitle:String?
+    var spotDescription:String?
     var spotImage:UIImage?
     var coordinate = CLLocationCoordinate2D()
     var spotRating:Double?
@@ -107,12 +107,12 @@ class SkateSpot : NSObject, MKAnnotation
             }
     }()
     
-    init(userId:String,type:SpotType,title:String,subtitle:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?)
+    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?)
     {
         self.userID = userId
         self.spotType = type
         self.title = title
-        self.subtitle = subtitle
+        self.spotDescription = spotDescription
         self.spotRating = rating
         self.spotImage = spotImage
         self.coordinate = coordinates
@@ -150,9 +150,9 @@ class SkateSpot : NSObject, MKAnnotation
         return result
     }
     
-    func ratingToStars(rating:Double) -> String
+    func ratingToStars() -> String
     {
-        switch (Int(rating))
+        switch (Int(spotRating!))
         {
             case 1:
             return "⭐️";

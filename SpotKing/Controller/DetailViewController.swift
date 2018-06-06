@@ -47,7 +47,7 @@ class DetailViewController: UIViewController {
             }
         }
     
-        descriptionLabel.text = spot?.subtitle
+        descriptionLabel.text = spot?.spotDescription
         spotImageView.image = spot?.spotImage
     }
     

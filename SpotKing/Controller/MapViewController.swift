@@ -282,21 +282,31 @@ extension MapViewController : MKMapViewDelegate
             view.canShowCallout = true
             view.isEnabled = true
             view.calloutOffset = CGPoint(x: -5,y:5)
+
             view.rightCalloutAccessoryView = UIButton(type: .infoLight)
         }
         
         return view;
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+    {
+        guard let annotation = view.annotation as? SkateSpot else { return }
+        
+        print("annotation tapped")
+        let temp = UIImageView(frame: CGRect(x: 2, y: 0, width: 75, height: 75))
+        temp.image = annotation.spotImage
+        temp.contentMode = .scaleAspectFill
+        view.leftCalloutAccessoryView = temp;
+        
+        let subtitleLabel = UILabel(frame: CGRect(x: 0, y: 5, width: 75, height: 30))
+        subtitleLabel.text = annotation.ratingToStars()
+        view.detailCalloutAccessoryView = subtitleLabel;
+    }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
         guard let annotation = view.annotation as? SkateSpot else { return }
-        
-        print("tapped")
-        let temp = UIImageView(frame: CGRect(x: 5, y: 5, width: 50, height: 50))
-        temp.image = annotation.spotImage
-        temp.contentMode = .scaleAspectFit
-        view.leftCalloutAccessoryView = temp;
         //segue to detail view
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
         detailViewController.spot = annotation

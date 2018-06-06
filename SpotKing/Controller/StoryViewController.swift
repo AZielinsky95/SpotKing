@@ -17,18 +17,7 @@ class StoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.dataSource = self
-        
-//        DatabaseManager.getSkateSpots { (spots) in
-//           self.skateSpots = spots.reversed()
-//
-//            DispatchQueue.main.async {
-//                self.collectionView.reloadData()
-//            }
-//
-//        }
-        
-        
+        self.collectionView.dataSource = self        
     }
 }
 
@@ -45,25 +34,10 @@ extension StoryViewController : UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCell", for: indexPath) as! StoryCell
         
-//        DatabaseManager.downloadSkateSpotImage(url: skateSpots![indexPath.row].imageURL!) { (image) in
-//            DispatchQueue.main.async {
-//                cell.imageView.image = image
-//
-//             //   self.collectionView.reloadData()
-//            }
-//
-//        }
         cell.imageView.image = skateSpots![indexPath.row].spotImage
         cell.spotTitle.text = skateSpots![indexPath.row].title
-        cell.spotDescription.text = skateSpots![indexPath.row].subtitle
-        
-//        DatabaseManager.getUserName(userID: skateSpots![indexPath.row].userID) { (username) in
-//            DispatchQueue.main.async {
-//            cell.username.text = username
-//                
-//            }
-//        }
-      
+        cell.spotDescription.text = skateSpots![indexPath.row].spotDescription
+    
         return cell
     }
 }
