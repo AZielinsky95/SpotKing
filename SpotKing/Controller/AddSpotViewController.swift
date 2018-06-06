@@ -108,7 +108,7 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
             spotTags.append(type)
         }
         
-        let spot = SkateSpot(userId: "", type: .SkateSpot, title: spotTitle, spotDescription: spotDescription, rating: nil, spotImage: self.imageView.image, coordinates: currentLocation.coordinate, imageURL: "",tags:spotTags)
+        let spot = SkateSpot(userId: "", type: .SkateSpot, title: spotTitle, spotDescription: spotDescription, rating: nil, spotImage: self.imageView.image, coordinates: currentLocation.coordinate, imageURL: "",tags:spotTags, spotID: "")
         
         //Save spot to database
         DatabaseManager.saveSkateSpot(spot: spot)

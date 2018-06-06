@@ -17,7 +17,11 @@ class StoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.dataSource = self        
+        self.collectionView.dataSource = self
+        
+        DatabaseManager.getSpotFavourites { (favouriteSpots) in
+            User.favouriteSpots = favouriteSpots
+        }
     }
 }
 
@@ -37,7 +41,17 @@ extension StoryViewController : UICollectionViewDataSource
         cell.imageView.image = skateSpots![indexPath.row].spotImage
         cell.spotTitle.text = skateSpots![indexPath.row].title
         cell.spotDescription.text = skateSpots![indexPath.row].spotDescription
-    
+        
+        let spotID = skateSpots![indexPath.row].spotID
+        cell.spotID = spotID
+        if spotID != nil {
+            if User.favouriteSpots.contains(spotID!) {
+                cell.favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
+            } else {
+                cell.favouriteButton.setImage(UIImage(named: "heart-empty"), for: .normal)
+            }
+        }
+
         cell.delegate = self
         
         return cell
@@ -46,7 +60,20 @@ extension StoryViewController : UICollectionViewDataSource
 
 extension StoryViewController : StoryCellDelegate {
     func favouriteClicked(cell: StoryCell) {
-        cell.favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
         
+        guard let indexPath = collectionView.indexPath(for: cell), let spotID = skateSpots![indexPath.row].spotID
+            else { return }
+        
+        if User.favouriteSpots.contains(spotID) {
+            guard let index = User.favouriteSpots.index(of: spotID) else { return }
+            User.favouriteSpots.remove(at: index)
+            
+        } else {
+            User.favouriteSpots.append(spotID)            
+        }
+        DatabaseManager.saveSpotFavourites(favourites: User.favouriteSpots)
+        
+      
+        collectionView.reloadData()
     }
 }

@@ -117,7 +117,8 @@ class DatabaseManager
                     "description": spot.spotDescription!,
                     "imageURL": url.absoluteString,
                     "timestamp":date.timeIntervalSince1970,
-                    "tags":spot.spotTagsToStringArray()
+                    "tags":spot.spotTagsToStringArray(),
+                    "spotID":spotID
                     ] as [String : Any]
                 
                 generatedRef.setValue(newSpot);
@@ -147,7 +148,7 @@ class DatabaseManager
                 let imageURL = value["imageURL"] as? String
                 let tagStrings = value["tags"] as? [String]
                 var spotTags : [SkateSpot.SpotTag]?
-                
+                let spotID = value["spotID"] as? String
                 if let tags = tagStrings
                 {
                     for tag in tags
@@ -156,7 +157,7 @@ class DatabaseManager
                     }
                 }
                 
-                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, spotDescription: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags)
+                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, spotDescription: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags, spotID: spotID!)
 
                 skateSpots.append(skateSpot)
                 
@@ -175,6 +176,31 @@ class DatabaseManager
             username = value?["name"] as? String ?? ""
             completion(username)
         }
+    }
+    
+    static func saveSpotFavourites(favourites:[String]) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        
+        let favouriteSpotsRef = ref.child("users/\(currentUserID)/favouriteSpots")
+        
+        let favourites = ["spots": favourites] as [String : Any]
+        favouriteSpotsRef.setValue(favourites)
+    }
+    
+    static func getSpotFavourites(completion: @escaping ([String]) -> ()) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        var favouriteSpots = [String]()
+        let favouriteSpotsRef = ref.child("users/\(currentUserID)/favouriteSpots")
+        
+        favouriteSpotsRef.observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if value != nil {
+                favouriteSpots = (value!["spots"] as? [String]) ?? [String]()
+            }
+            
+            completion(favouriteSpots)
+        }
+        
     }
     
     static func downloadSkateSpotImage(url: String, completion: @escaping (UIImage) -> Void ) {

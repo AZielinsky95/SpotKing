@@ -25,6 +25,8 @@ class StoryCell: UICollectionViewCell {
     
     weak var delegate : StoryCellDelegate?
     
+    var spotID: String?
+    
     @IBAction func favouritePressed() {
         delegate?.favouriteClicked(cell: self)
     }
