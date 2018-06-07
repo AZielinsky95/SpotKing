@@ -170,6 +170,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="lBz-gk-y8m" id="kHL-VX-lrL"/>
+                        <outlet property="filterButton" destination="vpe-QX-NNJ" id="XKl-aJ-JAG"/>
+                        <outlet property="filterContainerBottomConstraint" destination="NVe-s8-wj6" id="UQ6-lX-Vcd"/>
                         <outlet property="filterContainerView" destination="1zx-A6-nss" id="vd1-CL-cSA"/>
                         <outlet property="mapView" destination="MCI-cK-OF8" id="srC-wM-1md"/>
                         <outlet property="settingsButton" destination="Nxp-Yd-9OF" id="hmT-ZD-HfG"/>

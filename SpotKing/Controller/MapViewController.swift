@@ -26,6 +26,8 @@ class MapViewController: UIViewController {
       return view
     }()
 
+    @IBOutlet weak var filterContainerBottomConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var mapView: MKMapView!
     
     //Tab Bar Buttons
@@ -48,7 +50,8 @@ class MapViewController: UIViewController {
        // DatabaseManager.signOut()
         setUpNavigationBar()
         setUpLocationManager()
-        setUpTabButtons() 
+        setUpTabButtons()
+        setUpFilterOptionsView()
         getSpotsFromDatabase()
         
         let currentWindow = UIApplication.shared.keyWindow
@@ -102,13 +105,42 @@ class MapViewController: UIViewController {
         }
     }
     
+    func setUpFilterOptionsView()
+    {
+       for button in filterContainerView.subviews[0].subviews
+       {
+            button.layer.cornerRadius = button.frame.size.width / 2
+        
+            button.clipsToBounds = true
+       }
+        
+//        filterContainerView.layer.shadowColor = UIColor.black.cgColor
+//        filterContainerView.layer.shadowOpacity = 0.5
+//        filterContainerView.layer.shadowOffset = CGSize.zero
+//        filterContainerView.layer.shadowRadius = 15
+//        filterContainerView.layer.borderWidth = 1
+//        filterContainerView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+    }
+    
     @IBAction func showFilterOptions(_ sender: UIButton)
     {
-        filterContainerView.center.y = view.bounds.height * 1.5
-        filterContainerView.isHidden = false
-        UIView.animate(withDuration: 0.5, delay: 1, options: [], animations: {
-            self.filterContainerView.center.y = self.view.bounds.height - self.tabBarContainer.bounds.height
-        })
+        if(sender.isSelected == false)
+        {
+            filterContainerView.center.y = view.bounds.height * 1.5
+            filterContainerView.isHidden = false
+            UIView.animate(withDuration: 0.5, delay:0, options: [], animations: {
+                self.filterContainerView.center.y = self.view.bounds.height - (self.tabBarContainer.bounds.height + 38)
+                self.filterButton.setImage(UIImage(named: "tagoptionsfilled"), for: .normal)
+            }, completion: { (done) in
+                sender.isSelected = true
+            })
+        }
+        else
+        {
+            sender.isSelected = false
+            self.filterButton.setImage(UIImage(named: "tagoptions"), for: .normal)
+            self.filterContainerView.isHidden = true
+        }
     }
     
     
