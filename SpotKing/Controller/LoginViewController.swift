@@ -99,7 +99,9 @@ class LoginViewController: UIViewController {
         label.text = "Spot King"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 44);
+      //  label.font = UIFont.boldSystemFont(ofSize: 44);
+
+        label.font = UIFont(name: "Pacific Again", size: 60)
         label.textColor = UIColor.SpotKingColors.lightGreen;
         return label
     }()
@@ -179,7 +181,7 @@ class LoginViewController: UIViewController {
         logoImageView.widthAnchor.constraint(equalToConstant: 75).isActive = true;
         logoImageView.heightAnchor.constraint(equalToConstant: 75).isActive = true;
         
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: -24).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: logoImageView.topAnchor, constant: -5).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
         titleLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true;
