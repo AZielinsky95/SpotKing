@@ -12,5 +12,6 @@ class User: NSObject {
     static var username : String!
     static var favouriteSpots = [String]()
     static var profileImage : UIImage?
+    static var favouriteParks = [String]()
     
 }
