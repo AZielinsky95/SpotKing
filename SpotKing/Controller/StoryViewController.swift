@@ -90,7 +90,7 @@ extension StoryViewController : StoryCellDelegate {
         }
         if spotType == .SkatePark {
             if User.favouriteParks.contains(spotID) {
-                guard let index = User.favouriteSpots.index(of: spotID) else { return }
+                guard let index = User.favouriteParks.index(of: spotID) else { return }
                 User.favouriteParks.remove(at: index)
                 
             } else {
