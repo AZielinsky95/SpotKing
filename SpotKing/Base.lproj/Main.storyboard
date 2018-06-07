@@ -33,53 +33,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fFl-RK-zYE"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvk-Em-N38" userLabel="TabBar">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpe-QX-NNJ" userLabel="Filter">
-                                        <rect key="frame" x="24" y="4" width="42" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="42" id="Id1-4s-vO6"/>
-                                            <constraint firstAttribute="height" constant="42" id="Mdp-tK-BG7"/>
-                                        </constraints>
-                                        <state key="normal" image="tagoptions"/>
-                                        <connections>
-                                            <action selector="showFilterOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jBv-Vz-5Yu"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxp-Yd-9OF" userLabel="Settings">
-                                        <rect key="frame" x="319" y="9.5" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="IxR-w8-Juk"/>
-                                            <constraint firstAttribute="width" constant="32" id="tRo-nI-dNm"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                        <state key="normal" title="Button" image="message"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBz-gk-y8m" userLabel="Add">
-                                        <rect key="frame" x="148" y="-12" width="78" height="78"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="78" id="IfP-xn-pqA"/>
-                                            <constraint firstAttribute="height" constant="78" id="PCL-g4-RnQ"/>
-                                        </constraints>
-                                        <state key="normal" image="editedplusicon2"/>
-                                        <connections>
-                                            <action selector="addSpotTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QcA-YD-5nH"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Nxp-Yd-9OF" secondAttribute="trailing" constant="24" id="KWe-BG-e1v"/>
-                                    <constraint firstItem="lBz-gk-y8m" firstAttribute="centerX" secondItem="uvk-Em-N38" secondAttribute="centerX" id="bVh-WL-5g0"/>
-                                    <constraint firstItem="lBz-gk-y8m" firstAttribute="centerY" secondItem="uvk-Em-N38" secondAttribute="centerY" constant="2" id="dQk-sK-CMa"/>
-                                    <constraint firstAttribute="height" constant="50" id="eK1-Ee-eW0"/>
-                                    <constraint firstAttribute="trailing" secondItem="Nxp-Yd-9OF" secondAttribute="trailing" constant="24" id="fbH-MK-KLy"/>
-                                    <constraint firstItem="vpe-QX-NNJ" firstAttribute="centerY" secondItem="uvk-Em-N38" secondAttribute="centerY" id="fo8-cx-Egm"/>
-                                    <constraint firstItem="Nxp-Yd-9OF" firstAttribute="centerY" secondItem="uvk-Em-N38" secondAttribute="centerY" id="nFg-i1-6LY"/>
-                                    <constraint firstItem="vpe-QX-NNJ" firstAttribute="leading" secondItem="uvk-Em-N38" secondAttribute="leading" constant="24" id="vc6-Gk-Q6c"/>
-                                </constraints>
-                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zx-A6-nss">
                                 <rect key="frame" x="0.0" y="542" width="375" height="75"/>
                                 <subviews>
@@ -139,6 +92,53 @@
                                     <constraint firstAttribute="trailing" secondItem="5Mb-2g-7Oo" secondAttribute="trailing" constant="33" id="YOV-Mc-z1R"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvk-Em-N38" userLabel="TabBar">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpe-QX-NNJ" userLabel="Filter">
+                                        <rect key="frame" x="24" y="4" width="42" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="Id1-4s-vO6"/>
+                                            <constraint firstAttribute="height" constant="42" id="Mdp-tK-BG7"/>
+                                        </constraints>
+                                        <state key="normal" image="tagoptions"/>
+                                        <connections>
+                                            <action selector="showFilterOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jBv-Vz-5Yu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxp-Yd-9OF" userLabel="Settings">
+                                        <rect key="frame" x="319" y="9.5" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="IxR-w8-Juk"/>
+                                            <constraint firstAttribute="width" constant="32" id="tRo-nI-dNm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <state key="normal" title="Button" image="message"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBz-gk-y8m" userLabel="Add">
+                                        <rect key="frame" x="148" y="-12" width="78" height="78"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="78" id="IfP-xn-pqA"/>
+                                            <constraint firstAttribute="height" constant="78" id="PCL-g4-RnQ"/>
+                                        </constraints>
+                                        <state key="normal" image="editedplusicon2"/>
+                                        <connections>
+                                            <action selector="addSpotTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QcA-YD-5nH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Nxp-Yd-9OF" secondAttribute="trailing" constant="24" id="KWe-BG-e1v"/>
+                                    <constraint firstItem="lBz-gk-y8m" firstAttribute="centerX" secondItem="uvk-Em-N38" secondAttribute="centerX" id="bVh-WL-5g0"/>
+                                    <constraint firstItem="lBz-gk-y8m" firstAttribute="centerY" secondItem="uvk-Em-N38" secondAttribute="centerY" constant="2" id="dQk-sK-CMa"/>
+                                    <constraint firstAttribute="height" constant="50" id="eK1-Ee-eW0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nxp-Yd-9OF" secondAttribute="trailing" constant="24" id="fbH-MK-KLy"/>
+                                    <constraint firstItem="vpe-QX-NNJ" firstAttribute="centerY" secondItem="uvk-Em-N38" secondAttribute="centerY" id="fo8-cx-Egm"/>
+                                    <constraint firstItem="Nxp-Yd-9OF" firstAttribute="centerY" secondItem="uvk-Em-N38" secondAttribute="centerY" id="nFg-i1-6LY"/>
+                                    <constraint firstItem="vpe-QX-NNJ" firstAttribute="leading" secondItem="uvk-Em-N38" secondAttribute="leading" constant="24" id="vc6-Gk-Q6c"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -170,6 +170,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="lBz-gk-y8m" id="kHL-VX-lrL"/>
+                        <outlet property="filterButton" destination="vpe-QX-NNJ" id="XKl-aJ-JAG"/>
+                        <outlet property="filterContainerBottomConstraint" destination="NVe-s8-wj6" id="UQ6-lX-Vcd"/>
                         <outlet property="filterContainerView" destination="1zx-A6-nss" id="vd1-CL-cSA"/>
                         <outlet property="mapView" destination="MCI-cK-OF8" id="srC-wM-1md"/>
                         <outlet property="settingsButton" destination="Nxp-Yd-9OF" id="hmT-ZD-HfG"/>
@@ -653,8 +655,8 @@
     </scenes>
     <resources>
         <image name="editedplusicon2" width="256" height="256"/>
-        <image name="heart" width="50" height="50"/>
-        <image name="heart-empty" width="1600" height="1600"/>
+        <image name="heart" width="35" height="31"/>
+        <image name="heart-empty" width="35" height="31"/>
         <image name="menu" width="30" height="30"/>
         <image name="message" width="32" height="32"/>
         <image name="profile" width="256" height="256"/>
