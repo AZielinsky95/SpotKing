@@ -652,9 +652,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="50" height="50"/>
-        <image name="heart" width="35" height="31"/>
-        <image name="heart-empty" width="35" height="31"/>
+        <image name="editedplusicon2" width="256" height="256"/>
+        <image name="heart" width="50" height="50"/>
+        <image name="heart-empty" width="1600" height="1600"/>
         <image name="menu" width="30" height="30"/>
         <image name="message" width="32" height="32"/>
         <image name="profile" width="256" height="256"/>
