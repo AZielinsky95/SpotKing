@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
 
     var locationManager: CLLocationManager!
     var skateSpots = [SkateSpot]()
+    var skateSpotsNewsFeed = [SkateSpot]()
     var currentLocation : CLLocation?
     
     
@@ -49,6 +50,7 @@ class MapViewController: UIViewController {
         }
         
        // DatabaseManager.signOut()
+        setupUserProfile()
         setUpNavigationBar()
         setUpLocationManager()
         setUpTabButtons() 
@@ -57,7 +59,7 @@ class MapViewController: UIViewController {
         let currentWindow = UIApplication.shared.keyWindow
         currentWindow?.addSubview(popUpView)
         
-        setupUserProfile()
+        
     }
     
     func setupUserProfile() {
@@ -77,12 +79,15 @@ class MapViewController: UIViewController {
     {
         DatabaseManager.getSkateSpots { (spots) in
             
+            self.skateSpotsNewsFeed = spots.reversed()
+            
             for spot in spots
             {
-               self.skateSpots.append(spot)
-               self.mapView.addAnnotation(spot)
+                
+                self.skateSpots.append(spot)
+                self.mapView.addAnnotation(spot)
+                
             }
-            
             self.downloadImagesForSkateSpots()
         }
     }
@@ -103,6 +108,31 @@ class MapViewController: UIViewController {
                 spot.spotImage = #imageLiteral(resourceName: "shop")
             }
         }
+        
+        for spot in skateSpotsNewsFeed
+        {
+            if let url = spot.imageURL
+            {
+                DatabaseManager.downloadSkateSpotImage(url: url, completion: { (image) in
+                    spot.spotImage = image
+                })
+            }
+            else
+            {
+                //Placeholder
+                spot.spotImage = #imageLiteral(resourceName: "shop")
+            }
+            if spot.userID != nil {
+               
+                    DatabaseManager.downloadSpotProfileImage(userID: spot.userID, completion: { (image) in
+                        spot.userProfileImage = image
+                    })
+
+            }
+
+            
+        }
+        
     }
     
     func setUpTabButtons()
@@ -237,6 +267,11 @@ class MapViewController: UIViewController {
                 {
                     for spot in spots
                     {
+                        let spotSkateSpot = spot as! SkateSpot
+                        if spotSkateSpot.spotImage == nil {
+                            spotSkateSpot.spotImage = #imageLiteral(resourceName: "shop")
+                        }
+                        self.skateSpotsNewsFeed.append(spotSkateSpot)
                         self.skateSpots.append(spot as! SkateSpot);
                         self.mapView.addAnnotation(spot)
                     }
@@ -247,7 +282,7 @@ class MapViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StorySegue" {
             if let storyVC = segue.destination as? StoryViewController {
-                storyVC.skateSpots = self.skateSpots.reversed()
+                storyVC.skateSpots = self.skateSpotsNewsFeed
             }
         }
     }

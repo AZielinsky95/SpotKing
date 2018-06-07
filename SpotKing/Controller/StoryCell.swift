@@ -31,5 +31,4 @@ class StoryCell: UICollectionViewCell {
         delegate?.favouriteClicked(cell: self)
     }
     
-    
 }
