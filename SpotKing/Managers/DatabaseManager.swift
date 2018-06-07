@@ -252,6 +252,31 @@ class DatabaseManager
         
     }
     
+    static func saveParkFavourites(favourites:[String]) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        
+        let favouriteSpotsRef = ref.child("users/\(currentUserID)/favouriteParks")
+        
+        let favourites = ["parks": favourites] as [String : Any]
+        favouriteSpotsRef.setValue(favourites)
+    }
+    
+    static func getParkFavourites(completion: @escaping ([String]) -> ()) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        var favouriteSpots = [String]()
+        let favouriteSpotsRef = ref.child("users/\(currentUserID)/favouriteParks")
+        
+        favouriteSpotsRef.observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if value != nil {
+                favouriteSpots = (value!["parks"] as? [String]) ?? [String]()
+            }
+            
+            completion(favouriteSpots)
+        }
+        
+    }
+    
     static func downloadSkateSpotImage(url: String, completion: @escaping (UIImage) -> Void ) {
         let configuration = URLSessionConfiguration.default
         let session: URLSession = URLSession(configuration: configuration)

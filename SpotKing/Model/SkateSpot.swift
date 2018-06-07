@@ -136,6 +136,7 @@ class SkateSpot : NSObject, MKAnnotation
         title = json["name"] as? String;
         spotRating = json["rating"] as? Double;
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
+        spotID = json["id"] as? String
         
     }
     

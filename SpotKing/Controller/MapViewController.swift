@@ -59,6 +59,11 @@ class MapViewController: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
     func setupUserProfile() {
         DatabaseManager.getUserName { (username) in
             User.username = username
@@ -69,6 +74,9 @@ class MapViewController: UIViewController {
 
         DatabaseManager.getSpotFavourites { (favourites) in
             User.favouriteSpots = favourites
+        }
+        DatabaseManager.getParkFavourites { (favourites) in
+            User.favouriteParks = favourites
         }
     }
     

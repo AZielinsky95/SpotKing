@@ -86,7 +86,6 @@ class NetworkManager: NSObject
                 if let photos = location["photos"] as? [[String:Any]]
                 {
                  let photoReference = photos[0]["photo_reference"] as! String
-                 let spot = SkateSpot(json:location,type: type)
                  imageURL = getSkateShopAndParkImageURL(photoref: photoReference)
                 }
                 

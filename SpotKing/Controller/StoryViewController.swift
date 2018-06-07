@@ -23,7 +23,10 @@ class StoryViewController: UIViewController {
             User.favouriteSpots = favouriteSpots
         }
         
-    }
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "map")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "map")
+
+     }
 }
 
 extension StoryViewController : UICollectionViewDataSource
@@ -57,7 +60,7 @@ extension StoryViewController : UICollectionViewDataSource
         let spotID = spot.spotID
         cell.spotID = spotID
         if spotID != nil {
-            if User.favouriteSpots.contains(spotID!) {
+            if User.favouriteSpots.contains(spotID!) || User.favouriteParks.contains(spotID!) {
                 cell.favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
             } else {
                 cell.favouriteButton.setImage(UIImage(named: "heart-empty"), for: .normal)
@@ -73,19 +76,29 @@ extension StoryViewController : UICollectionViewDataSource
 extension StoryViewController : StoryCellDelegate {
     func favouriteClicked(cell: StoryCell) {
         
-        guard let indexPath = collectionView.indexPath(for: cell), let spotID = skateSpots![indexPath.row].spotID
-            else { return }
+        guard let indexPath = collectionView.indexPath(for: cell), let spotType = skateSpots![indexPath.row].spotType, let spotID = skateSpots![indexPath.row].spotID else { return }
         
-        if User.favouriteSpots.contains(spotID) {
-            guard let index = User.favouriteSpots.index(of: spotID) else { return }
-            User.favouriteSpots.remove(at: index)
-            
-        } else {
-            User.favouriteSpots.append(spotID)            
+        if spotType == .SkateSpot {
+            if User.favouriteSpots.contains(spotID) {
+                guard let index = User.favouriteSpots.index(of: spotID) else { return }
+                User.favouriteSpots.remove(at: index)
+                
+            } else {
+                User.favouriteSpots.append(spotID)
+            }
+            DatabaseManager.saveSpotFavourites(favourites: User.favouriteSpots)
         }
-        DatabaseManager.saveSpotFavourites(favourites: User.favouriteSpots)
+        if spotType == .SkatePark {
+            if User.favouriteParks.contains(spotID) {
+                guard let index = User.favouriteSpots.index(of: spotID) else { return }
+                User.favouriteParks.remove(at: index)
+                
+            } else {
+                User.favouriteParks.append(spotID)
+            }
+            DatabaseManager.saveParkFavourites(favourites: User.favouriteParks)
+        }
         
-      
         collectionView.reloadData()
     }
 }
