@@ -118,7 +118,8 @@ class DatabaseManager
                     "imageURL": url.absoluteString,
                     "timestamp":date.timeIntervalSince1970,
                     "tags":spot.spotTagsToStringArray(),
-                    "spotID":spotID
+                    "spotID":spotID,
+                    "username":spot.username
                     ] as [String : Any]
                 
                 generatedRef.setValue(newSpot);
@@ -149,6 +150,7 @@ class DatabaseManager
                 let tagStrings = value["tags"] as? [String]
                 var spotTags : [SkateSpot.SpotTag]?
                 let spotID = value["spotID"] as? String
+                let username = value["username"] as? String
                 if let tags = tagStrings
                 {
                     for tag in tags
@@ -157,7 +159,7 @@ class DatabaseManager
                     }
                 }
                 
-                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, spotDescription: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags, spotID: spotID!)
+                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, spotDescription: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags, spotID: spotID!, username: username!)
 
                 skateSpots.append(skateSpot)
                 
@@ -202,6 +204,27 @@ class DatabaseManager
         }
 
         
+    }
+    
+    static func downloadSpotProfileImage(userID: String, completion: @escaping (UIImage) -> ()) {
+        let userRef = ref.child("users/\(userID)/profile")
+        userRef.observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let url = value?["profileImageURL"] as? String ?? ""
+            
+            let configuration = URLSessionConfiguration.default
+            let session: URLSession = URLSession(configuration: configuration)
+            guard let imageURL = URL(string: url) else { return }
+            
+            let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL) { (url, response, error)  in
+                let data = NSData(contentsOf: url!)
+                let image = UIImage(data: data! as Data)!
+                completion(image)
+            }
+            
+            downloadTask.resume()
+            
+        }
     }
     
     static func saveSpotFavourites(favourites:[String]) {

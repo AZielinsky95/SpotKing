@@ -22,6 +22,7 @@ class StoryViewController: UIViewController {
         DatabaseManager.getSpotFavourites { (favouriteSpots) in
             User.favouriteSpots = favouriteSpots
         }
+        
     }
 }
 
@@ -38,11 +39,22 @@ extension StoryViewController : UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCell", for: indexPath) as! StoryCell
         
-        cell.imageView.image = skateSpots![indexPath.row].spotImage
-        cell.spotTitle.text = skateSpots![indexPath.row].title
-        cell.spotDescription.text = skateSpots![indexPath.row].spotDescription
+        guard let spot = skateSpots?[indexPath.row] else { fatalError() }
         
-        let spotID = skateSpots![indexPath.row].spotID
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2
+        cell.profileImage.clipsToBounds = true
+    
+        cell.profileImage.image = spot.userProfileImage
+        
+        cell.imageView.image = spot.spotImage
+        cell.spotTitle.text = spot.title
+        cell.spotDescription.text = spot.spotDescription
+        cell.username.text = spot.username
+
+        cell.username.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
+        cell.profileImage.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
+        
+        let spotID = spot.spotID
         cell.spotID = spotID
         if spotID != nil {
             if User.favouriteSpots.contains(spotID!) {
