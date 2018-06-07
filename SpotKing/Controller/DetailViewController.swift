@@ -40,9 +40,7 @@ class DetailViewController: UIViewController {
                 usernameLabel.isHidden = true;
                 break;
             case SkateSpot.SpotType.SkateSpot:
-                DatabaseManager.getUserName(userID: (spot?.userID)!) { (username) in
-                    self.usernameLabel.text = username
-                }
+                self.usernameLabel.text = User.username
                 break;
             }
         }

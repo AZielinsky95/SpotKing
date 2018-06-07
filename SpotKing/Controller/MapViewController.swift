@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import FirebaseAuth
 
 class MapViewController: UIViewController {
 
@@ -55,6 +56,21 @@ class MapViewController: UIViewController {
         
         let currentWindow = UIApplication.shared.keyWindow
         currentWindow?.addSubview(popUpView)
+        
+        setupUserProfile()
+    }
+    
+    func setupUserProfile() {
+        DatabaseManager.getUserName { (username) in
+            User.username = username
+        }
+        DatabaseManager.downloadProfileImage { (image) in
+            User.profileImage = image
+        }
+
+        DatabaseManager.getSpotFavourites { (favourites) in
+            User.favouriteSpots = favourites
+        }
     }
     
     func getSpotsFromDatabase()

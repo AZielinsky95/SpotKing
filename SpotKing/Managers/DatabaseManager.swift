@@ -167,15 +167,41 @@ class DatabaseManager
         })
     }
     
-    static func getUserName(userID: String, completion: @escaping (String)->()) {
+    static func getUserName(completion: @escaping (String)->()) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
         var username = ""
         
-        let userRef = ref.child("users/\(userID)")
+        let userRef = ref.child("users/\(currentUserID)")
         userRef.observeSingleEvent(of: .value) { (snapshot) in
             let value = snapshot.value as? NSDictionary
             username = value?["name"] as? String ?? ""
             completion(username)
         }
+    }
+    
+    static func downloadProfileImage(completion: @escaping (UIImage) -> ()) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        
+        let userRef = ref.child("users/\(currentUserID)/profile")
+        userRef.observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let url = value?["profileImageURL"] as? String ?? ""
+           
+            let configuration = URLSessionConfiguration.default
+            let session: URLSession = URLSession(configuration: configuration)
+            guard let imageURL = URL(string: url) else { return }
+            
+            let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL) { (url, response, error)  in
+                let data = NSData(contentsOf: url!)
+                let image = UIImage(data: data! as Data)!
+                completion(image)
+            }
+            
+            downloadTask.resume()
+        
+        }
+
+        
     }
     
     static func saveSpotFavourites(favourites:[String]) {

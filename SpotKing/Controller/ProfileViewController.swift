@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageViewTapped(recognizer:)))
         tapGesture.delegate = self
         self.imageView.addGestureRecognizer(tapGesture)
+        self.imageView.image = User.profileImage
+        self.username.text = User.username
         
     }
     
