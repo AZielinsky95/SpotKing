@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     var skateSpots = [SkateSpot]()
     var currentLocation : CLLocation?
     
+    @IBOutlet weak var filterContainerView: UIView!
     
     let popUpView : PopUpView =
     {
@@ -27,16 +28,12 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     //Tab Bar Buttons
+    @IBOutlet weak var tabBarContainer: UIView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
     let regionRadius: CLLocationDistance = 5000
-    
-    func setUpPopUpView()
-    {
-      //  let popUpView = UIView
-    }
     
     override func viewDidLoad()
     {
@@ -89,22 +86,28 @@ class MapViewController: UIViewController {
         }
     }
     
+    @IBAction func showFilterOptions(_ sender: UIButton)
+    {
+     filterContainerView.isHidden = false
+    }
+    
+    
     func setUpTabButtons()
     {
-        let addImage = UIImage(named: "add")
-        let tintedImage = addImage?.withRenderingMode(.alwaysTemplate)
-        addButton.setImage(tintedImage, for: .normal)
-        addButton.tintColor = UIColor.lightGray
+        tabBarContainer.layer.shadowColor = UIColor.SpotKingColors.lightGreen.cgColor
+        tabBarContainer.layer.shadowOpacity = 0.5
+        tabBarContainer.layer.shadowOffset = CGSize.zero
+        tabBarContainer.layer.shadowRadius = 15
         
-        let settingsImage = UIImage(named: "settings")
+        let settingsImage = UIImage(named: "message")
         let tintedImage2 = settingsImage?.withRenderingMode(.alwaysTemplate)
         settingsButton.setImage(tintedImage2, for: .normal)
         settingsButton.tintColor = UIColor.lightGray
         
-        let filterImage = UIImage(named: "more")
-        let tintedImage3 = filterImage?.withRenderingMode(.alwaysTemplate)
-        filterButton.setImage(tintedImage3, for: .normal)
-        filterButton.tintColor = UIColor.lightGray
+//        let filterImage = UIImage(named: "more")
+//        let tintedImage3 = filterImage?.withRenderingMode(.alwaysTemplate)
+//        filterButton.setImage(tintedImage3, for: .normal)
+//        filterButton.tintColor = UIColor.lightGray
     }
     
     func showPopUpView()
@@ -173,7 +176,7 @@ class MapViewController: UIViewController {
        // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Pacific Again", size: 20)!]
         self.navigationItem.title = "Spot King"
         self.navigationController?.navigationBar.tintColor = UIColor.SpotKingColors.lightGreen
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Summers Victory Over Spring", size: 42)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Infinity", size: 32)!]
     }
     
     func centerMapOnLocation(location:CLLocationCoordinate2D)

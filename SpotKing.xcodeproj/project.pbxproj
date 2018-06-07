@@ -11,6 +11,8 @@
 		1E4F6F0A20C87ABD001DF9A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F6F0920C87ABD001DF9A4 /* User.swift */; };
 		1E89B46520C1CBBC004941CC /* AddSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */; };
 		7CAB6CE4FBD205A9D2FCBD24 /* Pods_SpotKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */; };
+		CA32D50120C99A3C00381316 /* Infinity.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA32D4FF20C99A3B00381316 /* Infinity.ttf */; };
+		CA32D50220C99A3C00381316 /* Vanadine Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA32D50020C99A3B00381316 /* Vanadine Bold.ttf */; };
 		CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */; };
 		CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7020C065EC00347FE9 /* AppDelegate.swift */; };
 		CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7220C065EC00347FE9 /* MapViewController.swift */; };
@@ -35,6 +37,8 @@
 		26EC2CCD1248D137C4FD44E5 /* Pods-SpotKing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotKing.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing.release.xcconfig"; sourceTree = "<group>"; };
 		5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotKing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816B31C89DD49C83F4F387A5 /* Pods-SpotKing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotKing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing.debug.xcconfig"; sourceTree = "<group>"; };
+		CA32D4FF20C99A3B00381316 /* Infinity.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Infinity.ttf; sourceTree = "<group>"; };
+		CA32D50020C99A3B00381316 /* Vanadine Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vanadine Bold.ttf"; sourceTree = "<group>"; };
 		CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA696A6D20C065EC00347FE9 /* SpotKing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotKing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA696A7020C065EC00347FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 		CAF3C32320C8761F0003EDF5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				CA32D4FF20C99A3B00381316 /* Infinity.ttf */,
+				CA32D50020C99A3B00381316 /* Vanadine Bold.ttf */,
 				CAF3C32720C8857B0003EDF5 /* SummerVictory.otf */,
 				CAF3C32520C879F90003EDF5 /* Pacific Again.ttf */,
 			);
@@ -231,6 +237,8 @@
 				CA696A8320C067A400347FE9 /* GoogleService-Info.plist in Resources */,
 				CAF3C32620C879F90003EDF5 /* Pacific Again.ttf in Resources */,
 				CAF3C32820C8857B0003EDF5 /* SummerVictory.otf in Resources */,
+				CA32D50220C99A3C00381316 /* Vanadine Bold.ttf in Resources */,
+				CA32D50120C99A3C00381316 /* Infinity.ttf in Resources */,
 				CA696A7820C065ED00347FE9 /* Assets.xcassets in Resources */,
 				CA696A7620C065EC00347FE9 /* Main.storyboard in Resources */,
 			);
@@ -447,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4VP2H7XPMW;
+				DEVELOPMENT_TEAM = N8EE67V363;
 				INFOPLIST_FILE = SpotKing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -467,7 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4VP2H7XPMW;
+				DEVELOPMENT_TEAM = N8EE67V363;
 				INFOPLIST_FILE = SpotKing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (

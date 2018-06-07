@@ -43,9 +43,9 @@ class PopUpView: UIView
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 1
+        layer.shadowRadius = 15
         layer.cornerRadius = 5
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         layer.borderWidth = 3
         
         addSubview(popUpLabel)
