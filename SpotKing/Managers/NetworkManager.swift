@@ -37,7 +37,7 @@ class NetworkManager: NSObject
         
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
-        guard var URL = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json") else {return}
+        guard var url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json") else {return}
         
         var keyword = ""
         
@@ -54,11 +54,12 @@ class NetworkManager: NSObject
             "location": "\(location.latitude),\(location.longitude)",
             "radius": "5000",
             "keyword": "\(keyword)",
-            "key": "AIzaSyCV01vbVIhaZQUitWBtdv3ymzBBvipwRmA",
+            "key": "AIzaSyA_-acdQ-vkOXl6GDEiF_VDZY6bjq40l6I",
             ]
         
-        URL = URL.appendingQueryParameters(URLParams)
-        var request = URLRequest(url: URL)
+        url = url.appendingQueryParameters(URLParams)
+
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         /* Start a new Task */

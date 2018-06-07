@@ -57,6 +57,13 @@ extension StoryViewController : UICollectionViewDataSource
         cell.username.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
         cell.profileImage.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
         
+        if spot.spotType != SkateSpot.SpotType.SkateSpot {
+            cell.spotTitle.frame.origin.y = 215
+        }
+        else {
+            cell.spotTitle.frame.origin.y = 244
+        }
+        
         let spotID = spot.spotID
         cell.spotID = spotID
         if spotID != nil {
