@@ -104,7 +104,11 @@ class MapViewController: UIViewController {
     
     @IBAction func showFilterOptions(_ sender: UIButton)
     {
-     filterContainerView.isHidden = false
+        filterContainerView.center.y = view.bounds.height * 1.5
+        filterContainerView.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 1, options: [], animations: {
+            self.filterContainerView.center.y = self.view.bounds.height - self.tabBarContainer.bounds.height
+        })
     }
     
     
