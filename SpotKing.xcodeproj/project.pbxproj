@@ -15,6 +15,7 @@
 		7CAB6CE4FBD205A9D2FCBD24 /* Pods_SpotKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */; };
 		CA32D50120C99A3C00381316 /* Infinity.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA32D4FF20C99A3B00381316 /* Infinity.ttf */; };
 		CA32D50220C99A3C00381316 /* Vanadine Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA32D50020C99A3B00381316 /* Vanadine Bold.ttf */; };
+		CA32D50420C9DC6C00381316 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50320C9DC6C00381316 /* RatingControl.swift */; };
 		CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */; };
 		CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7020C065EC00347FE9 /* AppDelegate.swift */; };
 		CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7220C065EC00347FE9 /* MapViewController.swift */; };
@@ -43,6 +44,7 @@
 		816B31C89DD49C83F4F387A5 /* Pods-SpotKing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotKing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing.debug.xcconfig"; sourceTree = "<group>"; };
 		CA32D4FF20C99A3B00381316 /* Infinity.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Infinity.ttf; sourceTree = "<group>"; };
 		CA32D50020C99A3B00381316 /* Vanadine Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vanadine Bold.ttf"; sourceTree = "<group>"; };
+		CA32D50320C9DC6C00381316 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA696A6D20C065EC00347FE9 /* SpotKing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotKing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA696A7020C065EC00347FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF3C32020C85E590003EDF5 /* PopUpView.swift */,
+				CA32D50320C9DC6C00381316 /* RatingControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA32D50420C9DC6C00381316 /* RatingControl.swift in Sources */,
 				CAF3C32120C85E590003EDF5 /* PopUpView.swift in Sources */,
 				CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */,
 				CA696A8E20C1C43B00347FE9 /* LoginViewController.swift in Sources */,

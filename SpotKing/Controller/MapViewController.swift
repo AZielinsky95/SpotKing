@@ -27,8 +27,6 @@ class MapViewController: UIViewController {
       return view
     }()
 
-    @IBOutlet weak var filterContainerBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var mapView: MKMapView!
     
     //Tab Bar Buttons
@@ -184,7 +182,7 @@ class MapViewController: UIViewController {
     
     func setUpTabButtons()
     {
-        tabBarContainer.layer.shadowColor = UIColor.SpotKingColors.lightGreen.cgColor
+        tabBarContainer.layer.shadowColor = UIColor.black.cgColor
         tabBarContainer.layer.shadowOpacity = 0.5
         tabBarContainer.layer.shadowOffset = CGSize.zero
         tabBarContainer.layer.shadowRadius = 15
@@ -193,11 +191,6 @@ class MapViewController: UIViewController {
         let tintedImage2 = settingsImage?.withRenderingMode(.alwaysTemplate)
         settingsButton.setImage(tintedImage2, for: .normal)
         settingsButton.tintColor = UIColor.lightGray
-        
-//        let filterImage = UIImage(named: "more")
-//        let tintedImage3 = filterImage?.withRenderingMode(.alwaysTemplate)
-//        filterButton.setImage(tintedImage3, for: .normal)
-//        filterButton.tintColor = UIColor.lightGray
     }
     
     func showPopUpView()
