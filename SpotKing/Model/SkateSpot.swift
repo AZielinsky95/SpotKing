@@ -169,7 +169,9 @@ class SkateSpot : NSObject, MKAnnotation
     
     func ratingToStars() -> String
     {
-        switch (Int(spotRating!))
+        guard let rating = spotRating else { return "" }
+        
+        switch (Int(rating))
         {
             case 1:
             return "⭐️";
