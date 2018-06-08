@@ -10,52 +10,159 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    @IBOutlet weak var addressLabel: UILabel!
-    
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
-    @IBOutlet weak var spotImageView: UIImageView!
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var profileImageView: UIImageView!
+    var header:DetailReusableView?
     
     var spot : SkateSpot?
+
+    var ratingControlTopConstraintForShop:NSLayoutConstraint?
+    
+    var isHeaderSet = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.title = spot?.title
+        isHeaderSet = false
+    }
+    
+    func setUpDetailContainerView()
+    {
+        isHeaderSet = true
+        setRating(rating: spot?.spotRating)
+        header!.spotImageView.image = spot?.spotImage
+        header!.detailContainerView.layer.cornerRadius = 5
+        header!.detailContainerView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        header!.detailContainerView.layer.borderWidth = 2
 
-        //self.navigationItem.title = spot?.title
-        titleLabel.text = spot?.title
-        
         if let type = spot?.spotType
         {
             switch type {
             case SkateSpot.SpotType.SkateShop:
-                usernameLabel.isHidden = true;
-                profileImageView.isHidden = true;
-                addressLabel.isHidden = false
+                setUpSkateShopView()
                 break;
             case SkateSpot.SpotType.SkatePark:
-                usernameLabel.isHidden = true;
-                profileImageView.isHidden = true;
-                addressLabel.isHidden = false
+                setUpSkateParkView()
                 break;
             case SkateSpot.SpotType.SkateSpot:
-                self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.size.width/2)
-                self.profileImageView.clipsToBounds = true
-                self.profileImageView.image = User.profileImage
-                self.usernameLabel.text = User.username
+                setUpSkateSpotView()
                 break;
             }
         }
-    
-        descriptionLabel.text = spot?.spotDescription
-        spotImageView.image = spot?.spotImage
     }
     
-    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+    func setUpSkateParkView()
+    {
+       header!.descriptionLabel.text = spot?.phoneNumber
+       header!.usernameLabel.isHidden = true;
+       header!.profileImageView.isHidden = true;
+       header!.addressLabel.isHidden = false
+       header!.addressLabel.text = spot?.address
+       header!.ratingControl.isUserInteractionEnabled = false
     }
+    
+    func setUpSkateSpotView()
+    {
+        header!.usernameLabel.isHidden = false;
+        header!.profileImageView.isHidden = false;
+        header!.addressLabel.isHidden = true
+        header!.ratingControl.isUserInteractionEnabled = true
+        header!.profileImageView.layer.cornerRadius = ( header!.profileImageView.frame.size.width/2)
+        header!.profileImageView.clipsToBounds = true
+        header!.profileImageView.image = User.profileImage
+        header!.usernameLabel.text = User.username
+        header!.descriptionLabel.text = spot?.spotDescription
+
+        ratingControlTopConstraintForShop?.isActive = false
+        header!.ratingControlTopConstraint.isActive = true
+
+        header!.websiteLabel.isHidden = true
+    }
+
+    func setUpSkateShopView()
+    {
+        header!.titleLabel.text = "Reviews"
+        header!.usernameLabel.isHidden = true;
+        header!.profileImageView.isHidden = true;
+        header!.addressLabel.isHidden = false
+        header!.addressLabel.text = spot?.address
+        header!.ratingControl.isUserInteractionEnabled = false
+        header!.descriptionLabel.text = spot?.phoneNumber
+//        header!.detailContainerView.layer.shadowColor = UIColor.black.cgColor
+//        header!.detailContainerView.layer.shadowOpacity = 0.5
+//        header!.detailContainerView.layer.shadowOffset = CGSize.zero
+//        header!.detailContainerView.layer.shadowRadius = 15
+        header!.ratingControlTopConstraint.isActive = false;
+        ratingControlTopConstraintForShop =  header!.ratingControl.topAnchor.constraint(equalTo: header!.usernameLabel.bottomAnchor, constant: 6)
+        ratingControlTopConstraintForShop!.isActive = true
+
+        header!.websiteLabel.isHidden = false
+        header!.websiteLabel.text = spot?.website
+    }
+
+    func setRating(rating:Double?)
+    {
+        if let rating = rating
+        {
+             header!.ratingControl.rating = Int(rating)
+        }
+        else
+        {
+             header!.ratingControl.rating = 0;
+        }
+    }
+    
+}
+
+
+extension DetailViewController : UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if(spot?.spotType == SkateSpot.SpotType.SkateShop)
+        {
+            return (spot?.reviews?.count)!
+        }
+        
+        return 1
+        //else if its a skate spot get number of comments
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionElementKindSectionHeader {
+            self.header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for:indexPath) as! DetailReusableView
+            
+         if(!isHeaderSet)
+         {
+           setUpDetailContainerView()
+         }
+           
+           return self.header!
+        }
+        
+   
+         return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as! DetailCell
+        
+        let review = spot?.reviews![indexPath.row]
+        
+        cell.authorLabel.text = review!["author_name"] as! String
+        cell.textLabel.text = review!["text"] as! String
+        
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.shadowOffset = CGSize.zero
+        cell.layer.shadowRadius = 10
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 5
+        cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        return cell
+        
+    }
+    
+    
+    
 }

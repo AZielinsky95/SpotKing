@@ -89,7 +89,6 @@ class MapViewController: UIViewController {
             
             for spot in spots
             {
-                
                 self.skateSpots.append(spot)
                 self.mapView.addAnnotation(spot)
                 
@@ -260,7 +259,7 @@ class MapViewController: UIViewController {
        // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Pacific Again", size: 20)!]
         self.navigationItem.title = "Spot King"
         self.navigationController?.navigationBar.tintColor = UIColor.SpotKingColors.lightGreen
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Infinity", size: 32)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Helvetica Neue", size: 32)!]
     }
     
     func centerMapOnLocation(location:CLLocationCoordinate2D)
@@ -292,7 +291,8 @@ class MapViewController: UIViewController {
                 {
                     for spot in spots
                     {
-                        self.skateSpots.append(spot as! SkateSpot);
+                        NetworkManager.getSpotDetails(spot: spot, placeID: spot.placeID!)
+                        self.skateSpots.append(spot);
                         self.mapView.addAnnotation(spot)
                     }
             }
@@ -303,12 +303,12 @@ class MapViewController: UIViewController {
                 {
                     for spot in spots
                     {
-                        let spotSkateSpot = spot as! SkateSpot
-                        if spotSkateSpot.spotImage == nil {
-                            spotSkateSpot.spotImage = #imageLiteral(resourceName: "shop")
+                        NetworkManager.getSpotDetails(spot: spot, placeID: spot.placeID!)
+                        if spot.spotImage == nil {
+                            spot.spotImage = #imageLiteral(resourceName: "shop")
                         }
-                        self.skateSpotsNewsFeed.append(spotSkateSpot)
-                        self.skateSpots.append(spot as! SkateSpot);
+                        self.skateSpotsNewsFeed.append(spot)
+                        self.skateSpots.append(spot);
                         self.mapView.addAnnotation(spot)
                     }
             }

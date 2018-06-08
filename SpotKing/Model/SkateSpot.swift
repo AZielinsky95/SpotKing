@@ -99,6 +99,14 @@ class SkateSpot : NSObject, MKAnnotation
     var username: String!
     var comments = [String:String]()
     
+    //SHOP AND PARK SPECIFIC
+    var placeID:String?
+    var address:String?
+    var phoneNumber:String?
+    var shopImages:[UIImage]?
+    var reviews:[Dictionary<String, Any>]?
+    var website:String?
+    
     lazy var pinImageAndColor : (UIImage,UIColor) =
     {
             switch spotType! {
@@ -139,7 +147,8 @@ class SkateSpot : NSObject, MKAnnotation
         spotRating = json["rating"] as? Double;
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
         spotID = json["id"] as? String
-        
+        address = json["vicinity"] as? String
+        placeID = json["place_id"] as? String
     }
     
     func spotTagsToStringArray() -> [String]
