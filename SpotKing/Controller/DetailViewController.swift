@@ -9,8 +9,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    @IBOutlet weak var viewContainer: UIView!
     
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -20,30 +18,35 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var spotImageView: UIImageView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    
     var spot : SkateSpot?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewContainer.layer.cornerRadius = 5
-        viewContainer.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
-        viewContainer.layer.borderWidth = 3
-        viewContainer.layer.shadowColor = UIColor.black.cgColor
-        viewContainer.layer.shadowOpacity = 1
-        viewContainer.layer.shadowOffset = CGSize.zero
-        viewContainer.layer.shadowRadius = 10
-        self.navigationItem.title = spot?.title
+
+        //self.navigationItem.title = spot?.title
+        titleLabel.text = spot?.title
         
         if let type = spot?.spotType
         {
             switch type {
             case SkateSpot.SpotType.SkateShop:
                 usernameLabel.isHidden = true;
+                profileImageView.isHidden = true;
+                addressLabel.isHidden = false
                 break;
             case SkateSpot.SpotType.SkatePark:
                 usernameLabel.isHidden = true;
+                profileImageView.isHidden = true;
+                addressLabel.isHidden = false
                 break;
             case SkateSpot.SpotType.SkateSpot:
+                self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.size.width/2)
+                self.profileImageView.clipsToBounds = true
+                self.profileImageView.image = User.profileImage
                 self.usernameLabel.text = User.username
                 break;
             }
