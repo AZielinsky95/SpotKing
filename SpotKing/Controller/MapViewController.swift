@@ -321,6 +321,12 @@ class MapViewController: UIViewController {
                 storyVC.skateSpots = self.skateSpotsNewsFeed
             }
         }
+        
+        if segue.identifier == "ProfileSegue" {
+            if let profileVC = segue.destination as? ProfileViewController {
+                profileVC.skateSpots = self.skateSpotsNewsFeed
+            }
+        }
     }
 }
 

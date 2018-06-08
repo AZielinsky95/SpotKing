@@ -12,8 +12,11 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    var skateSpots : [SkateSpot]?
     
+    var favouriteSpotsImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,21 @@ class ProfileViewController: UIViewController {
         self.imageView.image = User.profileImage
         self.username.text = User.username
         
+        self.collectionView.dataSource = self
+        
+        setupFavouriteSpotImages()
+        
+    }
+    
+    func setupFavouriteSpotImages() {
+        guard let skateSpots = skateSpots else { return }
+        
+        for spot in skateSpots  {
+            if User.favouriteSpots.contains(spot.spotID) || User.favouriteParks.contains(spot.spotID) {
+                guard let image = spot.spotImage else { continue }
+                favouriteSpotsImages.append(image)
+            }
+        }
     }
     
     @objc func imageViewTapped(recognizer : UITapGestureRecognizer) {
@@ -102,4 +120,20 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         self.dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension ProfileViewController : UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return favouriteSpotsImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
+        
+        cell.imageView.image = favouriteSpotsImages[indexPath.row]
+        
+        return cell
+        
+    }
 }
