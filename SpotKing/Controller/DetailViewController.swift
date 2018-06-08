@@ -24,12 +24,15 @@ class DetailViewController: UIViewController {
     
     var spot : SkateSpot?
     
+    @IBOutlet weak var ratingControl: RatingControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //self.navigationItem.title = spot?.title
         titleLabel.text = spot?.title
-        
+        setRating(rating: spot?.spotRating)
+    
         if let type = spot?.spotType
         {
             switch type {
@@ -37,13 +40,21 @@ class DetailViewController: UIViewController {
                 usernameLabel.isHidden = true;
                 profileImageView.isHidden = true;
                 addressLabel.isHidden = false
+                addressLabel.text = spot?.address
+                ratingControl.isUserInteractionEnabled = false
                 break;
             case SkateSpot.SpotType.SkatePark:
                 usernameLabel.isHidden = true;
                 profileImageView.isHidden = true;
                 addressLabel.isHidden = false
+                addressLabel.text = spot?.address
+                ratingControl.isUserInteractionEnabled = false
                 break;
             case SkateSpot.SpotType.SkateSpot:
+                usernameLabel.isHidden = false;
+                profileImageView.isHidden = false;
+                addressLabel.isHidden = true
+                ratingControl.isUserInteractionEnabled = true
                 self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.size.width/2)
                 self.profileImageView.clipsToBounds = true
                 self.profileImageView.image = User.profileImage
@@ -54,6 +65,18 @@ class DetailViewController: UIViewController {
     
         descriptionLabel.text = spot?.spotDescription
         spotImageView.image = spot?.spotImage
+    }
+    
+    func setRating(rating:Double?)
+    {
+        if let rating = rating
+        {
+            ratingControl.rating = Int(rating)
+        }
+        else
+        {
+            ratingControl.rating = 0;
+        }
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {

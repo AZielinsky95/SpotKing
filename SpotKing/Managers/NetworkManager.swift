@@ -15,10 +15,6 @@ class NetworkManager: NSObject
     
     static func getSkateShopAndParkImageURL(photoref:String) -> String?
     {
-        let sessionConfig = URLSessionConfiguration.default
-        
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
         guard var URL = URL(string: "https://maps.googleapis.com/maps/api/place/photo") else {return nil}
         
         let URLParams = [
@@ -31,7 +27,7 @@ class NetworkManager: NSObject
         return URL.absoluteString
     }
     
-    static func getSkateSpot(location: CLLocationCoordinate2D,type:SkateSpot.SpotType,completion: @escaping ([MKAnnotation]) -> Void)
+    static func getSkateSpot(location: CLLocationCoordinate2D,type:SkateSpot.SpotType,completion: @escaping ([SkateSpot]) -> Void)
     {
         let sessionConfig = URLSessionConfiguration.default
         
@@ -83,17 +79,15 @@ class NetworkManager: NSObject
             
             for location in jsonDictionary
             {
-                var imageURL :String?
-                if let photos = location["photos"] as? [[String:Any]]
-                {
-                 let photoReference = photos[0]["photo_reference"] as! String
-                 imageURL = getSkateShopAndParkImageURL(photoref: photoReference)
-                }
-                
+//                var imageURL :String?
+//                if let photos = location["photos"] as? [[String:Any]]
+//                {
+//                 let photoReference = photos[0]["photo_reference"] as! String
+//                 imageURL = getSkateShopAndParkImageURL(photoref: photoReference)
+//                }
                 let spot = SkateSpot(json:location,type: type)
-                spot.imageURL = imageURL
+       //         spot.imageURL = imageURL
                 spots.append(spot);
-                
             }
             
             completion(spots);
@@ -102,6 +96,59 @@ class NetworkManager: NSObject
         task.resume()
         session.finishTasksAndInvalidate()
     }
+    
+    static func getSpotDetails(spot:SkateSpot,placeID:String)
+    {
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        guard var URL = URL(string: "https://maps.googleapis.com/maps/api/place/details/json") else {return}
+        let URLParams = [
+            "placeid": "\(placeID)",
+            "key": "AIzaSyA_-acdQ-vkOXl6GDEiF_VDZY6bjq40l6I",
+            ]
+        URL = URL.appendingQueryParameters(URLParams)
+        var request = URLRequest(url: URL)
+        request.httpMethod = "GET"
+        
+        /* Start a new Task */
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if (error == nil) {
+                // Success
+                let statusCode = (response as! HTTPURLResponse).statusCode
+                print("URL Session Task Succeeded: HTTP \(statusCode)")
+            }
+            else {
+                // Failure
+                print("URL Session Task Failed: %@", error!.localizedDescription);
+            }
+            
+            guard let json = try? JSONSerialization.jsonObject(with: data!) as? [String: Any] else { return }
+            
+            guard let jsonDictionary = json!["result"] as? Dictionary<String, Any> else { return }
+            
+
+            let phoneNumber = jsonDictionary["formatted_phone_number"] as? String
+            spot.phoneNumber = phoneNumber
+            
+            var imageURL :String?
+            if let photos = jsonDictionary["photos"] as? [[String:Any]]
+            {
+             let photoReference = photos[0]["photo_reference"] as! String
+             imageURL = getSkateShopAndParkImageURL(photoref: photoReference)
+            }
+            spot.imageURL = imageURL
+            
+            guard let reviews = jsonDictionary["reviews"] as? [Dictionary<String, Any>] else { return }
+            spot.reviews = reviews
+            
+            
+        })
+        task.resume()
+        session.finishTasksAndInvalidate()
+    }
+
+    
 }
 
 

@@ -527,7 +527,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auf-Zl-szR">
-                                <rect key="frame" x="68" y="380" width="68" height="30"/>
+                                <rect key="frame" x="68" y="378.5" width="129" height="33"/>
                                 <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -568,19 +568,19 @@
                                     <constraint firstAttribute="width" constant="44" id="qhI-fC-fdQ"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yX8-ij-IpB" customClass="RatingControl" customModule="SpotKing" customModuleProvider="target">
-                                <rect key="frame" x="16" y="429" width="228" height="44"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yX8-ij-IpB" userLabel="RatingControl" customClass="RatingControl" customModule="SpotKing" customModuleProvider="target">
+                                <rect key="frame" x="16" y="429" width="108" height="20"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="size" keyPath="starSize">
-                                        <size key="value" width="8" height="8"/>
+                                        <size key="value" width="20" height="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxR-4b-M0u">
-                                <rect key="frame" x="16" y="497" width="92" height="20.5"/>
+                                <rect key="frame" x="16" y="473" width="92" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -610,6 +610,7 @@
                         <outlet property="addressLabel" destination="BZy-eX-ca9" id="m4n-d2-ccN"/>
                         <outlet property="descriptionLabel" destination="bxR-4b-M0u" id="M0y-m1-f8l"/>
                         <outlet property="profileImageView" destination="Ea5-FB-U27" id="C1P-ku-eJF"/>
+                        <outlet property="ratingControl" destination="yX8-ij-IpB" id="ivO-JP-oV5"/>
                         <outlet property="spotImageView" destination="lBw-Zr-MKP" id="UiH-LZ-VDc"/>
                         <outlet property="titleLabel" destination="zkq-FJ-gDu" id="mQy-CT-T1g"/>
                         <outlet property="usernameLabel" destination="Auf-Zl-szR" id="OFf-xh-Amk"/>
