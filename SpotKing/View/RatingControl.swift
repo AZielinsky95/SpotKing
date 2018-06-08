@@ -53,7 +53,7 @@ import UIKit
         ratingButtons.removeAll()
         
         let bundle = Bundle(for: type(of: self))
-        let filledStar = UIImage(named: "star", in: bundle, compatibleWith: self.traitCollection)
+        let filledStar = UIImage(named: "starfilled", in: bundle, compatibleWith: self.traitCollection)
         let emptyStar = UIImage(named:"star", in: bundle, compatibleWith: self.traitCollection)
         
         for index in 0..<starCount {

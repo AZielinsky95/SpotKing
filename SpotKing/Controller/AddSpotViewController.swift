@@ -60,8 +60,10 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         manualTagButton.layer.cornerRadius = 5
         hubbaTagButton.layer.cornerRadius = 5
         gapTagButton.layer.cornerRadius = 5
+        
+        spotTitle.delegate = self
     }
-
+    
     func setUpLocationManager()
     {
         locationManager = CLLocationManager()
@@ -194,6 +196,14 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
+extension AddSpotViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 extension AddSpotViewController : CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -231,6 +241,15 @@ extension UITextView : UITextViewDelegate {
                 self.addPlaceholder(newValue!)
             }
         }
+    }
+    
+    /* Updated for Swift 4 */
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     /// When the UITextView did change, show or hide the label based on if the UITextView is empty or not
