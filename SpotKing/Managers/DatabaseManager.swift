@@ -158,8 +158,13 @@ class DatabaseManager
                         spotTags?.append(SkateSpot.SpotTag.toSpotTag(spotTagString: tag))
                     }
                 }
+                var comments = [String:String]()
+                if let UserComments = value["UserComments"] as? [String:Any] {
+                    comments = (UserComments["comments"] as? [String:String])!
+                }
                 
-                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, spotDescription: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags, spotID: spotID!, username: username!)
+                
+                let skateSpot = SkateSpot(userId: userID!, type: spotType, title: title, spotDescription: subtitle, rating: spotRating, spotImage: nil, coordinates: coordinate, imageURL: imageURL!,tags: spotTags, spotID: spotID!, username: username!, comments: comments)
 
                 skateSpots.append(skateSpot)
                 
@@ -315,6 +320,21 @@ class DatabaseManager
                 userRef.setValue(profileImageUrl)
             })
         })
+    }
+    
+    static func saveSpotComments(spot: SkateSpot) {
+        guard let spotID = spot.spotID else { return }
+        let path = "skatespots/\(spotID)/UserComments"
+        print(#line, path)
+        let spotRef = ref.child(path)
+        let comments = ["comments": spot.comments] as [String : Any]
+        spotRef.setValue(comments)
+        
+//        spotRef.setValue(comments) { (error, dbRef) in
+//            if error != nil {
+//                print(#line, error?.localizedDescription)
+//            }
+//        }
     }
 }
 

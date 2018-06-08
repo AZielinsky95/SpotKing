@@ -193,17 +193,17 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OHT-mW-bea">
-                                    <size key="itemSize" width="375" height="325"/>
+                                    <size key="itemSize" width="375" height="374"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoryCell" id="ZeJ-TO-4mg" customClass="StoryCell" customModule="SpotKing" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RNy-6I-IXE">
@@ -252,6 +252,25 @@
                                                         <action selector="favouritePressed" destination="ZeJ-TO-4mg" eventType="touchUpInside" id="owS-6g-Iob"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-V8-Fjm">
+                                                    <rect key="frame" x="20" y="298" width="161" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="View Comments Button"/>
+                                                    <connections>
+                                                        <segue destination="pDe-Tm-mF6" kind="show" identifier="commentsSegue" id="wh3-pY-2eh"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUI-Ui-0wN">
+                                                    <rect key="frame" x="20" y="336" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YPa-kE-hKp">
+                                                    <rect key="frame" x="58" y="335" width="297" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -271,14 +290,17 @@
                                             <constraint firstItem="rsW-Gu-nAq" firstAttribute="centerY" secondItem="Lie-tI-Of4" secondAttribute="centerY" id="jlN-ME-3oG"/>
                                             <constraint firstItem="RNy-6I-IXE" firstAttribute="leading" secondItem="ZeJ-TO-4mg" secondAttribute="leading" id="nWY-hX-IF0"/>
                                         </constraints>
-                                        <size key="customSize" width="375" height="325"/>
+                                        <size key="customSize" width="375" height="374"/>
                                         <connections>
+                                            <outlet property="commentProfileImageView" destination="YUI-Ui-0wN" id="wCL-um-sck"/>
+                                            <outlet property="commentTextField" destination="YPa-kE-hKp" id="LpW-DM-z5M"/>
                                             <outlet property="favouriteButton" destination="LTi-Bo-V56" id="wJN-Hw-bhg"/>
                                             <outlet property="imageView" destination="RNy-6I-IXE" id="RKH-pV-Zfg"/>
                                             <outlet property="profileImage" destination="Lie-tI-Of4" id="ARc-8R-qve"/>
                                             <outlet property="spotDescription" destination="IXo-E6-TJO" id="Jkt-uy-1L8"/>
                                             <outlet property="spotTitle" destination="iPX-K6-mHG" id="gfM-8E-tsV"/>
                                             <outlet property="username" destination="rsW-Gu-nAq" id="zXy-fH-G5j"/>
+                                            <outlet property="viewCommentsButton" destination="XOa-V8-Fjm" id="RpB-Vv-rjP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -299,7 +321,94 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSS-2c-4CJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="152"/>
+            <point key="canvasLocation" x="1568.8" y="151.57421289355324"/>
+        </scene>
+        <!--Comments View Controller-->
+        <scene sceneID="1LV-Tg-scm">
+            <objects>
+                <viewController id="pDe-Tm-mF6" customClass="CommentsViewController" customModule="SpotKing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nP6-C2-JwA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j7g-eW-3tN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6ug-8H-qP4">
+                                    <size key="itemSize" width="375" height="75"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommentsCell" id="fwK-zz-D2Y" customClass="CommentsCell" customModule="SpotKing" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-9Y-RGw">
+                                                    <rect key="frame" x="20" y="12" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQc-ZF-EMo">
+                                                    <rect key="frame" x="81" y="9" width="157" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="comment" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPW-HJ-K2e">
+                                                    <rect key="frame" x="81" y="34" width="270" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="comment" destination="GPW-HJ-K2e" id="GKS-Vq-JXx"/>
+                                            <outlet property="commentImageView" destination="pbx-9Y-RGw" id="JzT-nw-7cz"/>
+                                            <outlet property="username" destination="rQc-ZF-EMo" id="LbK-zx-pkL"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CommentsFooter" id="bvm-M0-Cgi" customClass="CommentsFooterReusableView" customModule="SpotKing" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="75" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0E-np-dQN">
+                                            <rect key="frame" x="20" y="12" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ard-fX-ikS">
+                                            <rect key="frame" x="58" y="11" width="297" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <connections>
+                                        <outlet property="commentsTextField" destination="ard-fX-ikS" id="nqA-DR-ddw"/>
+                                        <outlet property="profileImageView" destination="V0E-np-dQN" id="F5w-u4-VP0"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5xS-3X-IDX"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="j7g-eW-3tN" id="3oU-cU-nFT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LTl-tA-NZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2383.1999999999998" y="152.47376311844079"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="eRB-Wh-kE2">

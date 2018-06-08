@@ -23,6 +23,12 @@ class StoryCell: UICollectionViewCell {
     
     @IBOutlet weak var favouriteButton: UIButton!
     
+    @IBOutlet weak var viewCommentsButton: UIButton!
+    
+    @IBOutlet weak var commentProfileImageView: UIImageView!
+    
+    @IBOutlet weak var commentTextField: UITextField!
+    
     weak var delegate : StoryCellDelegate?
     
     var spotID: String?

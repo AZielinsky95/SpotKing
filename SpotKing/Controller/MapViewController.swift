@@ -47,16 +47,16 @@ class MapViewController: UIViewController {
         }
         
        // DatabaseManager.signOut()
+        
         setupUserProfile()
         setUpNavigationBar()
         setUpLocationManager()
         setUpTabButtons()
         setUpFilterOptionsView()
         getSpotsFromDatabase()
-        
+
         let currentWindow = UIApplication.shared.keyWindow
         currentWindow?.addSubview(popUpView)
-        
         
     }
     

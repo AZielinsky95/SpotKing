@@ -27,6 +27,23 @@ class StoryViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "map")
 
      }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commentsSegue" {
+            
+            guard let button = sender as? UIButton, let cell = button.superview?.superview as? StoryCell,
+                let indexPath =  collectionView.indexPath(for: cell) else { return }
+            
+            
+            
+            
+            
+            let commentsVC = segue.destination as! CommentsViewController
+            let spot = skateSpots![indexPath.row]
+            commentsVC.comments = spot.comments
+            
+        }
+    }
 }
 
 extension StoryViewController : UICollectionViewDataSource
@@ -46,7 +63,13 @@ extension StoryViewController : UICollectionViewDataSource
         
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2
         cell.profileImage.clipsToBounds = true
+        
+        cell.commentProfileImageView.layer.cornerRadius = cell.commentProfileImageView.frame.size.width / 2
+        cell.commentProfileImageView.clipsToBounds = true
     
+        cell.commentProfileImageView.image = User.profileImage
+        cell.commentTextField.layer.cornerRadius = 5
+        
         cell.profileImage.image = spot.userProfileImage
         
         cell.imageView.image = spot.spotImage

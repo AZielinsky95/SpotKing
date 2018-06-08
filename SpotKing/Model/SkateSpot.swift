@@ -97,6 +97,7 @@ class SkateSpot : NSObject, MKAnnotation
     var spotID: String!
     var userProfileImage: UIImage?
     var username: String!
+    var comments = [String:String]()
     
     lazy var pinImageAndColor : (UIImage,UIColor) =
     {
@@ -110,7 +111,7 @@ class SkateSpot : NSObject, MKAnnotation
             }
     }()
     
-    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String)
+    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String, comments:[String:String])
     {
         self.userID = userId
         self.spotType = type
@@ -123,6 +124,7 @@ class SkateSpot : NSObject, MKAnnotation
         self.spotTags = tags
         self.spotID = spotID
         self.username = username
+        self.comments = comments
         super.init()
     }
     
