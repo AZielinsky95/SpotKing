@@ -26,45 +26,89 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var ratingControl: RatingControl!
     
+    @IBOutlet weak var ratingControlTopConstraint: NSLayoutConstraint!
+    var ratingControlTopConstraintForShop:NSLayoutConstraint?
+    
+    @IBOutlet weak var websiteLabel: UILabel!
+    
+    @IBOutlet weak var detailContainerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //self.navigationItem.title = spot?.title
         titleLabel.text = spot?.title
         setRating(rating: spot?.spotRating)
+        spotImageView.image = spot?.spotImage
+        
+        setUpDetailContainerView()  
+    }
     
+    func setUpDetailContainerView()
+    {
+        detailContainerView.layer.cornerRadius = 5
+        detailContainerView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        detailContainerView.layer.borderWidth = 2
+        
         if let type = spot?.spotType
         {
             switch type {
             case SkateSpot.SpotType.SkateShop:
-                usernameLabel.isHidden = true;
-                profileImageView.isHidden = true;
-                addressLabel.isHidden = false
-                addressLabel.text = spot?.address
-                ratingControl.isUserInteractionEnabled = false
+                setUpSkateShopView()
                 break;
             case SkateSpot.SpotType.SkatePark:
-                usernameLabel.isHidden = true;
-                profileImageView.isHidden = true;
-                addressLabel.isHidden = false
-                addressLabel.text = spot?.address
-                ratingControl.isUserInteractionEnabled = false
+                setUpSkateParkView()
                 break;
             case SkateSpot.SpotType.SkateSpot:
-                usernameLabel.isHidden = false;
-                profileImageView.isHidden = false;
-                addressLabel.isHidden = true
-                ratingControl.isUserInteractionEnabled = true
-                self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.size.width/2)
-                self.profileImageView.clipsToBounds = true
-                self.profileImageView.image = User.profileImage
-                self.usernameLabel.text = User.username
+                setUpSkateSpotView()
                 break;
             }
         }
+    }
     
+    func setUpSkateParkView()
+    {
+        descriptionLabel.text = spot?.phoneNumber
+        usernameLabel.isHidden = true;
+        profileImageView.isHidden = true;
+        addressLabel.isHidden = false
+        addressLabel.text = spot?.address
+        ratingControl.isUserInteractionEnabled = false
+    }
+    
+    func setUpSkateSpotView()
+    {
+        usernameLabel.isHidden = false;
+        profileImageView.isHidden = false;
+        addressLabel.isHidden = true
+        ratingControl.isUserInteractionEnabled = true
+        self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.size.width/2)
+        self.profileImageView.clipsToBounds = true
+        self.profileImageView.image = User.profileImage
+        self.usernameLabel.text = User.username
         descriptionLabel.text = spot?.spotDescription
-        spotImageView.image = spot?.spotImage
+        
+        ratingControlTopConstraintForShop?.isActive = false
+        ratingControlTopConstraint.isActive = true
+        
+        websiteLabel.isHidden = true
+    }
+    
+    func setUpSkateShopView()
+    {
+        usernameLabel.isHidden = true;
+        profileImageView.isHidden = true;
+        addressLabel.isHidden = false
+        addressLabel.text = spot?.address
+        ratingControl.isUserInteractionEnabled = false
+        descriptionLabel.text = spot?.phoneNumber
+        
+        ratingControlTopConstraint.isActive = false;
+        ratingControlTopConstraintForShop = ratingControl.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 6)
+        ratingControlTopConstraintForShop!.isActive = true
+        
+        websiteLabel.isHidden = false
+        websiteLabel.text = spot?.website
     }
     
     func setRating(rating:Double?)

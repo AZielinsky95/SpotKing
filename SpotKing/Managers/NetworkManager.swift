@@ -131,6 +131,9 @@ class NetworkManager: NSObject
             let phoneNumber = jsonDictionary["formatted_phone_number"] as? String
             spot.phoneNumber = phoneNumber
             
+            let website = jsonDictionary["website"] as? String
+            spot.website = website
+            
             var imageURL :String?
             if let photos = jsonDictionary["photos"] as? [[String:Any]]
             {

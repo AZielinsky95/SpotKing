@@ -104,6 +104,7 @@ class SkateSpot : NSObject, MKAnnotation
     var phoneNumber:String?
     var shopImages:[UIImage]?
     var reviews:[Dictionary<String, Any>]?
+    var website:String?
     
     lazy var pinImageAndColor : (UIImage,UIColor) =
     {
