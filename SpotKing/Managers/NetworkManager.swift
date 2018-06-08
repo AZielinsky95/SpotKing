@@ -144,8 +144,6 @@ class NetworkManager: NSObject
             
             guard let reviews = jsonDictionary["reviews"] as? [Dictionary<String, Any>] else { return }
             spot.reviews = reviews
-            
-            
         })
         task.resume()
         session.finishTasksAndInvalidate()

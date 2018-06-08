@@ -16,6 +16,8 @@
 		CA32D50120C99A3C00381316 /* Infinity.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA32D4FF20C99A3B00381316 /* Infinity.ttf */; };
 		CA32D50220C99A3C00381316 /* Vanadine Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA32D50020C99A3B00381316 /* Vanadine Bold.ttf */; };
 		CA32D50420C9DC6C00381316 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50320C9DC6C00381316 /* RatingControl.swift */; };
+		CA32D50620CAEA6700381316 /* DetailReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50520CAEA6700381316 /* DetailReusableView.swift */; };
+		CA32D50820CAEE3D00381316 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50720CAEE3D00381316 /* DetailCell.swift */; };
 		CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */; };
 		CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7020C065EC00347FE9 /* AppDelegate.swift */; };
 		CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7220C065EC00347FE9 /* MapViewController.swift */; };
@@ -45,6 +47,8 @@
 		CA32D4FF20C99A3B00381316 /* Infinity.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Infinity.ttf; sourceTree = "<group>"; };
 		CA32D50020C99A3B00381316 /* Vanadine Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vanadine Bold.ttf"; sourceTree = "<group>"; };
 		CA32D50320C9DC6C00381316 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		CA32D50520CAEA6700381316 /* DetailReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReusableView.swift; sourceTree = "<group>"; };
+		CA32D50720CAEE3D00381316 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA696A6D20C065EC00347FE9 /* SpotKing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotKing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA696A7020C065EC00347FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,9 +150,7 @@
 				1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */,
 				CACC858120C5B00100900FAD /* StoryViewController.swift */,
 				CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */,
-				1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */,
 				1E4F6F0B20C898CD001DF9A4 /* ProfileViewController.swift */,
-				1EA88ECA20C9D761002B5BAB /* ProfileCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,6 +160,10 @@
 			children = (
 				CAF3C32020C85E590003EDF5 /* PopUpView.swift */,
 				CA32D50320C9DC6C00381316 /* RatingControl.swift */,
+				CA32D50520CAEA6700381316 /* DetailReusableView.swift */,
+				1EA88ECA20C9D761002B5BAB /* ProfileCell.swift */,
+				1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */,
+				CA32D50720CAEE3D00381316 /* DetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				CAF3C32120C85E590003EDF5 /* PopUpView.swift in Sources */,
 				CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */,
 				CA696A8E20C1C43B00347FE9 /* LoginViewController.swift in Sources */,
+				CA32D50620CAEA6700381316 /* DetailReusableView.swift in Sources */,
 				CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */,
 				CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */,
 				1E89B46520C1CBBC004941CC /* AddSpotViewController.swift in Sources */,
@@ -318,6 +325,7 @@
 				1E4F6F0820C6F728001DF9A4 /* StoryCell.swift in Sources */,
 				1E4F6F0A20C87ABD001DF9A4 /* User.swift in Sources */,
 				CA696A8A20C0848A00347FE9 /* NetworkManager.swift in Sources */,
+				CA32D50820CAEE3D00381316 /* DetailCell.swift in Sources */,
 				1E4F6F0C20C898CD001DF9A4 /* ProfileViewController.swift in Sources */,
 				CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */,
 				CA696A8520C06AAD00347FE9 /* DatabaseManager.swift in Sources */,
