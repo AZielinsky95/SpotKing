@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = spot?.title
+        self.navigationItem.title = spot?.title
         isHeaderSet = false
     }
     
@@ -61,6 +61,7 @@ class DetailViewController: UIViewController {
     
     func setUpSkateSpotView()
     {
+        header!.titleLabel.text = "Comments"
         header!.usernameLabel.isHidden = false;
         header!.profileImageView.isHidden = false;
         header!.addressLabel.isHidden = true
@@ -70,7 +71,6 @@ class DetailViewController: UIViewController {
         header!.profileImageView.image = User.profileImage
         header!.usernameLabel.text = User.username
         header!.descriptionLabel.text = spot?.spotDescription
-
         ratingControlTopConstraintForShop?.isActive = false
         header!.ratingControlTopConstraint.isActive = true
 
@@ -121,6 +121,10 @@ extension DetailViewController : UICollectionViewDataSource
         {
             return (spot?.reviews?.count)!
         }
+        else if spot?.spotType == SkateSpot.SpotType.SkateSpot
+        {
+            return spot?.comments.count ?? 0
+        }
         
         return 1
         //else if its a skate spot get number of comments
@@ -147,10 +151,17 @@ extension DetailViewController : UICollectionViewDataSource
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as! DetailCell
         
-        let review = spot?.reviews![indexPath.row]
-        
-        cell.authorLabel.text = review!["author_name"] as! String
-        cell.textLabel.text = review!["text"] as! String
+        if spot?.spotType == SkateSpot.SpotType.SkateShop
+        {
+            let review = spot?.reviews![indexPath.row]
+            cell.authorLabel.text = review!["author_name"] as! String
+            cell.textLabel.text = review!["text"] as! String
+        }
+        else if spot?.spotType == SkateSpot.SpotType.SkateSpot
+        {
+            cell.authorLabel.text = "User!"
+            cell.textLabel.text = Array(spot!.comments)[indexPath.row].value
+        }
         
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOpacity = 0.5

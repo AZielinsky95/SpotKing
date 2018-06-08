@@ -259,7 +259,7 @@ class MapViewController: UIViewController {
        // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Pacific Again", size: 20)!]
         self.navigationItem.title = "Spot King"
         self.navigationController?.navigationBar.tintColor = UIColor.SpotKingColors.lightGreen
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Helvetica Neue", size: 32)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Helvetica Neue", size: 24)!]
     }
     
     func centerMapOnLocation(location:CLLocationCoordinate2D)
