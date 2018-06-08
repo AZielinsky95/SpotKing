@@ -13,7 +13,6 @@
 		1E89B46520C1CBBC004941CC /* AddSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */; };
 		1EA13AA820CAFCCE002F0A27 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA13AA720CAFCCE002F0A27 /* CommentsViewController.swift */; };
 		1EA13AAA20CAFD17002F0A27 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA13AA920CAFD17002F0A27 /* CommentsCell.swift */; };
-		1EA88ECB20C9D761002B5BAB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA88ECA20C9D761002B5BAB /* ProfileCell.swift */; };
 		1EF7139220CB0EE70010410C /* CommentsFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF7139120CB0EE70010410C /* CommentsFooterReusableView.swift */; };
 		7CAB6CE4FBD205A9D2FCBD24 /* Pods_SpotKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */; };
 		CA32D50120C99A3C00381316 /* Infinity.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA32D4FF20C99A3B00381316 /* Infinity.ttf */; };
@@ -21,6 +20,7 @@
 		CA32D50420C9DC6C00381316 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50320C9DC6C00381316 /* RatingControl.swift */; };
 		CA32D50620CAEA6700381316 /* DetailReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50520CAEA6700381316 /* DetailReusableView.swift */; };
 		CA32D50820CAEE3D00381316 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50720CAEE3D00381316 /* DetailCell.swift */; };
+		CA32D50A20CB218400381316 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50920CB218400381316 /* ProfileCell.swift */; };
 		CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */; };
 		CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7020C065EC00347FE9 /* AppDelegate.swift */; };
 		CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7220C065EC00347FE9 /* MapViewController.swift */; };
@@ -45,7 +45,6 @@
 		1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpotViewController.swift; sourceTree = "<group>"; };
 		1EA13AA720CAFCCE002F0A27 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		1EA13AA920CAFD17002F0A27 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
-		1EA88ECA20C9D761002B5BAB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		1EF7139120CB0EE70010410C /* CommentsFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsFooterReusableView.swift; sourceTree = "<group>"; };
 		26EC2CCD1248D137C4FD44E5 /* Pods-SpotKing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotKing.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpotKing/Pods-SpotKing.release.xcconfig"; sourceTree = "<group>"; };
 		5EB4683B41110AC5C785431A /* Pods_SpotKing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotKing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +54,7 @@
 		CA32D50320C9DC6C00381316 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		CA32D50520CAEA6700381316 /* DetailReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReusableView.swift; sourceTree = "<group>"; };
 		CA32D50720CAEE3D00381316 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		CA32D50920CB218400381316 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA696A6D20C065EC00347FE9 /* SpotKing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotKing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA696A7020C065EC00347FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,9 +157,7 @@
 				CACC858120C5B00100900FAD /* StoryViewController.swift */,
 				CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */,
 				1E4F6F0B20C898CD001DF9A4 /* ProfileViewController.swift */,
-				1EA88ECA20C9D761002B5BAB /* ProfileCell.swift */,
 				1EA13AA720CAFCCE002F0A27 /* CommentsViewController.swift */,
-				1EA13AA920CAFD17002F0A27 /* CommentsCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,7 +167,12 @@
 			children = (
 				CAF3C32020C85E590003EDF5 /* PopUpView.swift */,
 				CA32D50320C9DC6C00381316 /* RatingControl.swift */,
+				CA32D50520CAEA6700381316 /* DetailReusableView.swift */,
+				1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */,
+				1EA13AA920CAFD17002F0A27 /* CommentsCell.swift */,
+				CA32D50720CAEE3D00381316 /* DetailCell.swift */,
 				1EF7139120CB0EE70010410C /* CommentsFooterReusableView.swift */,
+				CA32D50920CB218400381316 /* ProfileCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */,
 				1EF7139220CB0EE70010410C /* CommentsFooterReusableView.swift in Sources */,
 				CA696A8E20C1C43B00347FE9 /* LoginViewController.swift in Sources */,
+				CA32D50A20CB218400381316 /* ProfileCell.swift in Sources */,
 				CA32D50620CAEA6700381316 /* DetailReusableView.swift in Sources */,
 				CA696A8720C06B7200347FE9 /* SkateSpot.swift in Sources */,
 				CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */,
@@ -338,7 +342,6 @@
 				1EA13AA820CAFCCE002F0A27 /* CommentsViewController.swift in Sources */,
 				CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */,
 				CA696A8520C06AAD00347FE9 /* DatabaseManager.swift in Sources */,
-				1EA88ECB20C9D761002B5BAB /* ProfileCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
