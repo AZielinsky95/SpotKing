@@ -123,7 +123,7 @@ extension DetailViewController : UICollectionViewDataSource
         }
         else if spot?.spotType == SkateSpot.SpotType.SkateSpot
         {
-            return spot?.comments.count ?? 0
+            return spot?.comments!.count ?? 0
         }
         
         return 1
@@ -133,7 +133,7 @@ extension DetailViewController : UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind == UICollectionElementKindSectionHeader {
-            self.header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for:indexPath) as! DetailReusableView
+            self.header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for:indexPath) as? DetailReusableView
             
          if(!isHeaderSet)
          {
@@ -160,13 +160,13 @@ extension DetailViewController : UICollectionViewDataSource
         else if spot?.spotType == SkateSpot.SpotType.SkateSpot
         {
             cell.authorLabel.text = "User!"
-            cell.textLabel.text = Array(spot!.comments)[indexPath.row].value
+            cell.textLabel.text = Array(spot!.comments!)[indexPath.row].value
         }
         
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowOffset = CGSize.zero
-        cell.layer.shadowRadius = 10
+//        cell.layer.shadowColor = UIColor.black.cgColor
+//        cell.layer.shadowOpacity = 0.5
+//        cell.layer.shadowOffset = CGSize.zero
+//        cell.layer.shadowRadius = 2
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 5
         cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor

@@ -10,8 +10,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var username: UILabel!
+    var profileReusableView: ProfileReusableView?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var skateSpots : [SkateSpot]?
@@ -20,19 +20,23 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imageView.layer.cornerRadius = self.imageView.frame.size.width / 2
-        self.imageView.clipsToBounds = true
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageViewTapped(recognizer:)))
-        tapGesture.delegate = self
-        self.imageView.addGestureRecognizer(tapGesture)
-        self.imageView.image = User.profileImage
-        self.username.text = User.username
-        
+
         self.collectionView.dataSource = self
         
         setupFavouriteSpotImages()
         
+    }
+    
+    func setUpProfileView()
+    {
+        profileReusableView!.imageView.layer.cornerRadius = profileReusableView!.imageView.frame.size.width / 2
+        profileReusableView!.imageView.clipsToBounds = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageViewTapped(recognizer:)))
+        tapGesture.delegate = self
+        profileReusableView!.imageView.addGestureRecognizer(tapGesture)
+        profileReusableView!.imageView.image = User.profileImage
+        profileReusableView!.username.text = User.username
     }
     
     func setupFavouriteSpotImages() {
@@ -109,8 +113,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             
             DispatchQueue.main.async
                 {
-                    self.imageView.image = image
-                    
+                    self.profileReusableView?.imageView.image = image
                 }
         }
         else
@@ -126,6 +129,20 @@ extension ProfileViewController : UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favouriteSpotsImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionElementKindSectionHeader {
+            self.profileReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for:indexPath) as? ProfileReusableView
+
+            setUpProfileView()
+            
+            return self.profileReusableView!
+        }
+        
+        
+        return UICollectionReusableView()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
