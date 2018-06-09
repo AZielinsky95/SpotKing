@@ -160,8 +160,7 @@ class DatabaseManager
                 }
                 var comments = [String:[String]]()
                 if let UserComments = value["UserComments"] as? [String:Any] {
-                    guard let results = (UserComments["comments"] as? [String:String]) else { continue }
-                    comments = results
+                    comments = (UserComments["comments"] as? [String:[String]])!
                 }
                 
                 

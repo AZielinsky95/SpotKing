@@ -123,7 +123,7 @@ extension DetailViewController : UICollectionViewDataSource
         }
         else if spot?.spotType == SkateSpot.SpotType.SkateSpot
         {
-            return spot?.comments!.count ?? 0
+            return spot?.comments.count ?? 0
         }
         
         return 1
@@ -160,7 +160,9 @@ extension DetailViewController : UICollectionViewDataSource
         else if spot?.spotType == SkateSpot.SpotType.SkateSpot
         {
             cell.authorLabel.text = "User!"
-            cell.textLabel.text = Array(spot!.comments!)[indexPath.row].value
+            cell.textLabel.text = spot!.comments[indexPath.row].1
+            
+            //Array(spot!.comments)[indexPath.row].value
         }
         
 //        cell.layer.shadowColor = UIColor.black.cgColor

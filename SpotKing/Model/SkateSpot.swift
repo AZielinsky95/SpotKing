@@ -97,7 +97,7 @@ class SkateSpot : NSObject, MKAnnotation
     var spotID: String!
     var userProfileImage: UIImage?
     var username: String!
-    var comments : [String:String]?
+    var comments = [(String, String)]()
     
     //SHOP AND PARK SPECIFIC
     var placeID:String?
@@ -119,7 +119,7 @@ class SkateSpot : NSObject, MKAnnotation
             }
     }()
     
-    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String, comments:[String:String]?)
+    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String, comments:[String:[String]])
     {
         super.init()
         self.userID = userId
