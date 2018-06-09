@@ -27,11 +27,14 @@ class CommentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "menu")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "menu")
         setupComments()
         self.collectionView.dataSource = self
         //    keys = comments?.keys
     }
     
+   
     func setupComments() {
         
         for commentTuple in commentsTuple {
@@ -46,10 +49,14 @@ class CommentsViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
+                        
+                        self.collectionView.scrollToItem(at: IndexPath(row: self.comments.count-1, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
+                        
                     }
                 })
             }
         }
+
     }
     
     func addComment(userID: String, commentText: String) {
@@ -63,6 +70,7 @@ class CommentsViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
+                        self.collectionView.scrollToItem(at: IndexPath(row: self.comments.count-1, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
                     }
                 })
             }
@@ -84,7 +92,7 @@ extension CommentsViewController : UICollectionViewDataSource {
         cell.comment.text = comments[indexPath.row].comment
         cell.commentImageView.image = comments[indexPath.row].profileImage
         
-        
+
         
        return cell
     }
@@ -99,6 +107,7 @@ extension CommentsViewController : UICollectionViewDataSource {
             self.footer?.profileImageView.clipsToBounds = true
             
             self.footer?.commentsTextField.delegate = self
+
 
             return self.footer!
         }
@@ -118,6 +127,7 @@ extension CommentsViewController : UITextFieldDelegate {
             delegate?.updateSpot(index: spotIndex!, spot: skateSpot!)
             DatabaseManager.saveSpotComments(spot: skateSpot!)
             textField.text = ""
+
             
         }
         

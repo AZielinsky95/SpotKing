@@ -29,6 +29,17 @@ class StoryViewController: UIViewController {
 
      }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "map")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "map")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "commentsSegue" {
             
