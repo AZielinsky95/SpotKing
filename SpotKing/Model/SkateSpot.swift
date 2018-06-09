@@ -97,7 +97,7 @@ class SkateSpot : NSObject, MKAnnotation
     var spotID: String!
     var userProfileImage: UIImage?
     var username: String!
-    var comments = [String:String]()
+    var comments = [(String, String)]()
     
     //SHOP AND PARK SPECIFIC
     var placeID:String?
@@ -119,8 +119,9 @@ class SkateSpot : NSObject, MKAnnotation
             }
     }()
     
-    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String, comments:[String:String])
+    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String, comments:[String:[String]])
     {
+        super.init()
         self.userID = userId
         self.spotType = type
         self.title = title
@@ -132,8 +133,8 @@ class SkateSpot : NSObject, MKAnnotation
         self.spotTags = tags
         self.spotID = spotID
         self.username = username
-        self.comments = comments
-        super.init()
+        self.comments = self.commentsToTuple(comments: comments)
+        
     }
     
     init(json:[String:Any],type:SpotType)
@@ -165,6 +166,37 @@ class SkateSpot : NSObject, MKAnnotation
         }
         
         return result
+    }
+    
+    
+    func commentsToTuple(comments: [String:[String]]) -> [(String, String)] {
+        var commentsTuple = [(String, String)]()
+        for user in comments {
+            for comment in user.value {
+                commentsTuple.append((user.key, comment))
+            }
+        }
+        return commentsTuple
+    }
+
+    func commentsToDictionary() -> [String:[String]] {
+        var dict = [String:[String]]()
+        
+        for comment in self.comments {
+            
+            if dict[comment.0] == nil {
+                var comments = [String]()
+                comments.append(comment.1)
+                dict[comment.0] = comments
+            }
+            else {
+               var comments = dict[comment.0]
+                comments?.append(comment.1)
+                dict[comment.0] = comments
+            }
+        }
+        
+        return dict
     }
     
     func ratingToStars() -> String

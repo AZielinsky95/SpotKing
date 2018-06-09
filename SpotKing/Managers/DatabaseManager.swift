@@ -158,9 +158,9 @@ class DatabaseManager
                         spotTags?.append(SkateSpot.SpotTag.toSpotTag(spotTagString: tag))
                     }
                 }
-                var comments = [String:String]()
+                var comments = [String:[String]]()
                 if let UserComments = value["UserComments"] as? [String:Any] {
-                    comments = (UserComments["comments"] as? [String:String])!
+                    comments = (UserComments["comments"] as? [String:[String]])!
                 }
                 
                 
@@ -174,11 +174,11 @@ class DatabaseManager
         })
     }
     
-    static func getUserName(completion: @escaping (String)->()) {
-        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+    static func getUserName(userID: String, completion: @escaping (String)->()) {
+       // guard let currentUserID = Auth.auth().currentUser?.uid else { return }
         var username = ""
         
-        let userRef = ref.child("users/\(currentUserID)")
+        let userRef = ref.child("users/\(userID)")
         userRef.observeSingleEvent(of: .value) { (snapshot) in
             let value = snapshot.value as? NSDictionary
             username = value?["name"] as? String ?? ""
@@ -186,10 +186,10 @@ class DatabaseManager
         }
     }
     
-    static func downloadProfileImage(completion: @escaping (UIImage) -> ()) {
-        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+    static func downloadProfileImage(userID: String, completion: @escaping (UIImage) -> ()) {
+       // guard let currentUserID = Auth.auth().currentUser?.uid else { return }
         
-        let userRef = ref.child("users/\(currentUserID)/profile")
+        let userRef = ref.child("users/\(userID)/profile")
         userRef.observeSingleEvent(of: .value) { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let url = value?["profileImageURL"] as? String ?? ""
@@ -327,7 +327,7 @@ class DatabaseManager
         let path = "skatespots/\(spotID)/UserComments"
         print(#line, path)
         let spotRef = ref.child(path)
-        let comments = ["comments": spot.comments] as [String : Any]
+        let comments = ["comments": spot.commentsToDictionary()] as [String : Any]
         spotRef.setValue(comments)
         
 //        spotRef.setValue(comments) { (error, dbRef) in

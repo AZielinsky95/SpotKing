@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class StoryViewController: UIViewController {
     
@@ -31,17 +32,28 @@ class StoryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "commentsSegue" {
             
-            guard let button = sender as? UIButton, let cell = button.superview?.superview as? StoryCell,
+            guard let button = sender as? UIButton, let cell = button.superview?.superview?.superview as? StoryCell,
                 let indexPath =  collectionView.indexPath(for: cell) else { return }
-            
-            
-            
-            
             
             let commentsVC = segue.destination as! CommentsViewController
             let spot = skateSpots![indexPath.row]
-            commentsVC.comments = spot.comments
+            commentsVC.commentsTuple = spot.comments
+            commentsVC.skateSpot = spot
+            commentsVC.spotIndex = indexPath.row
+            commentsVC.delegate = self
             
+        }
+        else if segue.identifier == "AddCommentSegue" {
+            
+            guard let textField = sender as? UITextField, let cell = textField.superview?.superview?.superview?.superview as? StoryCell,
+                let indexPath =  collectionView.indexPath(for: cell) else { return }
+            
+            let commentsVC = segue.destination as! CommentsViewController
+            let spot = skateSpots![indexPath.row]
+            commentsVC.commentsTuple = spot.comments
+            commentsVC.skateSpot = spot
+            commentsVC.spotIndex = indexPath.row
+            commentsVC.delegate = self
         }
     }
 }
@@ -77,6 +89,11 @@ extension StoryViewController : UICollectionViewDataSource
         cell.spotDescription.text = spot.spotDescription
         cell.username.text = spot.username
 
+        cell.commentTextField.delegate = self
+        
+        cell.viewCommentsButton.isHidden = spot.comments.count == 0 ? true : false
+        cell.viewCommentsButton.setTitle("View \(spot.comments.count) comments", for: .normal)
+        
         cell.username.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
         cell.profileImage.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
         
@@ -130,5 +147,29 @@ extension StoryViewController : StoryCellDelegate {
         }
         
         collectionView.reloadData()
+    }
+}
+
+extension StoryViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        guard let cell = textField.superview?.superview?.superview?.superview as? StoryCell,
+            let indexPath =  collectionView.indexPath(for: cell), let userID = Auth.auth().currentUser?.uid else { fatalError() }
+        
+        if let comment = textField.text {
+            self.skateSpots![indexPath.row].comments.append((userID, comment))
+            DatabaseManager.saveSpotComments(spot: self.skateSpots![indexPath.row])
+            textField.text = ""
+            performSegue(withIdentifier: "AddCommentSegue", sender: textField)
+        }
+        
+        return true
+    }
+}
+
+extension StoryViewController : CommentsProtocol {
+    func updateSpot(index: Int, spot: SkateSpot) {
+        self.skateSpots![index] = spot
+        self.collectionView.reloadData()
     }
 }

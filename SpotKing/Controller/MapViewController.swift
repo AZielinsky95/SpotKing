@@ -66,10 +66,13 @@ class MapViewController: UIViewController {
     }
     
     func setupUserProfile() {
-        DatabaseManager.getUserName { (username) in
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+                
+        DatabaseManager.getUserName(userID: userID) { (username) in
             User.username = username
         }
-        DatabaseManager.downloadProfileImage { (image) in
+        
+        DatabaseManager.downloadProfileImage(userID: userID) { (image) in
             User.profileImage = image
         }
 
