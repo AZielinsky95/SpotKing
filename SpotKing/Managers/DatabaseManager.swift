@@ -191,7 +191,7 @@ class DatabaseManager
             {
                 let tempUser = User()
                 tempUser.userID = snap.key
-                tempUser.name = dictionary["name"] as! String
+                tempUser.name = dictionary["name"] as? String
                 users.append(tempUser)
                 print(tempUser.name)
             }
@@ -234,16 +234,87 @@ class DatabaseManager
             downloadTask.resume()
         
         }
-
-    
     }
+    
+    static func observeMessages()
+    {
+        let userMessageRef = ref.child("messages").child("user-messages").child(currentUserId)
+        
+        userMessageRef.observe(.childAdded) { (snapshot) in
+            print(snapshot)
+            
+            let messageId = snapshot.key
+            let messagesRef = ref.child("messages").child(messageId)
+            
+            messagesRef.observeSingleEvent(of: .value, with: { (snap) in
+                print(snapshot)
+            })
+        }
+    }
+//    static func observeMessages(completion: @escaping ([Message]) -> ())
+//    {
+//        let messageRef = ref.child("messages")
+//        var messages = [Message]()
+//
+//        messageRef.observe(.childAdded) { (snap) in
+//
+//            if let dictionary = snap.value as? [String:String]
+//            {
+//                let message = Message(fromID: dictionary["fromId"], text: dictionary["text"], toID: dictionary["toId"])
+//
+//                messages.append(message)
+//            }
+//        }
+//
+//        completion(messages)
+//    }
+    
+    static func observeUserMessages(completion: @escaping ([Message]) -> ())
+    {
+        let messageRef = ref.child("messages").child("user-messages").child(currentUserId)
+        var messages = [Message]()
+        
+        messageRef.observe(.childAdded) { (snapshot) in
+            
+            let messageId = snapshot.key
+            let messagesReference = ref.child("messages").child(messageId)
+            
+            messagesReference.observeSingleEvent(of: .value, with: { (snap) in
+                
+                if let dictionary = snap.value as? [String:String]
+                {
+                    let message = Message(fromID: dictionary["fromId"], text: dictionary["text"], toID: dictionary["toId"])
+    
+                    messages.append(message)
+                    
+                    completion(messages)
+                }
+            })
+    
+            }
+    }
+    
     
     static func sendMessage(text:String,toUserId:String)
     {
        let userRef = ref.child("messages")
        let childRef = userRef.childByAutoId()
        let values = ["text": text,"fromId":currentUserId,"toId":toUserId]
-       childRef.updateChildValues(values)        
+        childRef.updateChildValues(values) { (error, reference) in
+            
+            if error != nil
+            {
+                print(error!.localizedDescription)
+            }
+            
+            let userMessagesRef = userRef.child("user-messages").child(currentUserId)
+            
+            let messageId = childRef.key
+            userMessagesRef.updateChildValues([messageId: 1])
+            
+            let receipientUserMessagesRef = userRef.child("user-messages").child(toUserId)
+            receipientUserMessagesRef.updateChildValues([messageId:1])
+        }
     }
     
     static func downloadSpotProfileImage(userID: String, completion: @escaping (UIImage) -> ()) {

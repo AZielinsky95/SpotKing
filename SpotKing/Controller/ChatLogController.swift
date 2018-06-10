@@ -10,15 +10,23 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ChatLogController: UICollectionViewController,UITextFieldDelegate {
+class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollectionViewDelegateFlowLayout {
 
     var user : User?
     {
         didSet
         {
             navigationItem.title = user?.name
+            observeMessages()
         }
     }
+    
+    func observeMessages()
+    {
+        DatabaseManager.observeMessages()
+    }
+    
+    var messages : [Message]?
     
     lazy var inputTextField:UITextField =
     {
@@ -32,11 +40,43 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(ChatMessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         self.collectionView?.backgroundColor = UIColor.white
         
         setupInputComponents()
+        
+        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        
+        DatabaseManager.observeUserMessages { (messages) in
+            DispatchQueue.main.async
+            {
+                self.messages = messages
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var height: CGFloat = 80
+        
+        if let text = messages![indexPath.item].text
+        {
+            height = estimatedFrameForText(text: text).height + 20
+        }
+        
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    private func estimatedFrameForText(text:String) -> CGRect
+    {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+    
+        
+        return NSString(string:text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
     func setupInputComponents()
@@ -83,6 +123,7 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate {
     {
         guard let message = inputTextField.text else { return }
         DatabaseManager.sendMessage(text: message,toUserId: self.user!.userID!)
+        inputTextField.text = nil
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -92,19 +133,22 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return messages?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ChatMessageCell
+        
+        let message = messages![indexPath.item]
+        cell.textView.text = message.text
+        cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: message.text!).width + 32
     
         return cell
     }
 }
+
