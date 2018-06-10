@@ -15,8 +15,6 @@ class MapViewController: UIViewController {
 
     var locationManager: CLLocationManager!
     var skateSpots = [SkateSpot]()
-    var skateSpotsFiltered = [SkateSpot]()
-    var isMapFiltered = false
     var skateSpotsNewsFeed = [SkateSpot]()
     var currentLocation : CLLocation?
     
@@ -173,6 +171,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func filterMap() {
+        var skateSpotsFiltered = [SkateSpot]()
+        
         var tagsFiltered = [SkateSpot.SpotTag]()
         
         if filterGap.isSelected {
