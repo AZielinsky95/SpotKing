@@ -339,6 +339,20 @@ class MapViewController: UIViewController {
         present(loginController,animated: true, completion: nil)
     }
     
+    @IBAction func showMessageController()
+    {
+        let messageController = MessageController()
+        messageController.mapViewController = self
+        present(UINavigationController(rootViewController: messageController),animated:true,completion:nil)
+    }
+    
+    func showChatControllerForUser(user:User)
+    {
+        let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatLogController.user = user
+        navigationController?.pushViewController(chatLogController, animated: true)
+    }
+    
     func setUpNavigationBar()
     {
        // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Pacific Again", size: 20)!]

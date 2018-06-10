@@ -136,7 +136,6 @@ class SkateSpot : NSObject, MKAnnotation
         self.spotID = spotID
         self.username = username
         self.comments = self.commentsToTuple(comments: comments)
-        
     }
     
     init(json:[String:Any],type:SpotType)
