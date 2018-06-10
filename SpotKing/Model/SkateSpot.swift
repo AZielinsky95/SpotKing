@@ -91,7 +91,8 @@ class SkateSpot : NSObject, MKAnnotation
     var spotDescription:String?
     var spotImage:UIImage?
     var coordinate = CLLocationCoordinate2D()
-    var spotRating:Double?
+    var spotRatingData:[String:Int]?
+    var spotRating:Int?
     var imageURL:String?
     var spotTags:[SpotTag]?
     var spotID: String!
@@ -119,14 +120,15 @@ class SkateSpot : NSObject, MKAnnotation
             }
     }()
     
-    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:Double?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String, comments:[String:[String]])
+    init(userId:String,type:SpotType,title:String,spotDescription:String,rating:[String:Int]?,spotImage:UIImage?,coordinates:CLLocationCoordinate2D, imageURL:String,tags:[SpotTag]?, spotID:String, username:String, comments:[String:[String]])
     {
         super.init()
         self.userID = userId
         self.spotType = type
         self.title = title
         self.spotDescription = spotDescription
-        self.spotRating = rating
+        self.spotRatingData = rating ?? ["count": 0, "total": 0]
+        self.spotRating = self.calculateRating(ratingData: rating)
         self.spotImage = spotImage
         self.coordinate = coordinates
         self.imageURL = imageURL
@@ -145,7 +147,7 @@ class SkateSpot : NSObject, MKAnnotation
         
         spotType = type;
         title = json["name"] as? String;
-        spotRating = json["rating"] as? Double;
+        spotRating = (json["rating"] as? Int);
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
         spotID = json["id"] as? String
         address = json["vicinity"] as? String
@@ -199,11 +201,17 @@ class SkateSpot : NSObject, MKAnnotation
         return dict
     }
     
+    func calculateRating(ratingData:[String:Int]?) -> Int {
+        guard let rating = ratingData, let total = rating["total"], let count = rating["count"], total != count else { return 0 }
+       return Int(floor(Double(total)/Double(count)))
+        
+    }
+    
     func ratingToStars() -> String
     {
         guard let rating = spotRating else { return "" }
         
-        switch (Int(rating))
+        switch (rating)
         {
             case 1:
             return "⭐️";

@@ -109,7 +109,7 @@ class DatabaseManager
                 
                 let newSpot = [
                     "userID": currentUserID,
-                    "rating": spot.spotRating ?? 0,
+                    "rating": spot.spotRatingData ?? ["total": 0, "count": 0],
                     "spotType": spot.spotType.toString(),
                     "lat": spot.coordinate.latitude,
                     "lng": spot.coordinate.longitude,
@@ -144,7 +144,7 @@ class DatabaseManager
                 let spotTypeStr = value["spotType"] as? String ?? ""
                 let spotType = SkateSpot.SpotType.toSpotType(strSpotType: spotTypeStr)
                 let coordinate = CLLocationCoordinate2DMake((value["lat"] as? Double)!, (value["lng"] as? Double)!)
-                let spotRating = value["rating"] as? Double
+                let spotRating = value["rating"] as? [String:Int]
                 let userID = value["userID"] as? String
                 let imageURL = value["imageURL"] as? String
                 let tagStrings = value["tags"] as? [String]
@@ -257,6 +257,31 @@ class DatabaseManager
         
     }
     
+    static func saveRatedSpots(ratedSpots:[String]) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        
+        let favouriteSpotsRef = ref.child("users/\(currentUserID)/ratedSpots")
+        
+        let rated = ["spots": ratedSpots] as [String : Any]
+        favouriteSpotsRef.setValue(rated)
+    }
+    
+    static func getRatedSpots(completion: @escaping ([String]) -> ()) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        var ratedSpots = [String]()
+        let ratedeSpotsRef = ref.child("users/\(currentUserID)/ratedSpots")
+        
+        ratedeSpotsRef.observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if value != nil {
+                ratedSpots = (value!["spots"] as? [String]) ?? [String]()
+            }
+            
+            completion(ratedSpots)
+        }
+        
+    }
+    
     static func saveParkFavourites(favourites:[String]) {
         guard let currentUserID = Auth.auth().currentUser?.uid else { return }
         
@@ -329,14 +354,20 @@ class DatabaseManager
         let spotRef = ref.child(path)
         let comments = ["comments": spot.commentsToDictionary()] as [String : Any]
         spotRef.setValue(comments)
+
+    }
+    
+    static func saveSpotRating(spot: SkateSpot) {
+        guard let spotID = spot.spotID else { return }
+        let path = "skatespots/\(spotID)/rating"
+        print(#line, path)
+        let spotRef = ref.child(path)
+        let rating = spot.spotRatingData
+        spotRef.setValue(rating)
         
-//        spotRef.setValue(comments) { (error, dbRef) in
-//            if error != nil {
-//                print(#line, error?.localizedDescription)
-//            }
-//        }
     }
 }
+
 
 extension UIImage {
     

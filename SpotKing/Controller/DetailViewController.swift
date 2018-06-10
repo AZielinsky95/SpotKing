@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = spot?.title
         isHeaderSet = false
+        
     }
     
     func setUpDetailContainerView()
@@ -73,6 +74,7 @@ class DetailViewController: UIViewController {
         header!.descriptionLabel.text = spot?.spotDescription
         ratingControlTopConstraintForShop?.isActive = false
         header!.ratingControlTopConstraint.isActive = true
+        header!.ratingControl.delegate = self
 
         header!.websiteLabel.isHidden = true
     }
@@ -98,16 +100,25 @@ class DetailViewController: UIViewController {
         header!.websiteLabel.text = spot?.website
     }
 
-    func setRating(rating:Double?)
+    func setRating(rating:Int?)
     {
-        if let rating = rating
-        {
-             header!.ratingControl.rating = Int(rating)
+        if spot?.spotType == SkateSpot.SpotType.SkateSpot && User.ratedSpots.contains((spot?.spotID)!) {
+            if let rating = rating
+            {
+                header!.ratingControl.rating = rating
+                header!.ratingControl.isUserInteractionEnabled = false
+                return
+            }
         }
-        else
-        {
-             header!.ratingControl.rating = 0;
+        if spot?.spotType != SkateSpot.SpotType.SkateSpot {
+            if let rating = rating
+            {
+                header!.ratingControl.rating = rating
+                return
+            }
         }
+       
+        header!.ratingControl.rating = 0;
     }
     
 }
@@ -178,4 +189,21 @@ extension DetailViewController : UICollectionViewDataSource
     
     
     
+}
+
+extension DetailViewController : RatingProtocol {
+    
+    func updateRating(rating: Int) {
+        guard var total = spot?.spotRatingData!["total"], var count = spot?.spotRatingData!["count"] else { return }
+        count += 1
+        total += rating
+        let rating = Int(floor(Double(total)/Double(count)))
+        spot?.spotRatingData = ["count":count, "total":total]
+        spot?.spotRating = rating
+        User.ratedSpots.append((spot?.spotID)!)
+        DatabaseManager.saveRatedSpots(ratedSpots: User.ratedSpots)
+        DatabaseManager.saveSpotRating(spot: spot!)
+        setRating(rating: rating)
+        
+    }
 }

@@ -90,6 +90,9 @@ class MapViewController: UIViewController {
         DatabaseManager.getParkFavourites { (favourites) in
             User.favouriteParks = favourites
         }
+        DatabaseManager.getRatedSpots { (rated) in
+            User.ratedSpots = rated
+        }
     }
     
     func getSpotsFromDatabase()

@@ -10,10 +10,16 @@ import Foundation
 
 import UIKit
 
+protocol RatingProtocol : class {
+    func updateRating(rating: Int)
+}
+
 @IBDesignable class RatingControl: UIStackView {
     
     //MARK: Properties
     private var ratingButtons = [UIButton]()
+    
+    weak var delegate : RatingProtocol?
     
     var rating = 0 {
         didSet {
@@ -97,6 +103,7 @@ import UIKit
         } else {
             // Otherwise set the rating to the selected star
             rating = selectedRating
+            delegate?.updateRating(rating: rating)
         }
     }
     
