@@ -24,7 +24,6 @@ class ProfileViewController: UIViewController {
         self.collectionView.dataSource = self
         
         setupFavouriteSpotImages()
-        
     }
     
     func setUpProfileView()

@@ -147,8 +147,29 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
         let message = messages![indexPath.item]
         cell.textView.text = message.text
         cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: message.text!).width + 32
+        
+        setupCell(cell: cell, message: message)
     
         return cell
+    }
+    
+    func setupCell(cell:ChatMessageCell,message:Message)
+    {
+        if(message.fromId == DatabaseManager.currentUserId)
+        {
+            cell.bubbleView.backgroundColor = UIColor.SpotKingColors.lightBlue
+            cell.textView.textColor = UIColor.white
+            cell.profileImageView.isHidden = true
+        }
+        else
+        {
+            cell.bubbleView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+            cell.textView.textColor = UIColor.black
+            cell.profileImageView.isHidden = false
+            cell.bubbleRightAnchor?.isActive = false
+            cell.bubbleLeftAnchor?.isActive = true
+            cell.profileImageView.image = user?.userImage
+        }
     }
 }
 
