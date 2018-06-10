@@ -23,6 +23,8 @@
 		CA32D50820CAEE3D00381316 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50720CAEE3D00381316 /* DetailCell.swift */; };
 		CA32D50A20CB218400381316 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50920CB218400381316 /* ProfileCell.swift */; };
 		CA32D50C20CC7A5700381316 /* ProfileReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50B20CC7A5700381316 /* ProfileReusableView.swift */; };
+		CA32D50E20CCB0B300381316 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50D20CCB0B300381316 /* ChatLogController.swift */; };
+		CA32D51020CCBD3E00381316 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32D50F20CCBD3E00381316 /* MessageController.swift */; };
 		CA52D97F20C6F1A4007AE4FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */; };
 		CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7020C065EC00347FE9 /* AppDelegate.swift */; };
 		CA696A7320C065EC00347FE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA696A7220C065EC00347FE9 /* MapViewController.swift */; };
@@ -59,6 +61,8 @@
 		CA32D50720CAEE3D00381316 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		CA32D50920CB218400381316 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		CA32D50B20CC7A5700381316 /* ProfileReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReusableView.swift; sourceTree = "<group>"; };
+		CA32D50D20CCB0B300381316 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		CA32D50F20CCBD3E00381316 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CA696A6D20C065EC00347FE9 /* SpotKing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotKing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA696A7020C065EC00347FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				CA52D97E20C6F1A4007AE4FD /* DetailViewController.swift */,
 				1E4F6F0B20C898CD001DF9A4 /* ProfileViewController.swift */,
 				1EA13AA720CAFCCE002F0A27 /* CommentsViewController.swift */,
+				CA32D50D20CCB0B300381316 /* ChatLogController.swift */,
+				CA32D50F20CCBD3E00381316 /* MessageController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -343,9 +349,11 @@
 				CACC858220C5B00100900FAD /* StoryViewController.swift in Sources */,
 				1E4F6F0820C6F728001DF9A4 /* StoryCell.swift in Sources */,
 				1E4F6F0A20C87ABD001DF9A4 /* User.swift in Sources */,
+				CA32D50E20CCB0B300381316 /* ChatLogController.swift in Sources */,
 				CA696A8A20C0848A00347FE9 /* NetworkManager.swift in Sources */,
 				CA32D50820CAEE3D00381316 /* DetailCell.swift in Sources */,
 				1E4F6F0C20C898CD001DF9A4 /* ProfileViewController.swift in Sources */,
+				CA32D51020CCBD3E00381316 /* MessageController.swift in Sources */,
 				1EA13AA820CAFCCE002F0A27 /* CommentsViewController.swift in Sources */,
 				CA696A7120C065EC00347FE9 /* AppDelegate.swift in Sources */,
 				CA32D50C20CC7A5700381316 /* ProfileReusableView.swift in Sources */,

@@ -18,6 +18,12 @@ class DatabaseManager
         return Database.database().reference()
     }()
     
+    static var currentUserId : String =
+    {
+        return Auth.auth().currentUser!.uid
+    }()
+    
+    
     static func isLoggedIn() -> Bool
     {
         return Auth.auth().currentUser?.uid == nil ? false : true
@@ -174,6 +180,27 @@ class DatabaseManager
         })
     }
     
+    static func fetchUsers(completion: @escaping ([User])->())
+    {
+        var users = [User]()
+        
+        ref.child("users").observe(.childAdded) { (snap) in
+           
+            
+            if let dictionary = snap.value as? [String:Any]
+            {
+                let tempUser = User()
+                tempUser.userID = snap.key
+                tempUser.name = dictionary["name"] as! String
+                users.append(tempUser)
+                print(tempUser.name)
+            }
+    
+            completion(users)
+            
+        }
+    }
+    
     static func getUserName(userID: String, completion: @escaping (String)->()) {
        // guard let currentUserID = Auth.auth().currentUser?.uid else { return }
         var username = ""
@@ -208,7 +235,15 @@ class DatabaseManager
         
         }
 
-        
+    
+    }
+    
+    static func sendMessage(text:String,toUserId:String)
+    {
+       let userRef = ref.child("messages")
+       let childRef = userRef.childByAutoId()
+       let values = ["text": text,"fromId":currentUserId,"toId":toUserId]
+       childRef.updateChildValues(values)        
     }
     
     static func downloadSpotProfileImage(userID: String, completion: @escaping (UIImage) -> ()) {
