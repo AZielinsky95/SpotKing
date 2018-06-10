@@ -47,29 +47,44 @@
                                                     <constraint firstAttribute="width" constant="42" id="E2K-3R-3EV"/>
                                                 </constraints>
                                                 <state key="normal" title="Rail"/>
+                                                <connections>
+                                                    <action selector="selectFilterButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fSf-CS-RzC"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ir5-M7-Y3M">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ir5-M7-Y3M">
                                                 <rect key="frame" x="67" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" red="0.48647272182213497" green="1" blue="0.55533563542606768" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Stairs"/>
+                                                <connections>
+                                                    <action selector="selectFilterButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aap-uF-UbF"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBH-40-IXg">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBH-40-IXg">
                                                 <rect key="frame" x="134" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" red="1" green="0.54218252765007324" blue="0.534941241996025" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <state key="normal" title="Manual"/>
+                                                <connections>
+                                                    <action selector="selectFilterButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u57-Xl-lwz"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-vc-DNe">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-vc-DNe">
                                                 <rect key="frame" x="201" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" red="1" green="0.65350195043944648" blue="0.86275265431353765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="Hubba"/>
+                                                <connections>
+                                                    <action selector="selectFilterButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K25-4Y-1Md"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2e-4i-OpU">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2e-4i-OpU">
                                                 <rect key="frame" x="268" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" red="1" green="0.92718741253861892" blue="0.51901930079887659" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Gap"/>
+                                                <connections>
+                                                    <action selector="selectFilterButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m5B-jb-NrT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -126,6 +141,14 @@
                                             <action selector="addSpotTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QcA-YD-5nH"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUr-gB-Flx">
+                                        <rect key="frame" x="253" y="8" width="35" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Filter"/>
+                                        <connections>
+                                            <action selector="filterMap" destination="BYZ-38-t0r" eventType="touchUpInside" id="H5H-hR-Rwp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -172,6 +195,11 @@
                         <outlet property="addButton" destination="lBz-gk-y8m" id="kHL-VX-lrL"/>
                         <outlet property="filterButton" destination="vpe-QX-NNJ" id="XKl-aJ-JAG"/>
                         <outlet property="filterContainerView" destination="1zx-A6-nss" id="vd1-CL-cSA"/>
+                        <outlet property="filterGap" destination="U2e-4i-OpU" id="1v3-tg-hb1"/>
+                        <outlet property="filterHubba" destination="7ZS-vc-DNe" id="L3n-zH-xpD"/>
+                        <outlet property="filterManual" destination="hBH-40-IXg" id="N0N-R6-bv5"/>
+                        <outlet property="filterRail" destination="Lwc-xm-vAU" id="DVH-gR-GYb"/>
+                        <outlet property="filterStairs" destination="ir5-M7-Y3M" id="9R1-OM-gYc"/>
                         <outlet property="mapView" destination="MCI-cK-OF8" id="srC-wM-1md"/>
                         <outlet property="settingsButton" destination="Nxp-Yd-9OF" id="hmT-ZD-HfG"/>
                         <outlet property="tabBarContainer" destination="uvk-Em-N38" id="d7C-ye-1va"/>

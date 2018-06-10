@@ -15,6 +15,8 @@ class MapViewController: UIViewController {
 
     var locationManager: CLLocationManager!
     var skateSpots = [SkateSpot]()
+    var skateSpotsFiltered = [SkateSpot]()
+    var isMapFiltered = false
     var skateSpotsNewsFeed = [SkateSpot]()
     var currentLocation : CLLocation?
     
@@ -34,6 +36,14 @@ class MapViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    
+    //Filter Tags
+    @IBOutlet weak var filterRail: UIButton!
+    @IBOutlet weak var filterStairs: UIButton!
+    @IBOutlet weak var filterManual: UIButton!
+    @IBOutlet weak var filterHubba: UIButton!
+    @IBOutlet weak var filterGap: UIButton!
+    
     
     let regionRadius: CLLocationDistance = 5000
     
@@ -100,6 +110,8 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    
     func downloadImagesForSkateSpots()
     {
         for spot in skateSpots
@@ -159,6 +171,73 @@ class MapViewController: UIViewController {
 //        filterContainerView.layer.borderWidth = 1
 //        filterContainerView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
     }
+    
+    @IBAction func filterMap() {
+        var tagsFiltered = [SkateSpot.SpotTag]()
+        
+        if filterGap.isSelected {
+            tagsFiltered.append(.Gap)
+        }
+        if filterRail.isSelected {
+            tagsFiltered.append(.Rail)
+        }
+        if filterHubba.isSelected {
+            tagsFiltered.append(.Hubba)
+        }
+        if filterManual.isSelected {
+            tagsFiltered.append(.Manual)
+        }
+        if filterStairs.isSelected {
+            tagsFiltered.append(.Stairs)
+        }
+        
+        for spot in skateSpots {
+            guard let spotTags = spot.spotTags else { continue }
+            for tag in spotTags {
+                if tagsFiltered.contains(tag) {
+                    skateSpotsFiltered.append(spot)
+                    break
+                }
+            }
+        }
+        
+        if tagsFiltered.count == 0 {
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.mapView.addAnnotations(skateSpots)
+        }
+        else {
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.mapView.addAnnotations(skateSpotsFiltered)
+        }
+
+        
+    }
+    
+
+    
+    
+    @IBAction func selectFilterButtons(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            filterRail.isSelected = !sender.isSelected
+            break
+        case 1:
+            filterStairs.isSelected = !sender.isSelected
+            break
+        case 2:
+            filterManual.isSelected = !sender.isSelected
+            break
+        case 3:
+            filterHubba.isSelected = !sender.isSelected
+            break
+        case 4:
+            filterGap.isSelected = !sender.isSelected
+            break
+        default:
+            break
+        }
+    }
+    
     
     @IBAction func showFilterOptions(_ sender: UIButton)
     {

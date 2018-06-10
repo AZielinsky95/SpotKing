@@ -148,14 +148,14 @@ class DatabaseManager
                 let userID = value["userID"] as? String
                 let imageURL = value["imageURL"] as? String
                 let tagStrings = value["tags"] as? [String]
-                var spotTags : [SkateSpot.SpotTag]?
+                var spotTags = [SkateSpot.SpotTag]()
                 let spotID = value["spotID"] as? String
                 let username = value["username"] as? String
                 if let tags = tagStrings
                 {
                     for tag in tags
                     {
-                        spotTags?.append(SkateSpot.SpotTag.toSpotTag(spotTagString: tag))
+                        spotTags.append(SkateSpot.SpotTag.toSpotTag(spotTagString: tag))
                     }
                 }
                 var comments = [String:[String]]()
