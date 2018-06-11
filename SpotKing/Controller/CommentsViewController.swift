@@ -32,6 +32,7 @@ class CommentsViewController: UIViewController {
         setupComments()
         self.collectionView.dataSource = self
         //    keys = comments?.keys
+        self.title = "Spot Comments"
     }
     
    
@@ -70,6 +71,7 @@ class CommentsViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
+                        
                         self.collectionView.scrollToItem(at: IndexPath(row: self.comments.count-1, section: 0), at: UICollectionViewScrollPosition.bottom, animated: true)
                     }
                 })
@@ -106,6 +108,7 @@ extension CommentsViewController : UICollectionViewDataSource {
         if kind ==  UICollectionElementKindSectionFooter {
             self.footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CommentsFooter", for:indexPath) as? CommentsFooterReusableView
             
+            print(#line, "indexpath:", indexPath.row, indexPath.section)
             self.footer?.profileImageView.image = User.profileImage
             self.footer?.profileImageView.layer.cornerRadius = (self.footer?.profileImageView.frame.width)! / 2
             self.footer?.profileImageView.clipsToBounds = true

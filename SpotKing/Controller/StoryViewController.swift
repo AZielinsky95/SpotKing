@@ -26,6 +26,7 @@ class StoryViewController: UIViewController {
         
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "map")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "map")
+        self.title = "Spot News"
 
      }
     
@@ -105,17 +106,29 @@ extension StoryViewController : UICollectionViewDataSource
         cell.commentTextField.delegate = self
         
         cell.viewCommentsButton.isHidden = spot.comments.count == 0 ? true : false
-        cell.viewCommentsButton.setTitle("View \(spot.comments.count) comments", for: .normal)
+        if spot.comments.count == 1 {
+            cell.viewCommentsButton.setTitle("View \(spot.comments.count) comment", for: .normal)
+        }
+        else {
+            cell.viewCommentsButton.setTitle("View \(spot.comments.count) comments", for: .normal)
+        }
         
-        cell.username.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
+        
+        if spot.spotType == SkateSpot.SpotType.SkatePark {
+            cell.username.text = "Skate Park"
+        }
+        else {
+            
+        }
+       // cell.username.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
         cell.profileImage.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
         
-        if spot.spotType != SkateSpot.SpotType.SkateSpot {
-            cell.spotTitle.frame.origin.y = 215
-        }  
-        else {
-            cell.spotTitle.frame.origin.y = 244
-        }
+//        if spot.spotType != SkateSpot.SpotType.SkateSpot {
+//            cell.spotTitle.frame.origin.y = 215
+//        }  
+//        else {
+//            cell.spotTitle.frame.origin.y = 244
+//        }
         
         let spotID = spot.spotID
         cell.spotID = spotID
