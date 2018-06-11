@@ -26,6 +26,7 @@ class StoryViewController: UIViewController {
         
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "map")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "map")
+        self.title = "Spot News"
 
      }
     
@@ -99,21 +100,35 @@ extension StoryViewController : UICollectionViewDataSource
         cell.spotTitle.text = spot.title
         cell.spotDescription.text = spot.spotDescription
         cell.username.text = spot.username
+        
+        cell.username.textColor = UIColor.SpotKingColors.darkGreen
 
         cell.commentTextField.delegate = self
         
         cell.viewCommentsButton.isHidden = spot.comments.count == 0 ? true : false
-        cell.viewCommentsButton.setTitle("View \(spot.comments.count) comments", for: .normal)
-        
-        cell.username.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
-        cell.profileImage.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
-        
-        if spot.spotType != SkateSpot.SpotType.SkateSpot {
-            cell.spotTitle.frame.origin.y = 215
+        if spot.comments.count == 1 {
+            cell.viewCommentsButton.setTitle("View \(spot.comments.count) comment", for: .normal)
         }
         else {
-            cell.spotTitle.frame.origin.y = 244
+            cell.viewCommentsButton.setTitle("View \(spot.comments.count) comments", for: .normal)
         }
+        
+        
+        if spot.spotType == SkateSpot.SpotType.SkatePark {
+            cell.username.text = "Skate Park"
+        }
+        else {
+            
+        }
+       // cell.username.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
+        cell.profileImage.isHidden = spot.spotType != SkateSpot.SpotType.SkateSpot ? true : false
+        
+//        if spot.spotType != SkateSpot.SpotType.SkateSpot {
+//            cell.spotTitle.frame.origin.y = 215
+//        }  
+//        else {
+//            cell.spotTitle.frame.origin.y = 244
+//        }
         
         let spotID = spot.spotID
         cell.spotID = spotID
@@ -125,6 +140,15 @@ extension StoryViewController : UICollectionViewDataSource
             }
         }
 
+        
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 5
+        cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        
+        cell.imageView.layer.cornerRadius = 5
+        cell.imageView.layer.borderWidth = 2
+        cell.imageView.layer.borderColor = UIColor.SpotKingColors.lightBlue.cgColor
+        
         cell.delegate = self
         
         return cell
