@@ -23,20 +23,24 @@ class ProfileViewController: UIViewController {
 
         self.collectionView.dataSource = self
         
+        self.navigationItem.hidesBackButton = true
+        
+        self.navigationItem.title = "Profile"
+        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "map"), style: .plain, target: self, action: #selector(BackToMap))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(LogOut))
         setupFavouriteSpotImages()
+    }
+    
+    @objc func BackToMap()
+    {
+      self.navigationController?.popViewController(animated: true)
     }
     
     @objc func LogOut()
     {
         DatabaseManager.signOut()
-        presentLoginViewController()
-    }
-    
-    func presentLoginViewController()
-    {
-        let loginController = LoginViewController()
-        present(loginController,animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    //    presentLoginViewController()
     }
     
     func setUpProfileView()
@@ -160,6 +164,11 @@ extension ProfileViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
         
+       
+        cell.imageView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        cell.imageView.layer.borderWidth = 3
+        cell.imageView.layer.cornerRadius = 16
+        cell.imageView.layer.masksToBounds = true
         cell.imageView.image = favouriteSpotsImages[indexPath.row]
         
         return cell
