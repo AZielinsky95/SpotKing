@@ -408,20 +408,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j7g-eW-3tN">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="545"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6ug-8H-qP4">
-                                    <size key="itemSize" width="375" height="75"/>
+                                    <size key="itemSize" width="341" height="66"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommentsCell" id="fwK-zz-D2Y" customClass="CommentsCell" customModule="SpotKing" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                        <rect key="frame" x="17" y="0.0" width="341" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbx-9Y-RGw">
@@ -451,40 +451,44 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CommentsFooter" id="bvm-M0-Cgi" customClass="CommentsFooterReusableView" customModule="SpotKing" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="75" width="375" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0E-np-dQN">
-                                            <rect key="frame" x="20" y="12" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ard-fX-ikS">
-                                            <rect key="frame" x="58" y="11" width="309" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <connections>
-                                        <outlet property="commentsTextField" destination="ard-fX-ikS" id="nqA-DR-ddw"/>
-                                        <outlet property="profileImageView" destination="V0E-np-dQN" id="F5w-u4-VP0"/>
-                                    </connections>
-                                </collectionReusableView>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2N-ug-2zh">
+                                <rect key="frame" x="0.0" y="609" width="375" height="58"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0E-np-dQN">
+                                        <rect key="frame" x="30" y="14" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ard-fX-ikS">
+                                        <rect key="frame" x="68" y="13" width="287" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="sRg-Vn-H1z"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="j7g-eW-3tN" firstAttribute="leading" secondItem="5xS-3X-IDX" secondAttribute="leading" id="ocB-gF-XR6"/>
-                            <constraint firstItem="j7g-eW-3tN" firstAttribute="bottom" secondItem="5xS-3X-IDX" secondAttribute="bottom" id="sAa-sy-LcE"/>
-                            <constraint firstItem="j7g-eW-3tN" firstAttribute="top" secondItem="5xS-3X-IDX" secondAttribute="top" id="vGY-6R-7RV"/>
-                            <constraint firstItem="j7g-eW-3tN" firstAttribute="trailing" secondItem="5xS-3X-IDX" secondAttribute="trailing" id="wE9-CU-1hL"/>
+                            <constraint firstItem="j7g-eW-3tN" firstAttribute="leading" secondItem="5xS-3X-IDX" secondAttribute="leading" id="2If-CX-jrW"/>
+                            <constraint firstItem="c2N-ug-2zh" firstAttribute="trailing" secondItem="5xS-3X-IDX" secondAttribute="trailing" id="B9Y-6u-kRR"/>
+                            <constraint firstItem="c2N-ug-2zh" firstAttribute="top" secondItem="j7g-eW-3tN" secondAttribute="bottom" id="f34-bH-y5b"/>
+                            <constraint firstItem="c2N-ug-2zh" firstAttribute="leading" secondItem="5xS-3X-IDX" secondAttribute="leading" id="iis-Lh-Xka"/>
+                            <constraint firstItem="c2N-ug-2zh" firstAttribute="bottom" secondItem="5xS-3X-IDX" secondAttribute="bottom" id="ijV-vx-t04"/>
+                            <constraint firstItem="5xS-3X-IDX" firstAttribute="trailing" secondItem="j7g-eW-3tN" secondAttribute="trailing" id="oHU-EI-8jG"/>
+                            <constraint firstItem="j7g-eW-3tN" firstAttribute="top" secondItem="5xS-3X-IDX" secondAttribute="top" id="wCC-gJ-0kW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5xS-3X-IDX"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="j7g-eW-3tN" id="3oU-cU-nFT"/>
+                        <outlet property="commentsTextField" destination="ard-fX-ikS" id="DvK-bG-gIL"/>
+                        <outlet property="profileImageView" destination="V0E-np-dQN" id="3ci-7t-S2Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTl-tA-NZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
