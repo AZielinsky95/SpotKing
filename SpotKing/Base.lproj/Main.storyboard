@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -290,7 +291,7 @@
                                                                 <constraint firstAttribute="height" constant="5" id="H5J-50-U2p"/>
                                                             </constraints>
                                                         </view>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4zD-Fq-Gpu">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4zD-Fq-Gpu">
                                                             <rect key="frame" x="0.0" y="33" width="339" height="30"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUI-Ui-0wN">
@@ -300,13 +301,6 @@
                                                                         <constraint firstAttribute="height" constant="30" id="vTd-Ad-X1W"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUY-HU-Zil">
-                                                                    <rect key="frame" x="30" y="0.0" width="8" height="30"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="8" id="Pyv-1M-vAa"/>
-                                                                    </constraints>
-                                                                </view>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YPa-kE-hKp">
                                                                     <rect key="frame" x="38" y="0.0" width="301" height="30"/>
                                                                     <constraints>
@@ -320,8 +314,8 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpX-cK-L7e" userLabel="User Stack View">
-                                                    <rect key="frame" x="20" y="211" width="114" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kpX-cK-L7e" userLabel="User Stack View">
+                                                    <rect key="frame" x="20" y="211" width="117" height="30"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Lie-tI-Of4">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -330,15 +324,8 @@
                                                                 <constraint firstAttribute="width" constant="30" id="PaI-xR-h3M"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3N2-ky-Pse">
-                                                            <rect key="frame" x="30" y="0.0" width="5" height="30"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="5" id="uG7-Eb-9IX"/>
-                                                            </constraints>
-                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TestUser123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsW-Gu-nAq">
-                                                            <rect key="frame" x="35" y="0.0" width="79" height="30"/>
+                                                            <rect key="frame" x="38" y="0.0" width="79" height="30"/>
                                                             <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="27"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -941,6 +928,9 @@
                         <viewLayoutGuide key="safeArea" id="OFi-KI-YAS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Spot Title" id="7WV-52-hwO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="oJu-h3-Yce" id="nzw-rU-kXW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42P-mn-jEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

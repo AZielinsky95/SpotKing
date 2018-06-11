@@ -10,9 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     var header:DetailReusableView?
     
     var spot : SkateSpot?
+    var comments = [Comment]()
 
     var ratingControlTopConstraintForShop:NSLayoutConstraint?
     
@@ -22,8 +24,30 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = spot?.title
         isHeaderSet = false
+        setupComments()
         
     }
+    
+    func setupComments() {
+        
+        guard let commentsTuple = spot?.comments else { return }
+        
+        for commentTuple in commentsTuple {
+            let userID = commentTuple.0
+            DatabaseManager.getUserName(userID: userID, completion: { (username) in
+                let comment = Comment()
+                comment.comment = commentTuple.1
+                 comment.username = username
+                self.comments.append(comment)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                        
+            })
+        }
+        
+    }
+    
     
     func setUpDetailContainerView()
     {
@@ -170,8 +194,11 @@ extension DetailViewController : UICollectionViewDataSource
         }
         else if spot?.spotType == SkateSpot.SpotType.SkateSpot
         {
-            cell.authorLabel.text = "User!"
-            cell.textLabel.text = spot!.comments[indexPath.row].1
+            if comments.count > indexPath.row {
+                cell.authorLabel.text = comments[indexPath.row].username
+                cell.textLabel.text = comments[indexPath.row].comment
+            }
+
             
             //Array(spot!.comments)[indexPath.row].value
         }
