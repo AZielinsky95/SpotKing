@@ -146,7 +146,13 @@ class SkateSpot : NSObject, MKAnnotation
         
         spotType = type;
         title = json["name"] as? String;
-        spotRating = (json["rating"] as? Int);
+        if let r = json["rating"] as? Double {
+            spotRating = Int(r)
+        }
+        else {
+            spotRating = 0
+        }
+        
         coordinate = CLLocationCoordinate2D(latitude: location["lat"]!, longitude: location["lng"]!)
         spotID = json["id"] as? String
         address = json["vicinity"] as? String
