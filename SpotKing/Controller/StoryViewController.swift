@@ -104,6 +104,9 @@ extension StoryViewController : UICollectionViewDataSource
         cell.username.textColor = UIColor.SpotKingColors.darkGreen
 
         cell.commentTextField.delegate = self
+        cell.commentTextField.layer.borderColor = UIColor.SpotKingColors.lightBlue.cgColor
+        cell.commentTextField.layer.borderWidth = 1
+        cell.commentTextField.layer.cornerRadius = 5
         
         cell.viewCommentsButton.isHidden = spot.comments.count == 0 ? true : false
         if spot.comments.count == 1 {

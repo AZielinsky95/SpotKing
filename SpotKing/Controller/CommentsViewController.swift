@@ -13,6 +13,7 @@ protocol CommentsProtocol : class {
     func updateSpot(index: Int, spot: SkateSpot)
 }
 
+
 class CommentsViewController: UIViewController {
     
     var commentsTuple = [(String, String)]()
@@ -24,18 +25,38 @@ class CommentsViewController: UIViewController {
     weak var delegate : CommentsProtocol?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var commentsTextField: UITextField!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "menu")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "menu")
+        setupView()
         setupComments()
-        self.collectionView.dataSource = self
-        //    keys = comments?.keys
-        self.title = "Spot Comments"
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentsViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentsViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+
     }
     
-   
+    func setupView() {
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "menu")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "menu")
+        self.collectionView.dataSource = self
+        self.title = "Spot Comments"
+        self.profileImageView.image = User.profileImage
+        self.commentsTextField.delegate = self
+        self.commentsTextField.layer.borderColor = UIColor.SpotKingColors.lightBlue.cgColor
+        self.commentsTextField.layer.borderWidth = 1
+        self.commentsTextField.layer.cornerRadius = 5
+        
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.width / 2
+        self.profileImageView.clipsToBounds = true
+        
+    }
+    
     func setupComments() {
         
         for commentTuple in commentsTuple {
@@ -77,6 +98,22 @@ class CommentsViewController: UIViewController {
                 })
             }
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 258 //keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y =  0
+            }
+        }
+    }
         
 }
 
@@ -103,24 +140,24 @@ extension CommentsViewController : UICollectionViewDataSource {
        return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if kind ==  UICollectionElementKindSectionFooter {
-            self.footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CommentsFooter", for:indexPath) as? CommentsFooterReusableView
-            
-            print(#line, "indexpath:", indexPath.row, indexPath.section)
-            self.footer?.profileImageView.image = User.profileImage
-            self.footer?.profileImageView.layer.cornerRadius = (self.footer?.profileImageView.frame.width)! / 2
-            self.footer?.profileImageView.clipsToBounds = true
-            
-            self.footer?.commentsTextField.delegate = self
-
-
-            return self.footer!
-        }
-        
-        return UICollectionReusableView()
-    }
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        if kind ==  UICollectionElementKindSectionFooter {
+//            self.footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CommentsFooter", for:indexPath) as? CommentsFooterReusableView
+//
+//            print(#line, "indexpath:", indexPath.row, indexPath.section)
+//            self.footer?.profileImageView.image = User.profileImage
+//            self.footer?.profileImageView.layer.cornerRadius = (self.footer?.profileImageView.frame.width)! / 2
+//            self.footer?.profileImageView.clipsToBounds = true
+//
+//            self.footer?.commentsTextField.delegate = self
+//
+//
+//            return self.footer!
+//        }
+//
+//        return UICollectionReusableView()
+//    }
 }
 
 extension CommentsViewController : UITextFieldDelegate {
@@ -129,12 +166,15 @@ extension CommentsViewController : UITextFieldDelegate {
         guard let userID = Auth.auth().currentUser?.uid else { fatalError() }
 //
         if let comment = textField.text {
-            addComment(userID: userID, commentText: comment)
-            skateSpot?.comments.append((userID, comment))
-            delegate?.updateSpot(index: spotIndex!, spot: skateSpot!)
-            DatabaseManager.saveSpotComments(spot: skateSpot!)
-            textField.text = ""
+            if comment != "" {
+                addComment(userID: userID, commentText: comment)
+                skateSpot?.comments.append((userID, comment))
+                delegate?.updateSpot(index: spotIndex!, spot: skateSpot!)
+                DatabaseManager.saveSpotComments(spot: skateSpot!)
+            }
 
+            textField.text = ""
+            textField.resignFirstResponder()
             
         }
         

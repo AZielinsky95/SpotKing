@@ -9,7 +9,5 @@
 import UIKit
 
 class CommentsFooterReusableView: UICollectionReusableView {
-    @IBOutlet weak var commentsTextField: UITextField!
-    
-    @IBOutlet weak var profileImageView: UIImageView!
+
 }
