@@ -225,7 +225,7 @@ class DatabaseManager
             
             let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL) { (url, response, error)  in
                 let data = NSData(contentsOf: url!)
-                let image = UIImage(data: data! as Data)!
+                guard let image = UIImage(data: data! as Data) else { return }
                 completion(image)
             }
             
@@ -332,7 +332,7 @@ class DatabaseManager
             
             let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL) { (url, response, error)  in
                 let data = NSData(contentsOf: url!)
-                let image = UIImage(data: data! as Data)!
+                guard let image = UIImage(data: data! as Data) else { return }
                 completion(image)
             }
             
@@ -423,7 +423,7 @@ class DatabaseManager
         
         let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL) { (url, response, error)  in
             let data = NSData(contentsOf: url!)
-            let image = UIImage(data: data! as Data)!
+            guard let image = UIImage(data: data! as Data) else { return }
             completion(image)
         }
         
