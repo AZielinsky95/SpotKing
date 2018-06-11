@@ -88,10 +88,14 @@ extension CommentsViewController : UICollectionViewDataSource {
         cell.commentImageView.layer.cornerRadius = cell.commentImageView.frame.width / 2
         cell.commentImageView.clipsToBounds = true
         
+        cell.username.textColor = UIColor.SpotKingColors.darkGreen
         cell.username.text = comments[indexPath.row].username
         cell.comment.text = comments[indexPath.row].comment
         cell.commentImageView.image = comments[indexPath.row].profileImage
         
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 5
+        cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
 
         
        return cell

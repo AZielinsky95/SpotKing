@@ -99,6 +99,8 @@ extension StoryViewController : UICollectionViewDataSource
         cell.spotTitle.text = spot.title
         cell.spotDescription.text = spot.spotDescription
         cell.username.text = spot.username
+        
+        cell.username.textColor = UIColor.SpotKingColors.darkGreen
 
         cell.commentTextField.delegate = self
         
@@ -110,7 +112,7 @@ extension StoryViewController : UICollectionViewDataSource
         
         if spot.spotType != SkateSpot.SpotType.SkateSpot {
             cell.spotTitle.frame.origin.y = 215
-        }
+        }  
         else {
             cell.spotTitle.frame.origin.y = 244
         }
@@ -125,6 +127,15 @@ extension StoryViewController : UICollectionViewDataSource
             }
         }
 
+        
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 5
+        cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        
+        cell.imageView.layer.cornerRadius = 5
+        cell.imageView.layer.borderWidth = 2
+        cell.imageView.layer.borderColor = UIColor.SpotKingColors.lightBlue.cgColor
+        
         cell.delegate = self
         
         return cell

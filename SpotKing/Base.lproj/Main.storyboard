@@ -245,23 +245,23 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vanderhoof Stairs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPX-K6-mHG">
-                                                    <rect key="frame" x="20" y="244" width="225" height="19.5"/>
+                                                    <rect key="frame" x="20" y="248" width="335" height="20.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="225" id="pWZ-9i-NU8"/>
+                                                        <constraint firstAttribute="width" constant="335" id="pWZ-9i-NU8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description of spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXo-E6-TJO">
-                                                    <rect key="frame" x="20" y="273.5" width="225" height="17"/>
+                                                    <rect key="frame" x="20" y="274" width="335" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TestUser123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsW-Gu-nAq">
                                                     <rect key="frame" x="57" y="214.5" width="89.5" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="27"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -284,7 +284,7 @@
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TsD-E6-8yh">
-                                                    <rect key="frame" x="20" y="301.5" width="339" height="63"/>
+                                                    <rect key="frame" x="20" y="301" width="339" height="63"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-V8-Fjm">
                                                             <rect key="frame" x="0.0" y="0.0" width="339" height="28"/>
@@ -343,15 +343,15 @@
                                             <constraint firstItem="IXo-E6-TJO" firstAttribute="centerX" secondItem="iPX-K6-mHG" secondAttribute="centerX" id="CZ3-SA-ZHe"/>
                                             <constraint firstAttribute="trailing" secondItem="RNy-6I-IXE" secondAttribute="trailing" id="Dmo-Zh-J8T"/>
                                             <constraint firstItem="Lie-tI-Of4" firstAttribute="leading" secondItem="ZeJ-TO-4mg" secondAttribute="leadingMargin" constant="12" id="ELC-WX-w9t"/>
-                                            <constraint firstItem="TsD-E6-8yh" firstAttribute="top" secondItem="IXo-E6-TJO" secondAttribute="bottom" constant="11" id="GNI-dA-4Oj"/>
+                                            <constraint firstItem="TsD-E6-8yh" firstAttribute="top" secondItem="IXo-E6-TJO" secondAttribute="bottom" constant="10" id="GNI-dA-4Oj"/>
                                             <constraint firstItem="rsW-Gu-nAq" firstAttribute="leading" secondItem="Lie-tI-Of4" secondAttribute="trailing" constant="4" id="Jjz-z1-Tdw"/>
-                                            <constraint firstItem="IXo-E6-TJO" firstAttribute="top" secondItem="iPX-K6-mHG" secondAttribute="bottom" constant="10" id="MfU-ZB-GEv"/>
+                                            <constraint firstItem="IXo-E6-TJO" firstAttribute="top" secondItem="iPX-K6-mHG" secondAttribute="bottom" constant="5" id="MfU-ZB-GEv"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="LTi-Bo-V56" secondAttribute="trailing" constant="12" id="Nas-6Z-ixU"/>
                                             <constraint firstItem="Lie-tI-Of4" firstAttribute="top" secondItem="RNy-6I-IXE" secondAttribute="bottom" constant="10" id="PQx-I0-qHd"/>
                                             <constraint firstItem="RNy-6I-IXE" firstAttribute="top" secondItem="ZeJ-TO-4mg" secondAttribute="top" id="d0S-TE-3tw"/>
                                             <constraint firstItem="iPX-K6-mHG" firstAttribute="leading" secondItem="ZeJ-TO-4mg" secondAttribute="leadingMargin" constant="12" id="gC9-dm-mxj"/>
                                             <constraint firstItem="LTi-Bo-V56" firstAttribute="top" secondItem="RNy-6I-IXE" secondAttribute="bottom" constant="10" id="gjz-s4-bQj"/>
-                                            <constraint firstItem="iPX-K6-mHG" firstAttribute="top" secondItem="Lie-tI-Of4" secondAttribute="bottom" constant="4" id="iuY-qC-pL7"/>
+                                            <constraint firstItem="iPX-K6-mHG" firstAttribute="top" secondItem="Lie-tI-Of4" secondAttribute="bottom" constant="8" id="iuY-qC-pL7"/>
                                             <constraint firstItem="rsW-Gu-nAq" firstAttribute="centerY" secondItem="Lie-tI-Of4" secondAttribute="centerY" id="jlN-ME-3oG"/>
                                             <constraint firstItem="RNy-6I-IXE" firstAttribute="leading" secondItem="ZeJ-TO-4mg" secondAttribute="leading" id="nWY-hX-IF0"/>
                                         </constraints>
@@ -387,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSS-2c-4CJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="172"/>
+            <point key="canvasLocation" x="1568.8" y="171.36431784107947"/>
         </scene>
         <!--Comments View Controller-->
         <scene sceneID="1LV-Tg-scm">
@@ -421,14 +421,14 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQc-ZF-EMo">
                                                     <rect key="frame" x="80" y="7" width="157" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="27"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="comment" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPW-HJ-K2e">
                                                     <rect key="frame" x="80" y="33" width="270" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -759,9 +759,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oJu-h3-Yce">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oJu-h3-Yce">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zib-bm-sMK">
                                     <size key="itemSize" width="343" height="148"/>
@@ -831,8 +830,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auf-Zl-szR">
-                                                    <rect key="frame" x="60" y="15" width="68" height="30"/>
-                                                    <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="28"/>
+                                                    <rect key="frame" x="60" y="15.5" width="65.5" height="29"/>
+                                                    <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="27"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -919,6 +918,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oJu-h3-Yce" firstAttribute="bottom" secondItem="OFi-KI-YAS" secondAttribute="bottom" id="H2G-dh-P9m"/>
+                            <constraint firstItem="oJu-h3-Yce" firstAttribute="leading" secondItem="OFi-KI-YAS" secondAttribute="leading" id="K1n-Mp-UCa"/>
+                            <constraint firstItem="oJu-h3-Yce" firstAttribute="top" secondItem="fgD-5I-ba6" secondAttribute="top" id="k8U-ZS-tgy"/>
+                            <constraint firstItem="oJu-h3-Yce" firstAttribute="trailing" secondItem="OFi-KI-YAS" secondAttribute="trailing" id="zVa-aF-gWh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OFi-KI-YAS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Spot Title" id="7WV-52-hwO"/>
