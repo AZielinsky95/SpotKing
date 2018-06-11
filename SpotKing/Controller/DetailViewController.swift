@@ -22,11 +22,20 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "map"), style: .plain, target: self, action: #selector(BackToMap))
         self.navigationItem.title = spot?.title
         isHeaderSet = false
         setupComments()
         
     }
+    
+    @objc func BackToMap()
+    {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     func setupComments() {
         
