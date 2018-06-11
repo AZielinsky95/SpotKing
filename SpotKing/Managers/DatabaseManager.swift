@@ -39,8 +39,6 @@ class DatabaseManager
         {
             print(error.localizedDescription)
         }
-        
-        //Make sure to present login VC when calling this method
     }
     
     static func handleLogin(email:String,password:String, completion: @escaping () -> Void)
@@ -269,7 +267,7 @@ class DatabaseManager
 //        completion(messages)
 //    }
     
-    static func observeUserMessages(completion: @escaping ([Message]) -> ())
+    static func observeUserMessages(user:User,completion: @escaping ([Message]) -> ())
     {
         let messageRef = ref.child("messages").child("user-messages").child(currentUserId)
         var messages = [Message]()
@@ -283,15 +281,20 @@ class DatabaseManager
                 
                 if let dictionary = snap.value as? [String:String]
                 {
-                    let message = Message(fromID: dictionary["fromId"], text: dictionary["text"], toID: dictionary["toId"])
-    
-                    messages.append(message)
                     
-                    completion(messages)
+                    let message = Message(fromID: dictionary["fromId"], text: dictionary["text"], toID: dictionary["toId"])
+     
+                        if(message.chatPartnerId() == user.userID)
+                        {
+                            print(message.text)
+                            messages.append(message)
+                        }
+                    
+                        completion(messages)
                 }
             })
-    
             }
+        
     }
     
     

@@ -17,7 +17,7 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
         didSet
         {
             navigationItem.title = user?.name
-            observeMessages()
+           // observeMessages()
         }
     }
     
@@ -49,7 +49,7 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         
-        DatabaseManager.observeUserMessages { (messages) in
+        DatabaseManager.observeUserMessages(user:user!) { (messages) in
             DispatchQueue.main.async
             {
                 self.messages = messages
@@ -160,6 +160,8 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
             cell.bubbleView.backgroundColor = UIColor.SpotKingColors.lightBlue
             cell.textView.textColor = UIColor.white
             cell.profileImageView.isHidden = true
+            cell.bubbleLeftAnchor?.isActive = false
+            cell.bubbleRightAnchor?.isActive = true
         }
         else
         {

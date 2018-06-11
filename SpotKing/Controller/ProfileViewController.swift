@@ -23,7 +23,20 @@ class ProfileViewController: UIViewController {
 
         self.collectionView.dataSource = self
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(LogOut))
         setupFavouriteSpotImages()
+    }
+    
+    @objc func LogOut()
+    {
+        DatabaseManager.signOut()
+        presentLoginViewController()
+    }
+    
+    func presentLoginViewController()
+    {
+        let loginController = LoginViewController()
+        present(loginController,animated: true, completion: nil)
     }
     
     func setUpProfileView()
