@@ -45,18 +45,27 @@ class MapViewController: UIViewController {
     
     let regionRadius: CLLocationDistance = 5000
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         if DatabaseManager.isLoggedIn() == false
         {
             presentLoginController()
         }
         
-       // DatabaseManager.signOut()
-        
         setupUserProfile()
+        
+    }
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+//        if DatabaseManager.isLoggedIn() == false
+//        {
+//            presentLoginController()
+//        }
+//
         setUpNavigationBar()
         setUpLocationManager()
         setUpTabButtons()

@@ -141,13 +141,13 @@ extension StoryViewController : UICollectionViewDataSource
         }
 
         
-        cell.layer.borderWidth = 2
-        cell.layer.cornerRadius = 5
-        cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+//        cell.layer.borderWidth = 2
+//        cell.layer.cornerRadius = 5
+//        cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         
-        cell.imageView.layer.cornerRadius = 5
-        cell.imageView.layer.borderWidth = 2
-        cell.imageView.layer.borderColor = UIColor.SpotKingColors.lightBlue.cgColor
+   //     cell.imageView.layer.cornerRadius = 5
+//        cell.imageView.layer.borderWidth = 2
+//        cell.imageView.layer.borderColor = UIColor.SpotKingColors.lightBlue.cgColor
         
         cell.delegate = self
         
