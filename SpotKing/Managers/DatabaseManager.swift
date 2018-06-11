@@ -39,8 +39,6 @@ class DatabaseManager
         {
             print(error.localizedDescription)
         }
-        
-        //Make sure to present login VC when calling this method
     }
     
     static func handleLogin(email:String,password:String, completion: @escaping () -> Void)
@@ -283,11 +281,13 @@ class DatabaseManager
                 
                 if let dictionary = snap.value as? [String:String]
                 {
+                    
                     let message = Message(fromID: dictionary["fromId"], text: dictionary["text"], toID: dictionary["toId"])
     
-                    messages.append(message)
+                        messages.append(message)
+        
+                        completion(messages)
                     
-                    completion(messages)
                 }
             })
     

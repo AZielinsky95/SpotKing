@@ -17,7 +17,7 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
         didSet
         {
             navigationItem.title = user?.name
-            observeMessages()
+           // observeMessages()
         }
     }
     
