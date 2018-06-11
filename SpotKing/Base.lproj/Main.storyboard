@@ -540,14 +540,14 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuP-Bg-F4V">
-                                            <rect key="frame" x="148" y="194" width="79" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="151.5" y="194" width="73" height="32"/>
+                                            <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Spots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taf-eB-9yi">
-                                            <rect key="frame" x="8" y="354" width="109.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="12" y="349" width="78" height="26"/>
+                                            <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -558,8 +558,8 @@
                                         <constraint firstItem="1VF-Kv-oHU" firstAttribute="leading" secondItem="tP0-9W-NAk" secondAttribute="leadingMargin" constant="104" id="Lsj-kP-YBE"/>
                                         <constraint firstItem="1VF-Kv-oHU" firstAttribute="top" secondItem="tP0-9W-NAk" secondAttribute="topMargin" constant="24" id="aPw-XU-wol"/>
                                         <constraint firstItem="vuP-Bg-F4V" firstAttribute="top" secondItem="1VF-Kv-oHU" secondAttribute="bottom" constant="12" id="cNC-qO-AK5"/>
-                                        <constraint firstItem="taf-eB-9yi" firstAttribute="leading" secondItem="tP0-9W-NAk" secondAttribute="leading" constant="8" id="cfl-gI-kJh"/>
-                                        <constraint firstItem="vuP-Bg-F4V" firstAttribute="leading" secondItem="tP0-9W-NAk" secondAttribute="leadingMargin" constant="140" id="x7e-9d-XTo"/>
+                                        <constraint firstItem="taf-eB-9yi" firstAttribute="leading" secondItem="tP0-9W-NAk" secondAttribute="leading" constant="12" id="cfl-gI-kJh"/>
+                                        <constraint firstItem="vuP-Bg-F4V" firstAttribute="centerX" secondItem="tP0-9W-NAk" secondAttribute="centerX" id="vrh-Dm-TUK"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="imageView" destination="1VF-Kv-oHU" id="7zq-0e-wTW"/>
@@ -986,7 +986,7 @@
         <image name="user" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wh3-pY-2eh"/>
+        <segue reference="xpS-6Y-X1h"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.033292476189748531" green="0.034151283993880482" blue="0.035057106598984755" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
