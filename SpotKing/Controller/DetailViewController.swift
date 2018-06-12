@@ -223,7 +223,7 @@ extension DetailViewController : UICollectionViewDataSource
         
         if(spot?.spotType == SkateSpot.SpotType.SkateShop)
         {
-            return (spot?.reviews?.count)!
+            return spot?.reviews?.count ?? 0 
         }
         else if spot?.spotType == SkateSpot.SpotType.SkateSpot
         {
