@@ -221,21 +221,7 @@ class MapViewController: UIViewController {
     
     
     @IBAction func selectFilterButtons(_ sender: UIButton) {
-        if sender.tag == 0
-        {
-            if(!sender.isSelected)
-            {
-                sender.isSelected = true
-                sender.layer.borderWidth = 3
-                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-            }
-            else
-            {
-                sender.isSelected = false
-                sender.layer.borderWidth = 0
-            }
-        }
-        else if sender.tag == 1
+        if sender.tag == 1
         {
             if(!sender.isSelected)
             {
@@ -259,8 +245,8 @@ class MapViewController: UIViewController {
             }
             else
             {
-                sender.layer.borderWidth = 0
                 sender.isSelected = false
+                sender.layer.borderWidth = 0
             }
         }
         else if sender.tag == 3
@@ -278,6 +264,20 @@ class MapViewController: UIViewController {
             }
         }
         else if sender.tag == 4
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.layer.borderWidth = 0
+                sender.isSelected = false
+            }
+        }
+        else if sender.tag == 5
         {
             if(!sender.isSelected)
             {
