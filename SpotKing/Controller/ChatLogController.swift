@@ -26,6 +26,8 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
         DatabaseManager.observeMessages()
     }
     
+    var containerViewBottomAnchor : NSLayoutConstraint?
+    
     var messages : [Message]?
     
     lazy var inputTextField:UITextField =
@@ -46,6 +48,7 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
         
         setupInputComponents()
         
+       // collectionView?.keyboardDismissMode = .interactive
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         
@@ -55,6 +58,45 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
                 self.messages = messages
                 self.collectionView?.reloadData()
             }
+        }
+        
+        setupKeyboardObservers()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func setupKeyboardObservers()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func handleKeyboardWillHide(notification:NSNotification)
+    {
+        let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double)
+        
+        containerViewBottomAnchor?.constant = 0
+        UIView.animate(withDuration: keyboardDuration!) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func handleKeyboardWillShow(notification:NSNotification)
+    {
+        let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+     
+        
+        let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double)
+      //  print(keyboardDuration!)
+        containerViewBottomAnchor?.constant = -keyboardFrame!.height
+        UIView.animate(withDuration: keyboardDuration!) {
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -88,7 +130,10 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
         view.addSubview(containerView)
         
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        containerViewBottomAnchor?.isActive = true
+        
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
