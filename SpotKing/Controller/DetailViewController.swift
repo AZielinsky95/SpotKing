@@ -161,6 +161,13 @@ class DetailViewController: UIViewController {
         header!.websiteLabel.addGestureRecognizer(tap)
         header!.websiteLabel.textColor = UIColor.blue
         
+        let tapPhone = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.phoneTapped))
+        tapPhone.delegate = self
+        header!.descriptionLabel.isUserInteractionEnabled = true
+        header!.descriptionLabel.addGestureRecognizer(tapPhone)
+        header!.descriptionLabel.textColor = UIColor.blue
+        
+       
     }
 
     func setRating(rating:Int?)
@@ -187,11 +194,20 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController : UIGestureRecognizerDelegate {
+    @objc func phoneTapped() {
+        guard let phoneNumber = spot?.phoneNumber else { return }
+        let trimmedPhoneNumber = phoneNumber.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
+        let phoneLink = "tel://" + trimmedPhoneNumber
+        let url = URL(string: phoneLink)!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
     @objc func websiteTapped() {
+        
         guard let website = spot?.website, let url = URL(string: website) else { return }
         let sfVC = SFSafariViewController(url: url)
         present(sfVC, animated: true, completion: nil)
-   }
+    }
 }
 
 extension DetailViewController : UICollectionViewDataSource
