@@ -221,8 +221,8 @@ class MapViewController: UIViewController {
     
     
     @IBAction func selectFilterButtons(_ sender: UIButton) {
-        if sender.tag == 1
-        {
+//        if sender.tag == 1
+//        {
             if(!sender.isSelected)
             {
                 sender.isSelected = true
@@ -234,63 +234,63 @@ class MapViewController: UIViewController {
                 sender.isSelected = false
                 sender.layer.borderWidth = 0
             }
-        }
-        else if sender.tag == 2
-        {
-            if(!sender.isSelected)
-            {
-                sender.isSelected = true
-                sender.layer.borderWidth = 3
-                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-            }
-            else
-            {
-                sender.isSelected = false
-                sender.layer.borderWidth = 0
-            }
-        }
-        else if sender.tag == 3
-        {
-            if(!sender.isSelected)
-            {
-                sender.isSelected = true
-                sender.layer.borderWidth = 3
-                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-            }
-            else
-            {
-                sender.layer.borderWidth = 0
-                sender.isSelected = false
-            }
-        }
-        else if sender.tag == 4
-        {
-            if(!sender.isSelected)
-            {
-                sender.isSelected = true
-                sender.layer.borderWidth = 3
-                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-            }
-            else
-            {
-                sender.layer.borderWidth = 0
-                sender.isSelected = false
-            }
-        }
-        else if sender.tag == 5
-        {
-            if(!sender.isSelected)
-            {
-                sender.isSelected = true
-                sender.layer.borderWidth = 3
-                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-            }
-            else
-            {
-                sender.layer.borderWidth = 0
-                sender.isSelected = false
-            }
-        }
+//        }
+//        else if sender.tag == 2
+//        {
+//            if(!sender.isSelected)
+//            {
+//                sender.isSelected = true
+//                sender.layer.borderWidth = 3
+//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+//            }
+//            else
+//            {
+//                sender.isSelected = false
+//                sender.layer.borderWidth = 0
+//            }
+//        }
+//        else if sender.tag == 3
+//        {
+//            if(!sender.isSelected)
+//            {
+//                sender.isSelected = true
+//                sender.layer.borderWidth = 3
+//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+//            }
+//            else
+//            {
+//                sender.layer.borderWidth = 0
+//                sender.isSelected = false
+//            }
+//        }
+//        else if sender.tag == 4
+//        {
+//            if(!sender.isSelected)
+//            {
+//                sender.isSelected = true
+//                sender.layer.borderWidth = 3
+//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+//            }
+//            else
+//            {
+//                sender.layer.borderWidth = 0
+//                sender.isSelected = false
+//            }
+////        }
+////        else if sender.tag == 5
+////        {
+//            if(!sender.isSelected)
+//            {
+//                sender.isSelected = true
+//                sender.layer.borderWidth = 3
+//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+//            }
+//            else
+//            {
+//                sender.layer.borderWidth = 0
+//                sender.isSelected = false
+//            }
+//      //  }
     }
     
     
@@ -449,7 +449,7 @@ class MapViewController: UIViewController {
     {
         NetworkManager.getSkateSpot(location:(currentLocation?.coordinate)!,type:SkateSpot.SpotType.SkateShop) { (spots) in
             DispatchQueue.main.async()
-                {
+            {
                     for spot in spots
                     {
                         NetworkManager.getSpotDetails(spot: spot, placeID: spot.placeID!)
@@ -551,7 +551,10 @@ extension MapViewController : MKMapViewDelegate
         
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
         {
-            dequeuedView.annotation = annotation    
+            dequeuedView.annotation = annotation
+            let (pinImage,pinColor) = annotation.pinImageAndColor
+            dequeuedView.glyphImage = pinImage
+            dequeuedView.markerTintColor = pinColor
             view = dequeuedView
         }
         else

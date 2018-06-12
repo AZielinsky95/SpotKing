@@ -10,8 +10,6 @@ import UIKit
 
 class User: NSObject {
     
-    //Warning : terribly designed!
-    
     //for current user!
     static var username : String!
     static var favouriteSpots = [String]()
