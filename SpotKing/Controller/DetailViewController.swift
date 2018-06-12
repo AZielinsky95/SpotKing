@@ -113,6 +113,13 @@ class DetailViewController: UIViewController {
        header!.addressLabel.isHidden = false
        header!.addressLabel.text = spot?.address
        header!.ratingControl.isUserInteractionEnabled = false
+        
+        let tapPhone = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.phoneTapped))
+        tapPhone.delegate = self
+        header!.descriptionLabel.isUserInteractionEnabled = true
+        header!.descriptionLabel.addGestureRecognizer(tapPhone)
+        header!.descriptionLabel.textColor = UIColor.blue
+        
     }
     
     func setUpSkateSpotView()
