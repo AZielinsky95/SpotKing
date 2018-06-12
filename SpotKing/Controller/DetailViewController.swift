@@ -131,8 +131,8 @@ class DetailViewController: UIViewController {
         header!.ratingControl.isUserInteractionEnabled = true
         header!.profileImageView.layer.cornerRadius = ( header!.profileImageView.frame.size.width/2)
         header!.profileImageView.clipsToBounds = true
-        header!.profileImageView.image = User.profileImage
-        header!.usernameLabel.text = User.username
+        header!.profileImageView.image = spot?.userProfileImage
+        header!.usernameLabel.text = spot?.username
         header!.descriptionLabel.text = spot?.spotDescription
         ratingControlTopConstraintForShop?.isActive = false
         header!.ratingControlTopConstraint.isActive = true
