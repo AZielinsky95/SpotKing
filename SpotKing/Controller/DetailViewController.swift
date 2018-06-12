@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailViewController: UIViewController {
     
@@ -154,6 +155,12 @@ class DetailViewController: UIViewController {
 
         header!.websiteLabel.isHidden = false
         header!.websiteLabel.text = spot?.website
+        let tap = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.websiteTapped))
+        tap.delegate = self
+        header!.websiteLabel.isUserInteractionEnabled = true
+        header!.websiteLabel.addGestureRecognizer(tap)
+        header!.websiteLabel.textColor = UIColor.blue
+        
     }
 
     func setRating(rating:Int?)
@@ -179,6 +186,13 @@ class DetailViewController: UIViewController {
     
 }
 
+extension DetailViewController : UIGestureRecognizerDelegate {
+    @objc func websiteTapped() {
+        guard let website = spot?.website, let url = URL(string: website) else { return }
+        let sfVC = SFSafariViewController(url: url)
+        present(sfVC, animated: true, completion: nil)
+   }
+}
 
 extension DetailViewController : UICollectionViewDataSource
 {
