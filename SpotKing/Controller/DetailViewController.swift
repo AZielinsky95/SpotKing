@@ -214,15 +214,50 @@ extension DetailViewController : UICollectionViewDataSource
          return UICollectionReusableView()
     }
     
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        var height: CGFloat = 80
+//
+//        if spot?.spotType == SkateSpot.SpotType.SkateShop || spot?.spotType == SkateSpot.SpotType.SkatePark
+//        {
+//            let review = spot?.reviews![indexPath.row]
+//
+//            if let text = review!["text"] as? String
+//            {
+//                height = estimatedFrameForText(text: text).height + 20
+//            }
+//        }
+//        else if spot?.spotType == SkateSpot.SpotType.SkateSpot
+//        {
+//            if comments.count > indexPath.row
+//            {
+//                if let text = comments[indexPath.row].comment
+//                {
+//                    height = estimatedFrameForText(text: text).height + 20
+//                }
+//            }
+//        }
+//
+//        return CGSize(width: view.frame.width, height: height)
+//    }
+//
+//    private func estimatedFrameForText(text:String) -> CGRect
+//    {
+//        let size = CGSize(width: 200, height: 1000)
+//        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+//
+//        return NSString(string:text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], context: nil)
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as! DetailCell
         
-        if spot?.spotType == SkateSpot.SpotType.SkateShop
+        if spot?.spotType == SkateSpot.SpotType.SkateShop || spot?.spotType == SkateSpot.SpotType.SkatePark
         {
             let review = spot?.reviews![indexPath.row]
-            cell.authorLabel.text = review!["author_name"] as! String
-            cell.textLabel.text = review!["text"] as! String
+            cell.authorLabel.text = (review!["author_name"] as! String)
+            cell.textLabel.text = (review!["text"] as! String)
         }
         else if spot?.spotType == SkateSpot.SpotType.SkateSpot
         {
@@ -239,9 +274,9 @@ extension DetailViewController : UICollectionViewDataSource
 //        cell.layer.shadowOpacity = 0.5
 //        cell.layer.shadowOffset = CGSize.zero
 //        cell.layer.shadowRadius = 2
-        cell.layer.borderWidth = 2
+        cell.backgroundColor = UIColor.SpotKingColors.lightGreen
         cell.layer.cornerRadius = 5
-        cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+       // cell.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         return cell
         
     }
