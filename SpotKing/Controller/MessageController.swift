@@ -63,8 +63,8 @@ class MessageController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismiss(animated: true) {
-          let user = self.users[indexPath.row]
-          self.mapViewController?.showChatControllerForUser(user: user)
+          let user2 = self.users[indexPath.row]
+          self.mapViewController?.showChatControllerForUser(user: user2)
         }
     }
     
