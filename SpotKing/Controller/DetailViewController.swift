@@ -28,12 +28,33 @@ class DetailViewController: UIViewController {
         self.navigationItem.title = spot?.title
         isHeaderSet = false
         setupComments()
-        
     }
     
     @objc func BackToMap()
     {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setupTags()
+    {
+        var tagLabels = [UILabel]()
+       
+       tagLabels.append(contentsOf: [header!.tag1Label,header!.tag2Label,header!.tag3Label,header!.tag4Label,header!.tag5Label])
+        
+        if(spot?.spotType == SkateSpot.SpotType.SkateSpot)
+        {
+            if let tags = spot?.spotTags
+            {
+                for i in 0..<tags.count
+                {
+                    tagLabels[i].layer.cornerRadius = 5
+                    tagLabels[i].layer.masksToBounds = true
+                    tagLabels[i].isHidden = false
+                    tagLabels[i].backgroundColor = tags[i].color()
+                    tagLabels[i].text = tags[i].toString()
+                }
+            }
+        }
     }
     
     
@@ -110,6 +131,8 @@ class DetailViewController: UIViewController {
         header!.ratingControl.delegate = self
 
         header!.websiteLabel.isHidden = true
+        
+        setupTags()
     }
 
     func setUpSkateShopView()

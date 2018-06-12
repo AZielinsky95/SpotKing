@@ -30,4 +30,10 @@ class DetailReusableView: UICollectionReusableView
     
     @IBOutlet weak var ratingControlTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var tag1Label: UILabel!
+    @IBOutlet weak var tag2Label: UILabel!
+    @IBOutlet weak var tag3Label: UILabel!
+    @IBOutlet weak var tag4Label: UILabel!
+    @IBOutlet weak var tag5Label: UILabel!
+    
 }

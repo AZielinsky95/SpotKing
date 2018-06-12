@@ -65,6 +65,21 @@ class SkateSpot : NSObject, MKAnnotation
             }
         }
         
+        func color() -> UIColor {
+            switch self {
+            case .Rail:
+                return UIColor.SpotKingColors.lightBlue
+            case .Stairs:
+                return UIColor.SpotKingColors.begonia
+            case .Ledge:
+                return UIColor.SpotKingColors.yellow
+            case .Gap:
+                return UIColor.blue
+            case .Manual:
+                return UIColor.magenta
+            }
+        }
+        
         static func toSpotTag(spotTagString: String) -> SpotTag
         {
             switch spotTagString {
