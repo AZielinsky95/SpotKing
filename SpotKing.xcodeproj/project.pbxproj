@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0E0C6420CF705A00F7230F /* bloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E0E0C6320CF705A00F7230F /* bloop.wav */; };
 		1E4F6F0820C6F728001DF9A4 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */; };
 		1E4F6F0A20C87ABD001DF9A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F6F0920C87ABD001DF9A4 /* User.swift */; };
 		1E4F6F0C20C898CD001DF9A4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F6F0B20C898CD001DF9A4 /* ProfileViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E0E0C6320CF705A00F7230F /* bloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bloop.wav; sourceTree = "<group>"; };
 		1E4F6F0720C6F728001DF9A4 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		1E4F6F0920C87ABD001DF9A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1E4F6F0B20C898CD001DF9A4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				CA696A8220C067A300347FE9 /* GoogleService-Info.plist */,
 				CA696A7420C065EC00347FE9 /* Main.storyboard */,
 				CA696A7720C065ED00347FE9 /* Assets.xcassets */,
+				1E0E0C6320CF705A00F7230F /* bloop.wav */,
 				CA696A7920C065ED00347FE9 /* LaunchScreen.storyboard */,
 				CA696A7C20C065ED00347FE9 /* Info.plist */,
 			);
@@ -280,6 +283,7 @@
 			files = (
 				CA696A7B20C065ED00347FE9 /* LaunchScreen.storyboard in Resources */,
 				CA696A8320C067A400347FE9 /* GoogleService-Info.plist in Resources */,
+				1E0E0C6420CF705A00F7230F /* bloop.wav in Resources */,
 				CAF3C32620C879F90003EDF5 /* Pacific Again.ttf in Resources */,
 				CAF3C32820C8857B0003EDF5 /* SummerVictory.otf in Resources */,
 				CA32D50220C99A3C00381316 /* Vanadine Bold.ttf in Resources */,
