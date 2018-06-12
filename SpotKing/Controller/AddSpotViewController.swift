@@ -14,7 +14,7 @@ protocol AddSpotProtocol
     func addSpot(spot:SkateSpot)
 }
 
-class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
+class AddSpotViewController: UIViewController {
 
     @IBOutlet weak var spotTitle: UITextField!
     @IBOutlet weak var imageView: UIImageView!

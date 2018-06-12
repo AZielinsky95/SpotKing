@@ -168,6 +168,7 @@ class ChatLogController: UICollectionViewController,UITextFieldDelegate,UICollec
     {
         guard let message = inputTextField.text else { return }
         DatabaseManager.sendMessage(text: message,toUserId: self.user!.userID!)
+        self.view.endEditing(true)
         inputTextField.text = nil
     }
     
