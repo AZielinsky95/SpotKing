@@ -55,11 +55,23 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         spotDesc.placeholder = "Description"
         
-        railTagButton.layer.cornerRadius = 5
-        stairsTagButton.layer.cornerRadius = 5
-        manualTagButton.layer.cornerRadius = 5
-        hubbaTagButton.layer.cornerRadius = 5
-        gapTagButton.layer.cornerRadius = 5
+//        railTagButton.layer.cornerRadius = 16
+//        stairsTagButton.layer.cornerRadius = 16
+//        manualTagButton.layer.cornerRadius = 16
+//        hubbaTagButton.layer.cornerRadius = 16
+//        gapTagButton.layer.cornerRadius = 16
+//        
+//        railTagButton.layer.borderColor = UIColor.black.cgColor
+//        stairsTagButton.layer.borderColor = UIColor.black.cgColor
+//        manualTagButton.layer.borderColor = UIColor.black.cgColor
+//        hubbaTagButton.layer.borderColor = UIColor.black.cgColor
+//        gapTagButton.layer.borderColor = UIColor.black.cgColor
+//        
+//        railTagButton.layer.borderWidth = 1
+//        stairsTagButton.layer.borderWidth = 1
+//        manualTagButton.layer.borderWidth = 1
+//        hubbaTagButton.layer.borderWidth = 1
+//        gapTagButton.layer.borderWidth = 1
         
         spotTitle.delegate = self
     }

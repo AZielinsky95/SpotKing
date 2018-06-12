@@ -11,6 +11,7 @@
 		1E4F6F0A20C87ABD001DF9A4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F6F0920C87ABD001DF9A4 /* User.swift */; };
 		1E4F6F0C20C898CD001DF9A4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F6F0B20C898CD001DF9A4 /* ProfileViewController.swift */; };
 		1E89B46520C1CBBC004941CC /* AddSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */; };
+		1E8C195020CF4F7B0032DF7F /* bloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E8C194F20CF4F7B0032DF7F /* bloop.wav */; };
 		1EA13AA820CAFCCE002F0A27 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA13AA720CAFCCE002F0A27 /* CommentsViewController.swift */; };
 		1EA13AAA20CAFD17002F0A27 /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA13AA920CAFD17002F0A27 /* CommentsCell.swift */; };
 		1EF7139220CB0EE70010410C /* CommentsFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF7139120CB0EE70010410C /* CommentsFooterReusableView.swift */; };
@@ -50,6 +51,8 @@
 		1E4F6F0920C87ABD001DF9A4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1E4F6F0B20C898CD001DF9A4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1E89B46420C1CBBC004941CC /* AddSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpotViewController.swift; sourceTree = "<group>"; };
+		1E8C194E20CF4A660032DF7F /* SpotKing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpotKing.entitlements; sourceTree = "<group>"; };
+		1E8C194F20CF4F7B0032DF7F /* bloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bloop.wav; sourceTree = "<group>"; };
 		1EA13AA720CAFCCE002F0A27 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		1EA13AA920CAFD17002F0A27 /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		1EF7139120CB0EE70010410C /* CommentsFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsFooterReusableView.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		CA696A6F20C065EC00347FE9 /* SpotKing */ = {
 			isa = PBXGroup;
 			children = (
+				1E8C194E20CF4A660032DF7F /* SpotKing.entitlements */,
 				CAF3C32320C8761F0003EDF5 /* Fonts */,
 				CAF3C32220C85E600003EDF5 /* View */,
 				CA696A8C20C086FB00347FE9 /* Controller */,
@@ -138,6 +142,7 @@
 				CA696A8220C067A300347FE9 /* GoogleService-Info.plist */,
 				CA696A7420C065EC00347FE9 /* Main.storyboard */,
 				CA696A7720C065ED00347FE9 /* Assets.xcassets */,
+				1E8C194F20CF4F7B0032DF7F /* bloop.wav */,
 				CA696A7920C065ED00347FE9 /* LaunchScreen.storyboard */,
 				CA696A7C20C065ED00347FE9 /* Info.plist */,
 			);
@@ -252,6 +257,11 @@
 				TargetAttributes = {
 					CA696A6C20C065EC00347FE9 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -280,6 +290,7 @@
 			files = (
 				CA696A7B20C065ED00347FE9 /* LaunchScreen.storyboard in Resources */,
 				CA696A8320C067A400347FE9 /* GoogleService-Info.plist in Resources */,
+				1E8C195020CF4F7B0032DF7F /* bloop.wav in Resources */,
 				CAF3C32620C879F90003EDF5 /* Pacific Again.ttf in Resources */,
 				CAF3C32820C8857B0003EDF5 /* SummerVictory.otf in Resources */,
 				CA32D50220C99A3C00381316 /* Vanadine Bold.ttf in Resources */,
@@ -514,6 +525,7 @@
 			baseConfigurationReference = 816B31C89DD49C83F4F387A5 /* Pods-SpotKing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpotKing/SpotKing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VP2H7XPMW;
 				INFOPLIST_FILE = SpotKing/Info.plist;
@@ -534,6 +546,7 @@
 			baseConfigurationReference = 26EC2CCD1248D137C4FD44E5 /* Pods-SpotKing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpotKing/SpotKing.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VP2H7XPMW;
 				INFOPLIST_FILE = SpotKing/Info.plist;

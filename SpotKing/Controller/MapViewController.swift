@@ -275,10 +275,10 @@ class MapViewController: UIViewController {
     
     func setUpTabButtons()
     {
-        tabBarContainer.layer.shadowColor = UIColor.black.cgColor
-        tabBarContainer.layer.shadowOpacity = 0.5
-        tabBarContainer.layer.shadowOffset = CGSize.zero
-        tabBarContainer.layer.shadowRadius = 15
+//        tabBarContainer.layer.shadowColor = UIColor.black.cgColor
+//        tabBarContainer.layer.shadowOpacity = 0.5
+//        tabBarContainer.layer.shadowOffset = CGSize.zero
+//        tabBarContainer.layer.shadowRadius = 15
         
         let settingsImage = UIImage(named: "message")
         let tintedImage2 = settingsImage?.withRenderingMode(.alwaysTemplate)
@@ -365,7 +365,17 @@ class MapViewController: UIViewController {
     func setUpNavigationBar()
     {
        // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Pacific Again", size: 20)!]
-        self.navigationItem.title = "Spot King"
+       // self.navigationItem.title = "Spot King"
+        let logo = UIImage(named: "crown2")
+        let tintedImage = logo?.withRenderingMode(.alwaysTemplate)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
+        imageView.image = tintedImage
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = UIColor.SpotKingColors.lightGreen
+        self.navigationItem.titleView = imageView
         self.navigationController?.navigationBar.tintColor = UIColor.SpotKingColors.lightGreen
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.SpotKingColors.lightGreen, NSAttributedStringKey.font:UIFont(name: "Helvetica Neue", size: 24)!]
     }
