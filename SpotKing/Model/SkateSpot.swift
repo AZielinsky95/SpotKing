@@ -68,15 +68,15 @@ class SkateSpot : NSObject, MKAnnotation
         func color() -> UIColor {
             switch self {
             case .Rail:
-                return UIColor.SpotKingColors.lightBlue
+                return UIColor.cyan
             case .Stairs:
-                return UIColor.SpotKingColors.begonia
+                return UIColor(r: 139, g: 255, b: 161)
             case .Ledge:
-                return UIColor.SpotKingColors.yellow
+                return UIColor(r: 121, g: 131, b: 255)
             case .Gap:
-                return UIColor.blue
+                return UIColor.SpotKingColors.yellow
             case .Manual:
-                return UIColor.magenta
+                return UIColor.SpotKingColors.begonia
             }
         }
         
@@ -127,11 +127,11 @@ class SkateSpot : NSObject, MKAnnotation
     {
             switch spotType! {
             case SkateSpot.SpotType.SkatePark:
-                return (UIImage(named: "crown")!,UIColor.magenta);
+                return (UIImage(named: "crown")!,UIColor.SpotKingColors.lightBlue);
             case SkateSpot.SpotType.SkateSpot:
                 return (UIImage(named: "spotIcon")!,UIColor.SpotKingColors.lightGreen);
             case SkateSpot.SpotType.SkateShop:
-                return (UIImage(named: "bag")!,UIColor.red);
+                return (UIImage(named: "bag")!,UIColor.SpotKingColors.begonia);
             }
     }()
     

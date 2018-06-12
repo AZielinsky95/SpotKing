@@ -67,7 +67,7 @@
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoM-61-5R1">
                                                 <rect key="frame" x="70" y="0.0" width="60" height="30"/>
-                                                <color key="backgroundColor" red="0.54364407589999997" green="1" blue="0.6324802799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.54364407589999997" green="1" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <state key="normal" title="Stairs">
                                                     <color key="titleColor" red="0.070022159989999999" green="0.1230826762" blue="0.1484375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,7 +78,7 @@
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Me-0m-aP4">
                                                 <rect key="frame" x="140" y="0.0" width="60" height="30"/>
-                                                <color key="backgroundColor" red="1" green="0.7039981609" blue="0.74129855219999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="1" green="0.41176470588235292" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                 <state key="normal" title="Manual">
                                                     <color key="titleColor" red="0.070022159989999999" green="0.1230826762" blue="0.1484375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -636,7 +636,7 @@
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rt0-K9-Jx1">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
-                                        <color key="backgroundColor" red="0.62005399299406427" green="1" blue="0.98441616334825421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7xn-48-h5a"/>
                                             <constraint firstAttribute="width" constant="60" id="Ut2-Hk-oDA"/>
@@ -662,7 +662,7 @@
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhN-pv-4dk">
                                         <rect key="frame" x="140" y="0.0" width="60" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.70399816087284361" blue="0.7412985521872486" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.41176470588235292" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <state key="normal" title="Manual">
                                             <color key="titleColor" red="0.070022159989999999" green="0.1230826762" blue="0.1484375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
