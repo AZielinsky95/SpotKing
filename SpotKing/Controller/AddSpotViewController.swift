@@ -26,7 +26,7 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var railTagButton: UIButton!
     @IBOutlet weak var stairsTagButton: UIButton!
     @IBOutlet weak var manualTagButton: UIButton!
-    @IBOutlet weak var hubbaTagButton: UIButton!
+    @IBOutlet weak var ledgeTagButton: UIButton!
     @IBOutlet weak var gapTagButton: UIButton!
     
     public var spotImage : UIImage?
@@ -51,26 +51,39 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
         spotTitle.layer.borderWidth = 0.5
         spotDesc.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         spotDesc.layer.borderWidth = 0.5
-        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
         spotDesc.placeholder = "Description"
         
-//        railTagButton.layer.cornerRadius = 16
-//        stairsTagButton.layer.cornerRadius = 16
-//        manualTagButton.layer.cornerRadius = 16
-//        hubbaTagButton.layer.cornerRadius = 16
-//        gapTagButton.layer.cornerRadius = 16
-//        
+        cancelButton.backgroundColor = UIColor.white
+        cancelButton.layer.shadowColor = UIColor.black.cgColor
+        cancelButton.layer.shadowOpacity = 0.25
+        cancelButton.layer.shadowOffset = CGSize.zero
+        cancelButton.layer.shadowRadius = 4
+        cancelButton.layer.borderWidth = 3
+        cancelButton.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+        cancelButton.layer.cornerRadius =  cancelButton.frame.size.width / 2
+    
+       // railTagButton.layer.cornerRadius = 16
+      //  stairsTagButton.layer.cornerRadius = 16
+       // manualTagButton.layer.cornerRadius = 16
+       // LedgeTagButton.layer.cornerRadius = 16
+       // gapTagButton.layer.cornerRadius = 16
+        
+        imageView.layer.cornerRadius = 5
+        imageView.layer.masksToBounds = true
+
+        
 //        railTagButton.layer.borderColor = UIColor.black.cgColor
 //        stairsTagButton.layer.borderColor = UIColor.black.cgColor
 //        manualTagButton.layer.borderColor = UIColor.black.cgColor
-//        hubbaTagButton.layer.borderColor = UIColor.black.cgColor
+//        LedgeTagButton.layer.borderColor = UIColor.black.cgColor
 //        gapTagButton.layer.borderColor = UIColor.black.cgColor
 //        
 //        railTagButton.layer.borderWidth = 1
 //        stairsTagButton.layer.borderWidth = 1
 //        manualTagButton.layer.borderWidth = 1
-//        hubbaTagButton.layer.borderWidth = 1
+//        LedgeTagButton.layer.borderWidth = 1
 //        gapTagButton.layer.borderWidth = 1
         
         spotTitle.delegate = self
@@ -106,9 +119,9 @@ class AddSpotViewController: UIViewController, UIGestureRecognizerDelegate {
             let type = SkateSpot.SpotTag.Stairs
             spotTags.append(type)
         }
-        if hubbaTagButton.isSelected
+        if ledgeTagButton.isSelected
         {
-            let type = SkateSpot.SpotTag.Hubba
+            let type = SkateSpot.SpotTag.Ledge
             spotTags.append(type)
         }
         if gapTagButton.isSelected

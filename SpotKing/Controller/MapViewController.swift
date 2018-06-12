@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
     var skateSpots = [SkateSpot]()
     var skateSpotsNewsFeed = [SkateSpot]()
     var currentLocation : CLLocation?
+    @IBOutlet weak var triggerFilterButton: UIButton!
     
     @IBOutlet weak var filterContainerView: UIView!
     
@@ -39,7 +40,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var filterRail: UIButton!
     @IBOutlet weak var filterStairs: UIButton!
     @IBOutlet weak var filterManual: UIButton!
-    @IBOutlet weak var filterHubba: UIButton!
+    @IBOutlet weak var filterLedge: UIButton!
     @IBOutlet weak var filterGap: UIButton!
     
     
@@ -167,19 +168,11 @@ class MapViewController: UIViewController {
     
     func setUpFilterOptionsView()
     {
-       for button in filterContainerView.subviews[0].subviews
-       {
-            button.layer.cornerRadius = button.frame.size.width / 2
-        
-            button.clipsToBounds = true
-       }
-        
-//        filterContainerView.layer.shadowColor = UIColor.black.cgColor
-//        filterContainerView.layer.shadowOpacity = 0.5
-//        filterContainerView.layer.shadowOffset = CGSize.zero
-//        filterContainerView.layer.shadowRadius = 15
-//        filterContainerView.layer.borderWidth = 1
-//        filterContainerView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+//       for button in filterContainerView.subviews[0].subviews
+//       {
+//
+//       }
+        triggerFilterButton.layer.cornerRadius = 5
     }
     
     @IBAction func filterMap() {
@@ -193,8 +186,8 @@ class MapViewController: UIViewController {
         if filterRail.isSelected {
             tagsFiltered.append(.Rail)
         }
-        if filterHubba.isSelected {
-            tagsFiltered.append(.Hubba)
+        if filterLedge.isSelected {
+            tagsFiltered.append(.Ledge)
         }
         if filterManual.isSelected {
             tagsFiltered.append(.Manual)
@@ -225,28 +218,78 @@ class MapViewController: UIViewController {
         
     }
     
-
     
     
     @IBAction func selectFilterButtons(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            filterRail.isSelected = !sender.isSelected
-            break
-        case 1:
-            filterStairs.isSelected = !sender.isSelected
-            break
-        case 2:
-            filterManual.isSelected = !sender.isSelected
-            break
-        case 3:
-            filterHubba.isSelected = !sender.isSelected
-            break
-        case 4:
-            filterGap.isSelected = !sender.isSelected
-            break
-        default:
-            break
+        if sender.tag == 0
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.isSelected = false
+                sender.layer.borderWidth = 0
+            }
+        }
+        else if sender.tag == 1
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.isSelected = false
+                sender.layer.borderWidth = 0
+            }
+        }
+        else if sender.tag == 2
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.layer.borderWidth = 0
+                sender.isSelected = false
+            }
+        }
+        else if sender.tag == 3
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.layer.borderWidth = 0
+                sender.isSelected = false
+            }
+        }
+        else if sender.tag == 4
+        {
+            if(!sender.isSelected)
+            {
+                sender.isSelected = true
+                sender.layer.borderWidth = 3
+                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+            }
+            else
+            {
+                sender.layer.borderWidth = 0
+                sender.isSelected = false
+            }
         }
     }
     

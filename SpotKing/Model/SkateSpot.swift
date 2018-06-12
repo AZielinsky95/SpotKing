@@ -46,7 +46,7 @@ class SkateSpot : NSObject, MKAnnotation
     {
         case Rail
         case Stairs
-        case Hubba
+        case Ledge
         case Gap
         case Manual
         
@@ -56,8 +56,8 @@ class SkateSpot : NSObject, MKAnnotation
                 return "Rail"
             case .Stairs:
                 return "Stairs"
-            case .Hubba:
-                return "Hubba"
+            case .Ledge:
+                return "Ledge"
             case .Gap:
                 return "Gap"
             case .Manual:
@@ -72,8 +72,8 @@ class SkateSpot : NSObject, MKAnnotation
                 return SpotTag.Rail
             case "Stairs":
                 return SpotTag.Stairs
-            case "Hubba":
-                return SpotTag.Hubba
+            case "Ledge":
+                return SpotTag.Ledge
             case "Gap":
                 return SpotTag.Gap
             case "Manual":

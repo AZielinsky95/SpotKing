@@ -291,5 +291,8 @@ extension UIColor
        static let lightGreen = UIColor.init(r: 111, g: 201, b: 174)
        static let darkGreen = UIColor.init(r: 58, g: 162, b: 139)
        static let lightBlue = UIColor.init(r:0,g:137,b:249)
+       static let yellow = UIColor.init(r:255,g:240,b:124)
+       static let cyan = UIColor.init(r:89,g:248,b:232)
+       static let begonia = UIColor.init(r:255,g:105,b:120)
     }
 }
