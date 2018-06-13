@@ -33,20 +33,6 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zx-A6-nss">
                                 <rect key="frame" x="0.0" y="482" width="375" height="135"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUr-gB-Flx">
-                                        <rect key="frame" x="100" y="67" width="175" height="35"/>
-                                        <color key="backgroundColor" red="0.43529411764705883" green="0.80000000000000004" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="CQF-P3-ELD"/>
-                                            <constraint firstAttribute="width" constant="175" id="vEY-NT-5BS"/>
-                                        </constraints>
-                                        <state key="normal" title="Filter">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="filterMap" destination="BYZ-38-t0r" eventType="touchUpInside" id="H5H-hR-Rwp"/>
-                                        </connections>
-                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xem-AD-wjS">
                                         <rect key="frame" x="17" y="12" width="340" height="30"/>
                                         <subviews>
@@ -121,6 +107,20 @@
                                             <constraint firstItem="eZV-d3-1cl" firstAttribute="height" secondItem="zrO-Vs-Lpm" secondAttribute="height" id="uoa-yi-a2p"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUr-gB-Flx">
+                                        <rect key="frame" x="100" y="67" width="175" height="35"/>
+                                        <color key="backgroundColor" red="0.43529411764705883" green="0.80000000000000004" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="CQF-P3-ELD"/>
+                                            <constraint firstAttribute="width" constant="175" id="vEY-NT-5BS"/>
+                                        </constraints>
+                                        <state key="normal" title="Filter">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="filterMap" destination="BYZ-38-t0r" eventType="touchUpInside" id="H5H-hR-Rwp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -256,7 +256,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RNy-6I-IXE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RNy-6I-IXE">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="2JE-c7-XmK"/>
@@ -825,7 +825,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="501"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lBw-Zr-MKP">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lBw-Zr-MKP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="300" id="9VM-tw-yG8"/>

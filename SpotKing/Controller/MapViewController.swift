@@ -168,11 +168,14 @@ class MapViewController: UIViewController {
     
     func setUpFilterOptionsView()
     {
-//       for button in filterContainerView.subviews[0].subviews
-//       {
-//
-//       }
+       for button in filterContainerView.subviews[0].subviews
+       {
+           button.layer.cornerRadius = 5
+           button.layer.masksToBounds = true
+       }
+        
         triggerFilterButton.layer.cornerRadius = 5
+        triggerFilterButton.layer.masksToBounds = true
     }
     
     @IBAction func filterMap() {
