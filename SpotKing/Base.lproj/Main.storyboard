@@ -200,7 +200,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fPW-jr-Gm9">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="EZ4-Iz-GmG">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="news" id="EZ4-Iz-GmG">
                             <connections>
                                 <segue destination="u0Q-wu-1YV" kind="show" identifier="StorySegue" id="Xxg-cu-BP2"/>
                             </connections>
@@ -1069,8 +1069,8 @@
     <resources>
         <image name="editedplusicon2" width="256" height="256"/>
         <image name="heart-empty" width="35" height="31"/>
-        <image name="menu" width="30" height="30"/>
         <image name="message" width="32" height="32"/>
+        <image name="news" width="40" height="40"/>
         <image name="profile" width="256" height="256"/>
         <image name="tagoptions" width="171" height="171"/>
         <image name="user" width="24" height="24"/>
