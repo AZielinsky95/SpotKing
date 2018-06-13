@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.favouriteSpotsImages = [UIImage]()
+        
         self.collectionView.dataSource = self
         
         self.navigationItem.hidesBackButton = true
