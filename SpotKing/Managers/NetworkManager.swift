@@ -137,7 +137,7 @@ class NetworkManager: NSObject
             var imageURL :String?
             if let photos = jsonDictionary["photos"] as? [[String:Any]]
             {
-             let photoReference = photos[0]["photo_reference"] as! String
+             let photoReference = photos[1]["photo_reference"] as! String
              imageURL = getSkateShopAndParkImageURL(photoref: photoReference)
             }
             spot.imageURL = imageURL
