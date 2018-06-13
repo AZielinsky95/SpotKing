@@ -130,7 +130,10 @@ class MapViewController: UIViewController {
             if let url = spot.imageURL
             {
                 DatabaseManager.downloadSkateSpotImage(url: url, completion: { (image) in
-                    spot.spotImage = image
+                    
+                    DispatchQueue.main.async {
+                        spot.spotImage = image
+                    }
                 })
             }
             else
@@ -145,8 +148,9 @@ class MapViewController: UIViewController {
             if let url = spot.imageURL
             {
                 DatabaseManager.downloadSkateSpotImage(url: url, completion: { (image) in
-                    spot.spotImage = image
-                })
+                    DispatchQueue.main.async {
+                        spot.spotImage = image
+                    }                })
             }
             else
             {
@@ -156,7 +160,11 @@ class MapViewController: UIViewController {
             if spot.userID != nil {
                
                     DatabaseManager.downloadSpotProfileImage(userID: spot.userID, completion: { (image) in
-                        spot.userProfileImage = image
+                       
+                        DispatchQueue.main.async {
+                          spot.userProfileImage = image
+                        }
+            
                     })
 
             }
