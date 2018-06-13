@@ -423,8 +423,15 @@ class DatabaseManager
         
         let downloadTask: URLSessionDownloadTask = session.downloadTask(with: imageURL) { (url, response, error)  in
             let data = NSData(contentsOf: url!)
-            guard let image = UIImage(data: data! as Data) else { return }
-            completion(image)
+            let image = UIImage(data: data! as Data)
+            if image != nil
+            {
+            completion(image!)
+            }
+            else
+            {
+                completion(#imageLiteral(resourceName: "shop"))
+            }
         }
         
         downloadTask.resume()
