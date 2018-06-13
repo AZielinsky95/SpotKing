@@ -150,9 +150,13 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+  
         view.backgroundColor = UIColor.white
         view.addSubview(inputContainerView)
         view.addSubview(loginRegisterButton)

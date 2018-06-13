@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     var profileReusableView: ProfileReusableView?
     
     @IBOutlet weak var collectionView: UICollectionView!
+  
     
     var skateSpots : [SkateSpot]?
     
@@ -30,6 +31,7 @@ class ProfileViewController: UIViewController {
         self.navigationItem.title = "Profile"
         self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "map"), style: .plain, target: self, action: #selector(BackToMap))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(LogOut))
+        
         setupFavouriteSpotImages()
     }
     
@@ -44,6 +46,12 @@ class ProfileViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     //    presentLoginViewController()
     }
+    
+    @IBAction func logOut() {
+        DatabaseManager.signOut()
+        dismiss(animated: true, completion: nil )
+    }
+    
     
     func setUpProfileView()
     {
@@ -110,6 +118,11 @@ class ProfileViewController: UIViewController {
         
         vc.present(actionSheet, animated: true, completion: nil)
     }
+    
+    @IBAction func dismissProfileVC() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }
 

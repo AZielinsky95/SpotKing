@@ -209,7 +209,7 @@
                             <inset key="imageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                             <inset key="largeContentSizeImageInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <connections>
-                                <segue destination="D0P-lM-Tna" kind="show" identifier="ProfileSegue" id="aBj-nc-rHQ"/>
+                                <segue destination="D0P-lM-Tna" kind="presentation" identifier="ProfileSegue" id="aBj-nc-rHQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -510,7 +510,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ARq-rA-tkL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eWz-WL-JGL">
                                     <size key="itemSize" width="150" height="150"/>
@@ -561,6 +561,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ww-YI-eyy">
+                                            <rect key="frame" x="13" y="8" width="37" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Done"/>
+                                            <connections>
+                                                <action selector="dismissProfileVC" destination="D0P-lM-Tna" eventType="touchUpInside" id="pkm-nE-4jj"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5R-xL-5nP">
+                                            <rect key="frame" x="312" y="8" width="55" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Log Out"/>
+                                            <connections>
+                                                <action selector="logOut" destination="D0P-lM-Tna" eventType="touchUpInside" id="SL0-IO-PoS"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="1VF-Kv-oHU" secondAttribute="trailing" constant="105" id="3YW-VB-pim"/>
