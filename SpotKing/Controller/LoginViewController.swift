@@ -181,12 +181,12 @@ class LoginViewController: UIViewController {
         logoImageView.image = tintedImage
         logoImageView.tintColor = UIColor.SpotKingColors.lightGreen
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -2).isActive = true
         logoImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true;
         logoImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true;
         
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: -32).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -5).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: -24).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -24).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
         titleLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true;
     }
