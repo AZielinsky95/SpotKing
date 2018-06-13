@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         button.layer.masksToBounds = true
         button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         return button
@@ -176,13 +176,17 @@ class LoginViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(logoImageView)
         
+        let logo = UIImage(named: "crown2")
+        let tintedImage = logo?.withRenderingMode(.alwaysTemplate)
+        logoImageView.image = tintedImage
+        logoImageView.tintColor = UIColor.SpotKingColors.lightGreen
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 75).isActive = true;
-        logoImageView.heightAnchor.constraint(equalToConstant: 75).isActive = true;
+        logoImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true;
+        logoImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true;
         
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: -24).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: logoImageView.topAnchor, constant: -5).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: -32).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -5).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: inputContainerView.widthAnchor).isActive = true;
         titleLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true;
     }
