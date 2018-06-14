@@ -45,7 +45,7 @@ class CommentsViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "news")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "news")
         self.collectionView.dataSource = self
-        self.title = "Spot Comments"
+        self.title = "Comments"
         self.profileImageView.image = User.profileImage
         self.commentsTextField.delegate = self
         self.commentsTextField.layer.borderColor = UIColor.lightGray.cgColor
