@@ -48,7 +48,7 @@ class CommentsViewController: UIViewController {
         self.title = "Spot Comments"
         self.profileImageView.image = User.profileImage
         self.commentsTextField.delegate = self
-        self.commentsTextField.layer.borderColor = UIColor.darkGray.cgColor
+        self.commentsTextField.layer.borderColor = UIColor.lightGray.cgColor
         self.commentsTextField.layer.borderWidth = 1
         self.commentsTextField.layer.cornerRadius = 5
         
