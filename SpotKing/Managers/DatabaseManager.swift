@@ -98,7 +98,7 @@ class DatabaseManager
         let imageRef = Storage.storage().reference().child("spotImages").child("\(spotID)/\(randomFileName)")
        // guard let image = spot.pinImage, let imageData = UIImagePNGRepresentation(image) else {return }
         
-        guard let currentUserID = Auth.auth().currentUser?.uid, let resizedImage = spot.spotImage?.resizeWith(percentage: 0.1), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
+        guard let currentUserID = Auth.auth().currentUser?.uid, let resizedImage = spot.spotImage?.resizeWith(percentage: 0.3), let resizedImageData = UIImagePNGRepresentation(resizedImage) else { return }
         
         imageRef.putData(resizedImageData, metadata: nil, completion: { (metadata, error) in
             if let error = error  {
