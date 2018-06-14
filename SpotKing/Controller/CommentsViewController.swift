@@ -42,8 +42,8 @@ class CommentsViewController: UIViewController {
     }
     
     func setupView() {
-        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "menu")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "menu")
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "news")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "news")
         self.collectionView.dataSource = self
         self.title = "Spot Comments"
         self.profileImageView.image = User.profileImage
