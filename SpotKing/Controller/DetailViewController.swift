@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "map"), style: .plain, target: self, action: #selector(BackToMap))
+        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "placeholder"), style: .plain, target: self, action: #selector(BackToMap))
         self.navigationItem.title = spot?.title
         isHeaderSet = false
         setupComments()

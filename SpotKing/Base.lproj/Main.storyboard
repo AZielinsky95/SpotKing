@@ -541,6 +541,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-2U-6np">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crown2" translatesAutoresizingMaskIntoConstraints="NO" id="ctH-9g-rQX">
+                                                    <rect key="frame" x="165" y="24" width="44" height="44"/>
+                                                    <color key="tintColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="slq-I2-5I4"/>
+                                                        <constraint firstAttribute="height" constant="44" id="tKk-OV-jkQ"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.43529411764705883" green="0.80000000000000004" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="9fv-aH-XEY"/>
+                                                <constraint firstItem="ctH-9g-rQX" firstAttribute="top" secondItem="XRp-2U-6np" secondAttribute="top" constant="24" id="CYV-he-gPV"/>
+                                                <constraint firstItem="ctH-9g-rQX" firstAttribute="centerX" secondItem="XRp-2U-6np" secondAttribute="centerX" id="hUS-wD-NkA"/>
+                                            </constraints>
+                                        </view>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1VF-Kv-oHU">
                                             <rect key="frame" x="112" y="74" width="150" height="150"/>
                                             <color key="backgroundColor" red="0.85802664974619292" green="0.85802664974619292" blue="0.85802664974619292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -568,7 +587,7 @@
                                                 <constraint firstAttribute="width" constant="40" id="xzB-v9-9Mu"/>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
-                                            <state key="normal" image="map"/>
+                                            <state key="normal" image="placeholder"/>
                                             <connections>
                                                 <action selector="dismissProfileVC" destination="D0P-lM-Tna" eventType="touchUpInside" id="99w-XR-545"/>
                                             </connections>
@@ -577,20 +596,32 @@
                                             <rect key="frame" x="298" y="16" width="57" height="31"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                             <state key="normal" title="Log Out">
-                                                <color key="titleColor" red="0.43529411764705883" green="0.80000000000000004" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="logOut" destination="D0P-lM-Tna" eventType="touchUpInside" id="TXG-OK-dpX"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="0aZ-uw-5ar">
+                                            <rect key="frame" x="139" y="345" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="8kc-UX-eU2"/>
+                                                <constraint firstAttribute="width" constant="24" id="TD2-uI-KUP"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="1VF-Kv-oHU" secondAttribute="trailing" constant="105" id="3YW-VB-pim"/>
                                         <constraint firstItem="G8m-po-3MM" firstAttribute="top" secondItem="tP0-9W-NAk" secondAttribute="topMargin" constant="8" id="4sY-UD-ZJk"/>
+                                        <constraint firstAttribute="bottom" secondItem="0aZ-uw-5ar" secondAttribute="bottom" constant="6" id="7tc-We-fCk"/>
                                         <constraint firstAttribute="bottom" secondItem="taf-eB-9yi" secondAttribute="bottom" id="CBh-Ba-CW7"/>
+                                        <constraint firstAttribute="trailing" secondItem="XRp-2U-6np" secondAttribute="trailing" id="E1e-Ok-BK7"/>
+                                        <constraint firstItem="XRp-2U-6np" firstAttribute="top" secondItem="tP0-9W-NAk" secondAttribute="top" id="EJf-J7-G4X"/>
                                         <constraint firstItem="kMp-Ev-bol" firstAttribute="top" secondItem="tP0-9W-NAk" secondAttribute="topMargin" constant="4" id="H9O-Ng-Gzw"/>
                                         <constraint firstItem="1VF-Kv-oHU" firstAttribute="leading" secondItem="tP0-9W-NAk" secondAttribute="leadingMargin" constant="104" id="Lsj-kP-YBE"/>
+                                        <constraint firstItem="0aZ-uw-5ar" firstAttribute="leading" secondItem="taf-eB-9yi" secondAttribute="trailing" constant="8" id="MRX-fM-MQY"/>
                                         <constraint firstItem="kMp-Ev-bol" firstAttribute="leading" secondItem="tP0-9W-NAk" secondAttribute="leadingMargin" constant="8" id="RHb-2C-MG7"/>
+                                        <constraint firstItem="XRp-2U-6np" firstAttribute="leading" secondItem="tP0-9W-NAk" secondAttribute="leading" id="U7X-fF-GPw"/>
                                         <constraint firstItem="G8m-po-3MM" firstAttribute="trailing" secondItem="tP0-9W-NAk" secondAttribute="trailingMargin" constant="-12" id="YoY-QW-tiU"/>
                                         <constraint firstItem="1VF-Kv-oHU" firstAttribute="top" secondItem="tP0-9W-NAk" secondAttribute="topMargin" constant="66" id="aPw-XU-wol"/>
                                         <constraint firstItem="vuP-Bg-F4V" firstAttribute="top" secondItem="1VF-Kv-oHU" secondAttribute="bottom" constant="12" id="cNC-qO-AK5"/>
@@ -876,7 +907,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auf-Zl-szR">
-                                                    <rect key="frame" x="60" y="15.5" width="65.5" height="29"/>
+                                                    <rect key="frame" x="60" y="16" width="65.5" height="29"/>
                                                     <fontDescription key="fontDescription" name="SummersVictoryOverSpring" family="Summers Victory Over Spring" pointSize="27"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1078,11 +1109,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="crown2" width="368" height="310"/>
         <image name="editedplusicon2" width="256" height="256"/>
+        <image name="heart" width="35" height="31"/>
         <image name="heart-empty" width="35" height="31"/>
-        <image name="map" width="34" height="29"/>
         <image name="message" width="32" height="32"/>
         <image name="news" width="40" height="40"/>
+        <image name="placeholder" width="32" height="32"/>
         <image name="profile" width="256" height="256"/>
         <image name="tagoptions" width="171" height="171"/>
         <image name="user" width="24" height="24"/>

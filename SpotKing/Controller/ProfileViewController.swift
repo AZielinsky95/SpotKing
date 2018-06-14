@@ -54,15 +54,14 @@ class ProfileViewController: UIViewController {
     
     func setUpProfileView()
     {
-        
-        let mapImg = UIImage(named: "map")
+        let mapImg = UIImage(named: "placeholder")
         let tintedMapImage = mapImg?.withRenderingMode(.alwaysTemplate)
         profileReusableView!.mapButton.setImage(tintedMapImage, for: .normal)
-        profileReusableView!.mapButton.tintColor = UIColor.SpotKingColors.lightGreen
+        profileReusableView!.mapButton.tintColor = UIColor.white
         profileReusableView!.imageView.layer.cornerRadius = profileReusableView!.imageView.frame.size.width / 2
         profileReusableView!.imageView.clipsToBounds = true
-        //profileReusableView!.imageView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
-       // profileReusableView!.imageView.layer.borderWidth = 2.5
+        profileReusableView!.imageView.layer.borderColor = UIColor.darkGray.cgColor
+        profileReusableView!.imageView.layer.borderWidth = 2
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageViewTapped(recognizer:)))
         tapGesture.delegate = self
