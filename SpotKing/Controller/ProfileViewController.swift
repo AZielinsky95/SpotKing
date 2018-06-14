@@ -13,7 +13,6 @@ class ProfileViewController: UIViewController {
     var profileReusableView: ProfileReusableView?
     
     @IBOutlet weak var collectionView: UICollectionView!
-  
     
     var skateSpots : [SkateSpot]?
     
@@ -26,26 +25,26 @@ class ProfileViewController: UIViewController {
         
         self.collectionView.dataSource = self
         
-        self.navigationItem.hidesBackButton = true
+    //    self.navigationItem.hidesBackButton = true
+     //   self.navigationItem.title = "Profile"
+//        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "map"), style: .plain, target: self, action: #selector(BackToMap))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(LogOut))
         
-        self.navigationItem.title = "Profile"
-        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "map"), style: .plain, target: self, action: #selector(BackToMap))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(LogOut))
         
         setupFavouriteSpotImages()
     }
     
-    @objc func BackToMap()
-    {
-      self.navigationController?.popViewController(animated: true)
-    }
+//    @objc func BackToMap()
+//    {
+//      self.navigationController?.popViewController(animated: true)
+//    }
     
-    @objc func LogOut()
-    {
-        DatabaseManager.signOut()
-        self.navigationController?.popViewController(animated: true)
-    //    presentLoginViewController()
-    }
+//    @objc func LogOut()
+//    {
+//        DatabaseManager.signOut()
+//        self.navigationController?.popViewController(animated: true)
+//    //    presentLoginViewController()
+//    }
     
     @IBAction func logOut() {
         DatabaseManager.signOut()
@@ -55,13 +54,21 @@ class ProfileViewController: UIViewController {
     
     func setUpProfileView()
     {
+        
+        let mapImg = UIImage(named: "map")
+        let tintedMapImage = mapImg?.withRenderingMode(.alwaysTemplate)
+        profileReusableView!.mapButton.setImage(tintedMapImage, for: .normal)
+        profileReusableView!.mapButton.tintColor = UIColor.SpotKingColors.lightGreen
         profileReusableView!.imageView.layer.cornerRadius = profileReusableView!.imageView.frame.size.width / 2
         profileReusableView!.imageView.clipsToBounds = true
+        //profileReusableView!.imageView.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor
+       // profileReusableView!.imageView.layer.borderWidth = 2.5
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageViewTapped(recognizer:)))
         tapGesture.delegate = self
         profileReusableView!.imageView.addGestureRecognizer(tapGesture)
         profileReusableView!.imageView.image = User.profileImage
+        
         profileReusableView!.username.text = User.username
     }
     

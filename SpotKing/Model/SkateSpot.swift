@@ -68,9 +68,9 @@ class SkateSpot : NSObject, MKAnnotation
         func color() -> UIColor {
             switch self {
             case .Rail:
-                return UIColor.cyan
+                return UIColor.SpotKingColors.lightBlue
             case .Stairs:
-                return UIColor(r: 139, g: 255, b: 161)
+                return UIColor.green
             case .Ledge:
                 return UIColor(r: 121, g: 131, b: 255)
             case .Gap:

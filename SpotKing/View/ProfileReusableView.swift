@@ -12,5 +12,5 @@ class ProfileReusableView: UICollectionReusableView {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var username: UILabel!
-    
+    @IBOutlet weak var mapButton: UIButton!
 }
