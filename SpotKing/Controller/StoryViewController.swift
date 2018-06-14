@@ -24,15 +24,15 @@ class StoryViewController: UIViewController {
             User.favouriteSpots = favouriteSpots
         }
         
-        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "map")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "map")
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "placeholder")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "placeholder")
         self.title = "Spot News"
 
      }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "map")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "map")
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "placeholder")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "placeholder")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
