@@ -238,70 +238,13 @@ class MapViewController: UIViewController {
             {
                 sender.isSelected = true
                 sender.layer.borderWidth = 3
-                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
+                sender.layer.borderColor = UIColor.darkGray.cgColor;
             }
             else
             {
                 sender.isSelected = false
                 sender.layer.borderWidth = 0
             }
-//        }
-//        else if sender.tag == 2
-//        {
-//            if(!sender.isSelected)
-//            {
-//                sender.isSelected = true
-//                sender.layer.borderWidth = 3
-//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-//            }
-//            else
-//            {
-//                sender.isSelected = false
-//                sender.layer.borderWidth = 0
-//            }
-//        }
-//        else if sender.tag == 3
-//        {
-//            if(!sender.isSelected)
-//            {
-//                sender.isSelected = true
-//                sender.layer.borderWidth = 3
-//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-//            }
-//            else
-//            {
-//                sender.layer.borderWidth = 0
-//                sender.isSelected = false
-//            }
-//        }
-//        else if sender.tag == 4
-//        {
-//            if(!sender.isSelected)
-//            {
-//                sender.isSelected = true
-//                sender.layer.borderWidth = 3
-//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-//            }
-//            else
-//            {
-//                sender.layer.borderWidth = 0
-//                sender.isSelected = false
-//            }
-////        }
-////        else if sender.tag == 5
-////        {
-//            if(!sender.isSelected)
-//            {
-//                sender.isSelected = true
-//                sender.layer.borderWidth = 3
-//                sender.layer.borderColor = UIColor.SpotKingColors.lightGreen.cgColor;
-//            }
-//            else
-//            {
-//                sender.layer.borderWidth = 0
-//                sender.isSelected = false
-//            }
-//      //  }
     }
     
     
