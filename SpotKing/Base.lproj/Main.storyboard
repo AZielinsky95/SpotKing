@@ -554,12 +554,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-2U-6np">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crown2" translatesAutoresizingMaskIntoConstraints="NO" id="ctH-9g-rQX">
-                                                    <rect key="frame" x="165" y="24" width="44" height="44"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="crown2" translatesAutoresizingMaskIntoConstraints="NO" id="ctH-9g-rQX">
+                                                    <rect key="frame" x="165" y="24" width="44" height="40"/>
                                                     <color key="tintColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="slq-I2-5I4"/>
-                                                        <constraint firstAttribute="height" constant="44" id="tKk-OV-jkQ"/>
+                                                        <constraint firstAttribute="height" constant="42" id="tKk-OV-jkQ"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>

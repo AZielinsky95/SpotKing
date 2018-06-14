@@ -70,7 +70,7 @@ class SkateSpot : NSObject, MKAnnotation
             case .Rail:
                 return UIColor.SpotKingColors.lightBlue
             case .Stairs:
-                return UIColor.green
+                return UIColor(r: 46, g: 186, b: 110)
             case .Ledge:
                 return UIColor(r: 121, g: 131, b: 255)
             case .Gap:
